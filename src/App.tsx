@@ -3,10 +3,17 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
+import Grid from "@mui/material/Grid";
 function App() {
-  return <Navbar />;
+  return (
+    <>
+      <Grid container>
+        <Navbar />
+        <Outlet />
+      </Grid>
+    </>
+  );
 }
 
 export default App;
