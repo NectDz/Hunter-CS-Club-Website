@@ -10,18 +10,22 @@ import Database from "./pages/Database/Database";
 import Storage from "./pages/Storage/Storage";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { dashboardTheme } from "./dashboardTheme.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="authentication" element={<Authentication />} />
-        <Route path="database" element={<Database />} />
-        <Route path="functions" element={<Functions />} />
-        <Route path="hosting" element={<Hosting />} />
-        <Route path="machine-learning" element={<MachineLearning />} />
-        <Route path="storage" element={<Storage />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  <ThemeProvider theme={dashboardTheme}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="authentication" element={<Authentication />} />
+          <Route path="database" element={<Database />} />
+          <Route path="functions" element={<Functions />} />
+          <Route path="hosting" element={<Hosting />} />
+          <Route path="machine-learning" element={<MachineLearning />} />
+          <Route path="storage" element={<Storage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </ThemeProvider>
 );
