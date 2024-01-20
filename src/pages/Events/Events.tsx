@@ -1,9 +1,7 @@
 import React from "react";
 
 const Events = () => {
-  return (
-    <div style={{ marginLeft: "500px" }}>This is machine learning page.</div>
-  );
+  return <div>This is machine learning page.</div>;
 };
 
 export default Events;
