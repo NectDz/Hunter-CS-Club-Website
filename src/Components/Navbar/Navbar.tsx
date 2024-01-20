@@ -31,7 +31,7 @@ function Navbar() {
           Hunter CS Club
         </Typography>
 
-        <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
+        <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "right" }}>
           {mainNavbarItems.map((item) => (
             <Button
               key={item.id}
