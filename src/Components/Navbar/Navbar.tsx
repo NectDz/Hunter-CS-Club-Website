@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 
 import { mainNavbarItems } from "./consts/navbarItems";
+/*import { Logo } from "../../assets/logo.svg";*/
 
 function Navbar() {
   const navigate = useNavigate();
@@ -52,25 +53,38 @@ function Navbar() {
           </IconButton>
         )}
 
-        <Typography
-          variant="h5"
-          noWrap
-          component="a"
-          href="/"
+        <Box
           sx={{
             flexGrow: 1,
-            fontWeight: 200,
-            color: "white",
-            letterSpacing: ".2rem",
-            textDecoration: "none",
-            textAlign: "left",
+            display: "flex",
+            justifyContent: isMobile ? "center" : "flex-start",
+            pl: isMobile ? 0 : { xs: 5, sm: 10, md: 15, lg: 30 },
           }}
         >
-          Hunter CS Club
-        </Typography>
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              fontWeight: 200,
+              color: "white",
+              letterSpacing: ".2rem",
+              textDecoration: "none",
+            }}
+          >
+            Hunter CS Club
+          </Typography>
+        </Box>
 
         {!isMobile && (
-          <Box sx={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              pr: { xs: 5, sm: 10, md: 15, lg: 20 },
+            }}
+          >
             {mainNavbarItems.map((item) => (
               <Button
                 key={item.id}

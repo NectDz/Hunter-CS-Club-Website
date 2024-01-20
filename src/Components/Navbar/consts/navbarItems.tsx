@@ -15,7 +15,7 @@ export const mainNavbarItems = [
   {
     id: 1,
     icon: <DnsIcon />,
-    label: "About Us",
+    label: "About",
     route: "about",
   },
   {
@@ -39,7 +39,7 @@ export const mainNavbarItems = [
   {
     id: 5,
     icon: <SettingsInputComponentIcon />,
-    label: "Contact Us",
+    label: "Contact",
     route: "contact",
   },
 ];
