@@ -10,7 +10,7 @@ export const mainNavbarItems = [
     id: 0,
     icon: <PeopleIcon />,
     label: "Home",
-    route: "home",
+    route: "/",
   },
   {
     id: 1,

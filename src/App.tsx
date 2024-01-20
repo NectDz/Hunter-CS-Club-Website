@@ -1,20 +1,28 @@
 import { useState } from "react";
 import * as React from "react";
-import Button from "@mui/material/Button";
-import "./App.css";
+import Grid from "@mui/material/Grid";
 import Navbar from "./Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import CommonButton from "./Components/common/CommonButton/CommonButton";
+import Footer from "./Components/Footer/Footer";
+import "./App.css"; // Make sure this CSS doesn't introduce extra margins or paddings
 
 function App() {
   return (
-    <>
-      <Grid container>
+    <Grid
+      container
+      direction="column"
+      style={{ width: "100vw", height: "100vh", margin: 0 }}
+    >
+      <Grid item>
         <Navbar />
+      </Grid>
+      <Grid item xs style={{ padding: "20px", boxSizing: "border-box" }}>
+        {" "}
+        {/* Adjust padding as needed */}
         <Outlet />
       </Grid>
-    </>
+      <Footer />
+    </Grid>
   );
 }
 

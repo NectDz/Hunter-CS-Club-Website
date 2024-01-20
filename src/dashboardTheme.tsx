@@ -3,9 +3,16 @@ import { createTheme } from "@mui/material/styles";
 export const dashboardTheme = createTheme({
   components: {
     MuiButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           fontSize: "1rem",
+          "&:hover": {
+            backgroundColor: "#704EA6",
+          },
+          disableFocusRipple: true,
         },
       },
     },
@@ -21,5 +28,6 @@ export const dashboardTheme = createTheme({
     primary: {
       main: "#2A198A",
     },
+    // Define a light purple color within the palette if you want to use it elsewhere.
   },
 });

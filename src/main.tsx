@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import Home from "./pages/Home/Home.tsx";
 import Events from "./pages/Events/Events.tsx";
 import Resources from "./pages/Resources/Resources.tsx";
 import Gallery from "./pages/Gallery/Gallery.tsx";
@@ -18,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="home" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="resources" element={<Resources />} />
