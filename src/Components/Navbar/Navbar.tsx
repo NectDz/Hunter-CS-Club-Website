@@ -1,48 +1,50 @@
 import * as React from "react";
-import Drawer from "@mui/material/Drawer";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 import { mainNavbarItems } from "./consts/navbarItems";
-import { useParams, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const drawerWidth = 220;
   const navigate = useNavigate();
+
   return (
-    <Drawer
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: drawerWidth,
-          boxSizing: "border-box",
-          backgroundColor: "#101F33",
-          color: "white",
-        },
-      }}
-      variant="permanent"
-      anchor="left"
-    >
-      <Toolbar />
-      <Divider />
-      <List>
-        {mainNavbarItems.map((item, index) => (
-          <ListItem button key={item.id} onClick={() => navigate(item.route)}>
-            <ListItemButton sx={{ color: "white" }}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-    </Drawer>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography
+          variant="h5"
+          noWrap
+          component="a"
+          href="/"
+          sx={{
+            flexGrow: 1,
+            fontWeight: 200,
+            fontFamily: "roboto",
+            color: "white",
+            letterSpacing: ".2rem",
+            textDecoration: "none",
+            textAlign: "center",
+          }}
+        >
+          Hunter CS Club
+        </Typography>
+
+        <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
+          {mainNavbarItems.map((item) => (
+            <Button
+              key={item.id}
+              onClick={() => navigate(item.route)}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {item.label}
+            </Button>
+          ))}
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 

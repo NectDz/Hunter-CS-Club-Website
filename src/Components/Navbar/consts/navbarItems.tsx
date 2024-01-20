@@ -9,8 +9,8 @@ export const mainNavbarItems = [
   {
     id: 0,
     icon: <PeopleIcon />,
-    label: "Authentication",
-    route: "authentication",
+    label: "Home",
+    route: "home",
   },
   {
     id: 1,

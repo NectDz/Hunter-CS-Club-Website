@@ -13,4 +13,9 @@ export const dashboardTheme = createTheme({
       },
     },
   },
+  palette: {
+    primary: {
+      main: "#2A198A",
+    },
+  },
 });

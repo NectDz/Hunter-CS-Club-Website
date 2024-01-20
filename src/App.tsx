@@ -5,6 +5,8 @@ import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import Grid from "@mui/material/Grid";
+import CommonButton from "./Components/common/CommonButton/CommonButton";
+
 function App() {
   return (
     <>
