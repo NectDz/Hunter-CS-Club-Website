@@ -1,9 +1,9 @@
 import React from "react";
 
-const MachineLearning = () => {
+const Events = () => {
   return (
     <div style={{ marginLeft: "500px" }}>This is machine learning page.</div>
   );
 };
 
-export default MachineLearning;
+export default Events;

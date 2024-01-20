@@ -22,7 +22,6 @@ function Navbar() {
           sx={{
             flexGrow: 1,
             fontWeight: 200,
-            fontFamily: "roboto",
             color: "white",
             letterSpacing: ".2rem",
             textDecoration: "none",

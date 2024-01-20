@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 
-const Database = () => {
+const About = () => {
   return (
     <Grid item xs={8}>
       This is database page.
@@ -9,4 +9,4 @@ const Database = () => {
   );
 };
 
-export default Database;
+export default About;
