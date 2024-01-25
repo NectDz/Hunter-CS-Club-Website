@@ -37,13 +37,13 @@ const Footer = () => {
             </Grid>
 
             <Grid item xs={12} style={{ textAlign: "center" }}>
-              <IconButton aria-label="Facebook" size="large">
+              <IconButton aria-label="Facebook" size="large" color="inherit">
                 <FacebookIcon />
               </IconButton>
-              <IconButton aria-label="Twitter" size="large">
+              <IconButton aria-label="Twitter" size="large" color="inherit">
                 <TwitterIcon />
               </IconButton>
-              <IconButton aria-label="Instagram" size="large">
+              <IconButton aria-label="Instagram" size="large" color="inherit">
                 <InstagramIcon />
               </IconButton>
             </Grid>
