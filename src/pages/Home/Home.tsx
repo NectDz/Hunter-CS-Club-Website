@@ -9,6 +9,7 @@ import CommonButton from "../../Components/common/CommonButton/CommonButton";
 const Home = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Grid
       container
@@ -23,7 +24,7 @@ const Home = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <Typography variant="h4" align="center">
           About Us
         </Typography>
