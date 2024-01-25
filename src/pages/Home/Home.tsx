@@ -24,7 +24,7 @@ const Home = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={12} sm={6} md={4}>
+      <Grid item xs={12} sm={8} md={7} lg={5}>
         <Typography variant="h4" align="center">
           About Us
         </Typography>
