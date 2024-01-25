@@ -20,7 +20,7 @@ const Footer = () => {
         <Toolbar sx={{ paddingTop: "10px" }}>
           <Grid
             container
-            spacing={2}
+            spacing={1}
             justifyContent="center"
             alignItems="center"
           >
