@@ -39,7 +39,7 @@ function Navbar() {
   );
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         {isMobile && (
           <IconButton
