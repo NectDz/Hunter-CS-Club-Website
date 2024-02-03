@@ -12,7 +12,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = () => {
   return (
     <AppBar
-      position="fixed"
+      position="static"
       color="primary"
       sx={{ top: "auto", bottom: 0, overflowX: "hidden" }}
     >

@@ -44,6 +44,34 @@ const Home = () => {
 
       <Grid item xs={12}>
         <Typography variant="h4" align="center">
+          Our Team
+        </Typography>
+        {/* Add cards or other components to display team members */}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h4" align="center">
+          Our Team
+        </Typography>
+        {/* Add cards or other components to display team members */}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h4" align="center">
+          Our Team
+        </Typography>
+        {/* Add cards or other components to display team members */}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h4" align="center">
+          Our Team
+        </Typography>
+        {/* Add cards or other components to display team members */}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h4" align="center">
           Contact
         </Typography>
         <Paper>{/* Contact information or a form */}</Paper>
