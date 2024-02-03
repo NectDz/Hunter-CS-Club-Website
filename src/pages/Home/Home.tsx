@@ -16,10 +16,8 @@ const Home = () => {
         direction={"column"}
         sx={{ backgroundColor: "lightblue", width: "100%" }}
       >
-        <GridItem>
-          <Typography variant="h1" align="center"></Typography> // Dont remove
-          this
-        </GridItem>
+        <GridItem>{<Typography></Typography> /*Dont remove this*/}</GridItem>
+        <GridItem>{<Typography></Typography> /*Dont remove this*/}</GridItem>
 
         <Box>
           <GridItem>
