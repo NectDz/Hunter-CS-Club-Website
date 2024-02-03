@@ -10,10 +10,10 @@ import About from "./pages/about/about.tsx";
 import Contact from "./pages/Contact/Contact.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { dashboardTheme } from "./dashboardTheme.tsx";
+import { theme } from "./theme.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ThemeProvider theme={dashboardTheme}>
+  <ThemeProvider theme={theme}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>

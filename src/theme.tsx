@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const dashboardTheme = createTheme({
+export const theme = createTheme({
   components: {
     MuiButton: {
       defaultProps: {
