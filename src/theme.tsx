@@ -11,7 +11,7 @@ export const theme = createTheme({
         },
       },
     },
-    MuiContainer: {
+    MuiGrid: {
       styleOverrides: {
         root: {
           padding: 0,

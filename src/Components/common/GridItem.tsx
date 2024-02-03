@@ -1,10 +1,8 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 
 const GridItem = ({ children }: { children: React.ReactNode }) => (
   <Grid
-    item
-    xs={12}
     style={{
       padding: 25,
     }}
