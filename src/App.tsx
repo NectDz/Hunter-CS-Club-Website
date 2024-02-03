@@ -5,14 +5,14 @@ import Navbar from "./Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Footer from "./Components/Footer/Footer";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import "./App.css"; // Make sure this CSS doesn't introduce extra margins or paddings
 import { theme } from "./theme.tsx";
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
-      <Container>
+      <Container maxWidth={false}>
         <Outlet />
       </Container>
       <Footer />
