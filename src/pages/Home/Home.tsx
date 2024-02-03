@@ -1,81 +1,86 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import CommonButton from "../../Components/common/CommonButton/CommonButton";
+import GridItem from "../../Components/common/GridItem";
 
 const Home = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
     <Grid
       container
       spacing={8}
       justifyContent="center"
       alignItems="center"
-      style={{ marginTop: isMobile ? "60px" : "0px" }}
+      margin={0}
+      sx={{ backgroundColor: "lightblue", width: "100%" }}
     >
-      <Grid item xs={12}>
-        <Typography variant="h3" align="center" gutterBottom>
+      <GridItem>
+        <Typography variant="h1" align="center"></Typography> // Dont remove
+        this
+      </GridItem>
+
+      <GridItem>
+        <Typography variant="h4" align="center">
           Welcome to the Hunter CS Club Website
         </Typography>
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12} sm={8} md={7} lg={5}>
+      <GridItem>
         <Typography variant="h4" align="center">
-          About Us
+          Who we are
         </Typography>
-        <Typography>
-          {
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat"
-          }
+        <Typography align="center">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </Typography>
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12}>
+      <GridItem>
         <Typography variant="h4" align="center">
-          Our Team
+          Latest
         </Typography>
-        {/* Add cards or other components to display team members */}
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12}>
+      <GridItem>
         <Typography variant="h4" align="center">
-          Our Team
+          What we do
         </Typography>
-        {/* Add cards or other components to display team members */}
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12}>
+      <GridItem>
         <Typography variant="h4" align="center">
-          Our Team
+          Join Us
         </Typography>
-        {/* Add cards or other components to display team members */}
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12}>
+      <GridItem>
         <Typography variant="h4" align="center">
-          Our Team
+          Our team
         </Typography>
-        {/* Add cards or other components to display team members */}
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12}>
+      <GridItem>
         <Typography variant="h4" align="center">
-          Our Team
+          Past events
         </Typography>
-        {/* Add cards or other components to display team members */}
-      </Grid>
+      </GridItem>
 
-      <Grid item xs={12}>
+      <GridItem>
+        <Typography variant="h4" align="center">
+          Sponsors
+        </Typography>
+      </GridItem>
+
+      <GridItem>
+        <Typography variant="h4" align="center">
+          Subscribe to our mailing list
+        </Typography>
+      </GridItem>
+
+      <GridItem>
         <Typography variant="h4" align="center">
           Contact
         </Typography>
-        <Paper>{/* Contact information or a form */}</Paper>
-      </Grid>
+      </GridItem>
     </Grid>
   );
 };
