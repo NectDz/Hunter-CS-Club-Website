@@ -23,7 +23,7 @@ const Home = () => {
 
         <Box>
           <GridItem>
-            <Typography variant="h4" align="center">
+            <Typography variant="h3" align="center">
               Welcome to the Hunter CS Club Website
             </Typography>
           </GridItem>
