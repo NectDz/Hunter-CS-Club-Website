@@ -14,17 +14,9 @@ const Home = () => {
         alignItems="center"
         margin={0}
         direction={"column"}
-        sx={{ backgroundColor: "lightblue", width: "100%" }}
+        sx={{ width: "100%" }}
       >
         <Box>
-          <GridItem>
-            <Typography variant="h3" align="center">
-              Welcome to the Hunter CS Club Website
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box sx={{ backgroundColor: "Green" }}>
           <GridItem>
             <Typography variant="h4" align="center">
               Who we are
