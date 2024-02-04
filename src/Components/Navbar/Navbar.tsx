@@ -47,7 +47,7 @@ function Navbar() {
 
   return (
     <>
-      <AppBar position="fixed" color="default" elevation={0}>
+      <AppBar position="fixed" color="primary" elevation={0}>
         <Toolbar>
           {isMobile ? (
             <IconButton
