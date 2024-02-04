@@ -44,6 +44,5 @@ export const theme = createTheme({
     primary: {
       main: "#FFFFF ",
     },
-    // Define a light purple color within the palette if you want to use it elsewhere.
   },
 });
