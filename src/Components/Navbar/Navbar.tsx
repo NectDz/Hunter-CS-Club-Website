@@ -60,13 +60,17 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
           ) : (
-            <Button
-              variant="outlined"
-              onClick={() => navigate("/join-us")}
-              color="inherit"
+            <Box
+              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
             >
-              Join us
-            </Button>
+              <Button
+                variant="outlined"
+                onClick={() => navigate("/join-us")}
+                color="inherit"
+              >
+                Join us
+              </Button>
+            </Box>
           )}
 
           <Box
@@ -88,9 +92,13 @@ function Navbar() {
           </Box>
 
           {isMobile ? null : (
-            <Button variant="outlined" color="inherit">
-              Sign in
-            </Button>
+            <Box
+              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
+            >
+              <Button variant="outlined" color="inherit">
+                Sign in
+              </Button>
+            </Box>
           )}
         </Toolbar>
         {isMobile ? null : (
