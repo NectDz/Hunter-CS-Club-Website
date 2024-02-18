@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { Paper } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import TextEditor from "../../Components/TextEditor";
 const Home = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -16,6 +18,12 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
+        <Box>
+          <GridItem>
+            <TextEditor />
+          </GridItem>
+        </Box>
+
         <Box>
           <GridItem>
             <Typography variant="h4" align="center">
