@@ -3,11 +3,11 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
-import { useAuth } from "../../Context/AuthContext"; // Adjust the import path as necessary
-import TextEditor from "../../Components/TextEditor"; // Adjust the import path as necessary
+import { useAuth } from "../../Context/AuthContext";
+import TextEditor from "../../Components/TextEditor";
 
 const Home = () => {
-  const { currentUser } = useAuth(); // Use the authentication context
+  const { currentUser } = useAuth();
   console.log(currentUser);
 
   return (
