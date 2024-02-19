@@ -3,10 +3,13 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
-import { Paper } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import TextEditor from "../../Components/TextEditor";
+import { useAuth } from "../../Context/AuthContext"; // Adjust the import path as necessary
+import TextEditor from "../../Components/TextEditor"; // Adjust the import path as necessary
+
 const Home = () => {
+  const { currentUser } = useAuth(); // Use the authentication context
+  console.log(currentUser);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -18,11 +21,13 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box>
-          <GridItem>
-            <TextEditor />
-          </GridItem>
-        </Box>
+        {currentUser && (
+          <Box>
+            <GridItem>
+              <TextEditor />
+            </GridItem>
+          </Box>
+        )}
 
         <Box>
           <GridItem>

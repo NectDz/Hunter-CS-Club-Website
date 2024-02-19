@@ -11,16 +11,22 @@ import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "./consts/Logo.png";
 import { mainNavbarItems } from "./consts/navbarItems";
+import { useAuth } from "../../Context/AuthContext";
 
 function Navbar() {
+  const { currentUser, signOut } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/login");
   };
 
   const drawerContent = (
@@ -91,13 +97,27 @@ function Navbar() {
             </Typography>
           </Box>
 
-          {isMobile ? null : (
+          {!isMobile && (
             <Box
               sx={{ display: "flex", justifyContent: "center", width: "100%" }}
             >
-              <Button variant="outlined" color="inherit">
-                Sign in
-              </Button>
+              {currentUser ? (
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  onClick={handleSignOut}
+                >
+                  Log Out
+                </Button>
+              ) : (
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  onClick={() => navigate("/login")}
+                >
+                  Sign In
+                </Button>
+              )}
             </Box>
           )}
         </Toolbar>
