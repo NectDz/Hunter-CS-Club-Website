@@ -3,10 +3,13 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
-import { Paper } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
+
 const Home = () => {
+  const { currentUser } = useAuth();
+  console.log(currentUser);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -18,9 +21,19 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
+        {currentUser && (
+          <Box>
+            <GridItem>
+              <TextEditor />
+            </GridItem>
+          </Box>
+        )}
+
         <Box>
           <GridItem>
-            <TextEditor />
+            <Typography variant="h4" align="center">
+              Carousel Section
+            </Typography>
           </GridItem>
         </Box>
 
@@ -64,22 +77,6 @@ const Home = () => {
           <GridItem>
             <Typography variant="h4" align="center">
               Our team
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Past events
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Sponsors
             </Typography>
           </GridItem>
         </Box>

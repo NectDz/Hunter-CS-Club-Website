@@ -6,23 +6,23 @@ export const mainNavbarItems = [
   },
   {
     id: 1,
+    label: "Update",
+    route: "update",
+  },
+  {
+    id: 2,
     label: "About",
     route: "about",
   },
   {
-    id: 2,
-    label: "Gallery",
-    route: "gallery",
-  },
-  {
     id: 3,
-    label: "Resources",
-    route: "resources",
+    label: "Activties",
+    route: "activities",
   },
   {
     id: 4,
-    label: "Events",
-    route: "events",
+    label: "FAQ",
+    route: "faq",
   },
   {
     id: 5,

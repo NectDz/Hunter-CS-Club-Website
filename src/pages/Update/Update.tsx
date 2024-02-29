@@ -4,7 +4,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 
-const Gallery = () => {
+const Update = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -17,11 +17,11 @@ const Gallery = () => {
     >
       <Grid item xs={12}>
         <Typography variant="h3" align="center" gutterBottom>
-          Gallery Page
+          Update Page
         </Typography>
       </Grid>
     </Grid>
   );
 };
 
-export default Gallery;
+export default Update;
