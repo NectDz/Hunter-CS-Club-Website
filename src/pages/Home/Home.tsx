@@ -32,6 +32,14 @@ const Home = () => {
         <Box>
           <GridItem>
             <Typography variant="h4" align="center">
+              Carousel Section
+            </Typography>
+          </GridItem>
+        </Box>
+
+        <Box>
+          <GridItem>
+            <Typography variant="h4" align="center">
               Who we are
             </Typography>
             <Typography align="center">
@@ -69,22 +77,6 @@ const Home = () => {
           <GridItem>
             <Typography variant="h4" align="center">
               Our team
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Past events
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Sponsors
             </Typography>
           </GridItem>
         </Box>

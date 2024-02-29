@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import Home from "./pages/Home/Home.tsx"; // Import Home
-import Events from "./pages/Events/Events.tsx";
-import Resources from "./pages/Resources/Resources.tsx";
-import Gallery from "./pages/Gallery/Gallery.tsx";
+import Home from "./pages/Home/Home.tsx";
+import FAQ from "./pages/FAQ/FAQ.tsx";
+import Activities from "./pages/Activities/Activities.tsx";
+import Update from "./pages/Update/Update.tsx";
 import About from "./pages/about/about.tsx";
 import Contact from "./pages/Contact/Contact.tsx";
 import Login from "./pages/Login/Login.tsx";
@@ -24,10 +24,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="/" element={<App />}>
               <Route index element={<Home />} />
               <Route path="home" element={<Home />} />
+              <Route path="update" element={<Update />} />
               <Route path="about" element={<About />} />
-              <Route path="gallery" element={<Gallery />} />
-              <Route path="resources" element={<Resources />} />
-              <Route path="events" element={<Events />} />
+              <Route path="activities" element={<Activities />} />
+              <Route path="faq" element={<FAQ />} />
               <Route path="contact" element={<Contact />} />
               <Route path="login" element={<Login />} />
             </Route>

@@ -9,9 +9,6 @@ const TextEditor = () => {
 
   return (
     <Box sx={{ flexGrow: 1, p: 3 }}>
-      <Typography variant="h5" gutterBottom>
-        Announcement Post Editor
-      </Typography>
       <Paper elevation={3} sx={{ p: 2 }}>
         <TextField
           label="Header"
