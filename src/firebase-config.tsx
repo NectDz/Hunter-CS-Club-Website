@@ -1,4 +1,4 @@
-import os
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -6,11 +6,9 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-FIREBASE_API_KEY = os.environ["firebase_api_key"]
-
 // Your web app's Firebase configuration
 export const firebaseConfig = {
-  apiKey: FIREBASE_API_KEY,
+  apiKey: "AIzaSyCdIOwZ-YazM9MxRUXuK5_JzTljnzhiH4c",
   authDomain: "blog-project-f56a0.firebaseapp.com",
   projectId: "blog-project-f56a0",
   storageBucket: "blog-project-f56a0.appspot.com",
