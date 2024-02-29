@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  firebase_api_key: ${{ secrets.FIREBASE_API_KEY }}
+
 jobs:
   build:
     name: Build
