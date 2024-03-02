@@ -6,8 +6,8 @@ export const mainNavbarItems = [
   },
   {
     id: 1,
-    label: "Update",
-    route: "update",
+    label: "Updates",
+    route: "updates",
   },
   {
     id: 2,
