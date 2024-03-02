@@ -1,26 +1,49 @@
 import React from "react";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
+import GridItem from "../../Components/common/GridItem";
+import Box from "@mui/material/Box";
+import { useAuth } from "../../Context/AuthContext";
+import TextEditor from "../../Components/TextEditor";
 
 const Updates = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { currentUser } = useAuth();
   return (
-    <Grid
-      container
-      spacing={8}
-      justifyContent="center"
-      alignItems="center"
-      style={{ marginTop: isMobile ? "60px" : "0px" }}
-    >
-      <Grid item xs={12}>
-        <Typography variant="h3" align="center" gutterBottom>
-          Updates Page
-        </Typography>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid
+        container
+        spacing={8}
+        justifyContent="center"
+        alignItems="center"
+        margin={0}
+        direction={"column"}
+        sx={{ width: "100%" }}
+      >
+        {currentUser && (
+          <Box>
+            <GridItem>
+              <TextEditor />
+            </GridItem>
+          </Box>
+        )}
+
+        <Box>
+          <GridItem>
+            <Typography variant="h4" align="center">
+              Whats New Section
+            </Typography>
+          </GridItem>
+        </Box>
+
+        <Box>
+          <GridItem>
+            <Typography variant="h4" align="center">
+              Updates Section
+            </Typography>
+          </GridItem>
+        </Box>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 
