@@ -29,7 +29,7 @@ Before you start, make sure you have:
     npm install
     ```
 
-    Replace the "key" in `firebase-config.tsk` with an empty string `""`.
+    Replace the "key" in `firebase-config.tsk` with the api key mentioned in the google doc.
 
 4. **Run the Project**
 
