@@ -17,8 +17,6 @@ Before you start, make sure you have:
     git clone https://github.com/NectDz/Prototype
     ```
 
-    Replace `[REPO_LINK]` with the actual link to the repository.
-
 2. **Open the Project**
 
     Open the cloned repository using Visual Studio Code.
