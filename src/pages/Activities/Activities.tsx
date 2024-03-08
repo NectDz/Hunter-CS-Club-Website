@@ -20,6 +20,18 @@ const Activities = () => {
           Activities Page
         </Typography>
       </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" gutterBottom>
+          Mission Statement
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" gutterBottom>
+          Info Section
+        </Typography>
+      </Grid>
     </Grid>
   );
 };
