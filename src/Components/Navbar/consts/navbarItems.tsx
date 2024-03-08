@@ -6,18 +6,18 @@ export const mainNavbarItems = [
   },
   {
     id: 1,
-    label: "Update",
-    route: "update",
+    label: "Updates",
+    route: "updates",
   },
   {
     id: 2,
-    label: "About",
-    route: "about",
+    label: "Activties",
+    route: "activities",
   },
   {
     id: 3,
-    label: "Activties",
-    route: "activities",
+    label: "About",
+    route: "about",
   },
   {
     id: 4,
