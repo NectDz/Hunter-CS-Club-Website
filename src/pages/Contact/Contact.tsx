@@ -20,6 +20,13 @@ const Contact = () => {
           Contact Us Page
         </Typography>
       </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" gutterBottom>
+          Contact Us Form Section
+        </Typography>
+      </Grid>
+      
     </Grid>
   );
 };
