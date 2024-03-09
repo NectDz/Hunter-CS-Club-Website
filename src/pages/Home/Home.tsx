@@ -5,6 +5,7 @@ import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
+import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -81,11 +82,9 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box sx={{ width: "100%" }}>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Subscribe to our mailing list
-            </Typography>
+            <NewsLetter />
           </GridItem>
         </Box>
 
