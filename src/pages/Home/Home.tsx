@@ -5,7 +5,7 @@ import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
-import NewsLetter from "../../Components/NewsLetter/NewsLetter";
+import NewsLetter from "./Components/NewsLetter/NewsLetter";
 
 const Home = () => {
   const { currentUser } = useAuth();
