@@ -17,6 +17,7 @@ const NewsLetter = () => {
         paddingTop: "100px",
         paddingBottom: "140px",
         paddingX: "100px",
+        marginX: "-49px", //Removes parents' horizontal padding
       }}
     >
       <Typography
