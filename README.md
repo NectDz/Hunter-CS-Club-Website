@@ -1,81 +1,73 @@
-# Contributing Guide
+# Contribiting Guide
 
-Welcome to our project! We're excited to have you contribute. Follow these steps to set up your environment and start contributing.
+Welcome to our project! We're thrilled to have you onboard. Here's how to set up your environment and start contributing through forking and using Visual Studio Code's user-friendly interface for Git commands.
 
 ## Prerequisites
 
-Before you start, make sure you have:
-- Git installed on your machine
-- Visual Studio Code (or your preferred IDE) installed
-- Node.js and npm installed
+Ensure you have the following installed before you begin:
+- Git
+- Visual Studio Code (or your preferred IDE)
+- Node.js and npm
 
 ## Getting Started
 
-1. **Clone the Repository**
+1. **Fork the Repository**
 
-    ```
-    git clone https://github.com/NectDz/Prototype
-    ```
+   Navigate to `https://github.com/NectDz/Prototype` on your web browser and click the "Fork" button at the top right corner to create a copy of the repository under your GitHub account.
 
-2. **Open the Project**
+2. **Clone Your Fork**
 
-    Open the cloned repository using Visual Studio Code.
+   Open Visual Studio Code, go to the "Source Control" panel, click on "Clone Repository", and enter the URL of your fork. This URL can be found by clicking the "Code" button on your fork's GitHub page and copying the URL.
 
-3. **Set Up the Project**
+3. **Open the Project**
 
-    In the terminal, run the following commands:
+   After cloning, Visual Studio Code will prompt you to open the cloned repository. Click "Open".
 
-    ```
-    npm install
-    ```
+4. **Set Up the Project**
 
-    Replace the "api key" in `firebase-config.tsk` with the api key mentioned in the google doc.
+   Open the integrated terminal in Visual Studio Code (Terminal > New Terminal) and run:
 
-4. **Run the Project**
+```
+npm install
+```
 
-    To start the development server, run:
+Then, replace the "api key" in `firebase-config.tsk` with the API key mentioned in the provided Google Doc.
 
-    ```
-    npm run dev
-    ```
+5. **Run the Project**
 
-    The website should now be running locally, and you should be able to see the content.
+In the terminal, execute:
+
+```
+npm run dev
+```
+
+Your local server will start, and you can view the website locally.
 
 ## Making Changes
 
-1. **Create a New Branch**
+1. **Switch to the `dev-test` Branch**
 
-    Create a new branch off the `dev-test` branch (not the main branch). Use a descriptive name for your branch:
+In Visual Studio Code's "Source Control" panel, find the branch icon, click on it, and select `dev-test` from the list to switch branches.
 
-    ```
-    git checkout -b YOUR_BRANCH_NAME dev-test
-    ```
+2. **Create a New Branch**
 
-    Replace `YOUR_BRANCH_NAME` with a name related to the feature or fix you're working on.
+With `dev-test` checked out, click on the branch icon again, select "Create New Branch..." and enter a descriptive name for your branch related to the feature or fix you're working on.
 
-2. **Commit Your Changes**
+3. **Commit Your Changes**
 
-    After completing your task, commit your changes:
+After making your changes, open the "Source Control" panel, stage your changes by clicking the "+" icon next to each modified file, enter a descriptive commit message, and commit by clicking the checkmark icon.
 
-    ```
-    git add [file]
-    git commit -m "Your descriptive commit message"
-    ```
+4. **Push Your Branch**
 
-3. **Push to Your Branch**
+Click on the "..." icon in the "Source Control" panel, select "Push" and then "Push to..." to push your branch to GitHub.
 
-    Push the changes to your branch:
+5. **Open a Pull Request**
 
-    ```
-    git push origin YOUR_BRANCH_NAME
-    ```
-
-4. **Open a Pull Request**
-
-    Go to the repository page on GitHub, and create a pull request to merge your branch into the `dev-test` branch.
+Go to your fork on GitHub, select your branch, and click "Pull request" to open a new pull request against the original `NectDz/Prototype` repository's `dev-test` branch.
 
 ## Need Help?
 
-If you have any questions or need assistance with any of the steps, feel free to message me on Discord. I'm more than willing to hop on a call to help out.
+If you're stuck or have questions, don't hesitate to reach out to me on Discord. I'm happy to assist or jump on a call if needed.
 
-Thank you for contributing to our project!
+Thank you for contributing!
+
