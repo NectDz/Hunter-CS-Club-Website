@@ -64,7 +64,7 @@ const NewsLetter = () => {
             textTransform: "none",
           }}
         >
-          Suscribe
+          Subscribe
         </Button>
       </form>
     </Box>
