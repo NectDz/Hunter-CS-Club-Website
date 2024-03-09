@@ -1,30 +1,46 @@
-import React from "react";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 const NewsLetter = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (evt: React.SyntheticEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    //TODO: use email to sign user to the NewsLetter
+    console.log("EMAIL: ", email);
+  };
+
   return (
     <Box
-      component="form"
       sx={{
         backgroundColor: "#E45D58",
         paddingTop: "100px",
-        paddingBottom: "164px",
-        paddingX: "200px",
+        paddingBottom: "140px",
+        paddingX: "100px",
       }}
     >
-      <Typography variant="h4" align="center" sx={{ color: "#FFFFFF" }}>
+      <Typography
+        variant="h4"
+        align="center"
+        sx={{ color: "#FFFFFF", marginBottom: "24px", fontWeight: "bold" }}
+      >
         JOIN OUR NEWSLETTER
       </Typography>
       <Typography variant="h6" align="center" sx={{ color: "#FFFFFF" }}>
-        Stay up to date with the latest news, event, and resources!
+        Stay up to date with the latest news, events, and resources!
       </Typography>
-      <Box sx={{ display: "flex" }}>
+      <form
+        style={{ display: "flex", marginTop: "12px" }}
+        onSubmit={handleSubmit}
+      >
         <TextField
           required
           fullWidth
           id="email-address"
           variant="standard"
           placeholder="Email Address"
+          defaultValue={email}
+          onChange={({ target }) => setEmail(target.value)}
           sx={{
             backgroundColor: "#FFFFFF",
             borderRadius: "50px 0px 0px 50px",
@@ -36,6 +52,7 @@ const NewsLetter = () => {
           }}
         />
         <Button
+          type="submit"
           variant="contained"
           sx={{
             backgroundColor: "#46165C",
@@ -47,7 +64,7 @@ const NewsLetter = () => {
         >
           Suscribe
         </Button>
-      </Box>
+      </form>
     </Box>
   );
 };
