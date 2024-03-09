@@ -30,7 +30,7 @@ const NewsLetter = () => {
         Stay up to date with the latest news, events, and resources!
       </Typography>
       <form
-        style={{ display: "flex", marginTop: "12px" }}
+        style={{ display: "flex", marginTop: "12px", justifyContent: "center" }}
         onSubmit={handleSubmit}
       >
         <TextField
@@ -46,6 +46,7 @@ const NewsLetter = () => {
             borderRadius: "50px 0px 0px 50px",
             paddingX: "24px",
             paddingY: "8px",
+            maxWidth: "360px",
           }}
           InputProps={{
             disableUnderline: true,
