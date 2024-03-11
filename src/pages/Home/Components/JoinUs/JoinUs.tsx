@@ -19,28 +19,41 @@ const JoinUs = () => {
       >
         JOIN US
       </Typography>
-      <Grid container spacing={4} sx={{ width: "100%" }}>
-        <Grid item xs={4}>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "64px",
+          flexDirection: { md: "column", lg: "row" },
+        }}
+      >
+        <Box>
           <img src={joinUs} alt="Join Us Section Image" style={IMG_STYLES} />
-        </Grid>
-        <Grid item xs={6}>
+        </Box>
+        <Box sx={{ width: { md: "100%", lg: "25%" } }}>
           <Grid
             container
-            direction={"column"}
-            spacing={4}
-            sx={{ width: "100%" }}
+            direction="column"
+            justifyContent="space-evenly"
+            alignItems="flex-start"
+            sx={{
+              height: "100%",
+              width: "100%",
+            }}
           >
-            <Grid item xs={4}>
-              <Typography variant="body1" align="left">
+            <Grid item>
+              <Typography variant="h6" align="left" component="p">
                 {QUESTIONS_PARAGRAPH}
               </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Typography variant="body1" align="left">
+            <Grid item>
+              <Typography variant="h6" align="left" component="p">
                 {INVITATION_PARAGRAPH}
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item>
               <Button
                 component={Link}
                 to={JOIN_US_URL}
@@ -53,8 +66,8 @@ const JoinUs = () => {
               </Button>
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 };
