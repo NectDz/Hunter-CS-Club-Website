@@ -4,6 +4,6 @@ export const IMG_STYLES: React.CSSProperties = {
   maxHeight: "400px",
   maxWidth: "400px",
   borderTopRightRadius: "100%",
-  border: "1px solid black",
+  border: "1.5px solid black",
   objectFit: "cover",
 };

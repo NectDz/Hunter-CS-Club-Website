@@ -15,7 +15,7 @@ const JoinUs = () => {
       <Typography
         variant="h4"
         align="center"
-        sx={{ marginBottom: "24px", fontWeight: "bold" }}
+        sx={{ marginBottom: "48px", fontWeight: "bold" }}
       >
         JOIN US
       </Typography>
@@ -26,30 +26,43 @@ const JoinUs = () => {
           flexWrap: "wrap",
           justifyContent: "center",
           gap: "64px",
-          flexDirection: { md: "column", lg: "row" },
+          flexDirection: { sm: "row", md: "colum" },
         }}
       >
-        <Box>
-          <img src={joinUs} alt="Join Us Section Image" style={IMG_STYLES} />
-        </Box>
-        <Box sx={{ width: { md: "100%", lg: "25%" } }}>
+        <img src={joinUs} alt="Join Us Section Image" style={IMG_STYLES} />
+        <Box sx={{ width: { xs: "100%", md: "35%", lg: "30%", xl: "25%" } }}>
           <Grid
             container
             direction="column"
-            justifyContent="space-evenly"
-            alignItems="flex-start"
+            justifyContent="flex-end"
+            gap="24px"
             sx={{
               height: "100%",
               width: "100%",
+              alignItems: { xs: "center", md: "flex-start" },
             }}
           >
             <Grid item>
-              <Typography variant="h6" align="left" component="p">
+              <Typography
+                variant="h6"
+                align="left"
+                component="p"
+                sx={{
+                  textAlign: { xs: "center", md: "start" },
+                }}
+              >
                 {QUESTIONS_PARAGRAPH}
               </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="h6" align="left" component="p">
+              <Typography
+                variant="h6"
+                align="left"
+                component="p"
+                sx={{
+                  textAlign: { xs: "center", md: "start" },
+                }}
+              >
                 {INVITATION_PARAGRAPH}
               </Typography>
             </Grid>
