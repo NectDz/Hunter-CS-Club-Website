@@ -5,7 +5,7 @@ import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
-
+import UpdateCard from "./Components/UpdateCard";
 const Updates = () => {
   const { currentUser } = useAuth();
   return (
@@ -40,6 +40,13 @@ const Updates = () => {
             <Typography variant="h4" align="center">
               Updates Section
             </Typography>
+            <UpdateCard
+              heading="Meeting Room Update!"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque..."
+              avatarSrc="/path/to/avatar.jpg"
+              author="Kevin Granados"
+              time="March 16, 2024"
+            />
           </GridItem>
         </Box>
       </Grid>
