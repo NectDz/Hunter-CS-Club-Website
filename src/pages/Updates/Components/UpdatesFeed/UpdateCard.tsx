@@ -14,7 +14,12 @@ interface UpdateCardProps {
   body: string;
   avatarSrc: string;
   author: string;
-  time: string;
+  time: FirestoreTimestamp;
+}
+
+interface FirestoreTimestamp {
+  seconds: number;
+  nanoseconds: number;
 }
 
 function UpdateCard({
@@ -45,13 +50,32 @@ function UpdateCard({
   };
 
   const collapsedStyle = {
-    maxHeight: expanded ? maxHeight : "10em",
+    maxHeight: expanded ? maxHeight : "9em",
     overflow: "hidden",
     transition: "max-height 0.5s ease-in-out",
   };
 
+  const formatFirestoreTimestamp = (timestamp: FirestoreTimestamp) => {
+    if (!timestamp || typeof timestamp.seconds !== "number") return "";
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
   return (
-    <Card sx={{ maxWidth: 900, borderRadius: "16px", overflow: "hidden" }}>
+    <Card
+      elevation={0}
+      sx={{
+        maxWidth: 900,
+        borderRadius: "16px",
+        overflow: "hidden",
+        margin: "auto",
+        border: ".5px solid black",
+      }}
+    >
       <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
         <Typography variant="h4" component="div">
           {heading}
@@ -60,15 +84,22 @@ function UpdateCard({
           <Avatar sx={{ marginRight: 2 }} src={avatarSrc} />
           <Box>
             <Typography variant="subtitle2" color="text.secondary">
-              Published By {author} {time}
+              Published By {author}
+            </Typography>
+            <Typography variant="subtitle2" color="text.secondary">
+              {formatFirestoreTimestamp(time)}
             </Typography>
           </Box>
         </Box>
-        <div style={collapsedStyle} ref={contentRef}>
-          <Typography paragraph variant="body2">
-            {body}
-          </Typography>
-        </div>
+        <Box
+          sx={{
+            ...collapsedStyle,
+            typography: "body2",
+          }}
+          ref={contentRef}
+        >
+          <div dangerouslySetInnerHTML={{ __html: body }} />
+        </Box>
         {showButton && (
           <CardActions>
             <Button size="small" onClick={handleExpandClick}>
