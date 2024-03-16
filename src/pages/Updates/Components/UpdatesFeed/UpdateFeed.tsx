@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Card,
+  CardHeader,
+  CardContent,
+  Skeleton,
+} from "@mui/material";
 import UpdateCard from "./UpdateCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
 
-// Define the type for your update data
 interface Update {
   id: string;
   title: string;
@@ -21,6 +27,7 @@ interface FirestoreTimestamp {
 
 const UpdateFeed = () => {
   const [updates, setUpdates] = useState<Update[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUpdates = async () => {
@@ -31,15 +38,43 @@ const UpdateFeed = () => {
           const { id, ...data } = doc.data() as Update;
           return { id: doc.id, ...data };
         })
-        .sort((a, b) => b.timePosted.seconds - a.timePosted.seconds); // Sort by timePosted in descending order
+        .sort((a, b) => b.timePosted.seconds - a.timePosted.seconds);
 
       setUpdates(updatesList);
+      setLoading(false);
     };
 
     fetchUpdates();
   }, []);
 
-  console.log(updates);
+  if (loading) {
+    return (
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          {Array.from(new Array(3)).map((_, index) => (
+            <Grid item xs={12} key={index}>
+              <Card
+                elevation={0}
+                sx={{ maxWidth: 900, width: "100%", margin: "auto" }}
+              >
+                <CardHeader
+                  avatar={
+                    <Skeleton variant="circular" width={40} height={40} />
+                  }
+                  title={<Skeleton variant="text" width="60%" />}
+                  subheader={<Skeleton variant="text" width="40%" />}
+                />
+                <CardContent>
+                  <Skeleton variant="rectangular" height={118} />
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    );
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -48,7 +83,7 @@ const UpdateFeed = () => {
             <UpdateCard
               heading={update.title}
               body={update.body}
-              avatarSrc={"/path/to/avatar.jpg"}
+              avatarSrc={update.avatarSrc || "/path/to/avatar.jpg"}
               author={update.author}
               time={update.timePosted}
             />

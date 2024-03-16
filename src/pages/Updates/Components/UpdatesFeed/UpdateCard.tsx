@@ -52,7 +52,7 @@ function UpdateCard({
   const collapsedStyle = {
     maxHeight: expanded ? maxHeight : "9em",
     overflow: "hidden",
-    transition: "max-height 0.5s ease-in-out",
+    transition: "max-height 0.3s ease-in-out",
   };
 
   const formatFirestoreTimestamp = (timestamp: FirestoreTimestamp) => {
