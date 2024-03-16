@@ -13,7 +13,7 @@ const NewsLetter = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#E45D58",
+        backgroundColor: "#9859AC",
         paddingTop: "100px",
         paddingBottom: "140px",
         paddingX: "100px",
