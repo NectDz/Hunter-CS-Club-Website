@@ -23,14 +23,6 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        {currentUser && (
-          <Box>
-            <GridItem>
-              <TextEditor />
-            </GridItem>
-          </Box>
-        )}
-
         <Box>
           <GridItem>
             <Typography variant="h4" align="center">
