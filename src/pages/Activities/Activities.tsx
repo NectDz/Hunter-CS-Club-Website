@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
-import Metrics from "./Components/Metrics/Metrics";
+import Metrics from "./Components/Metrics";
 
 const Activities = () => {
   const theme = useTheme();
