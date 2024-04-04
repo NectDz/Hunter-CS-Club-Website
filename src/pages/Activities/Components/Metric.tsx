@@ -22,13 +22,13 @@ const Metric = ({
           justifyContent="center"
           alignItems="center"
           sx={{
-            minWidth: { xs: "64px", md: "100px", lg: "120px" },
-            minHeight: { xs: "64px", md: "100px", lg: "120px" },
+            minWidth: { xs: "50px", md: "60px" },
+            minHeight: { xs: "50px", md: "60px" },
             borderRadius: "100%",
             background: color,
           }}
         >
-          <Typography variant="h3" color="#FFFFFF">
+          <Typography variant="h4" color="#FFFFFF">
             {number}
           </Typography>
         </Box>

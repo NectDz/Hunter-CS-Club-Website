@@ -7,7 +7,7 @@ const Metrics = () => {
   return (
     <Box
       sx={{
-        margin: { xs: "0 16px", md: "0 64px", lg: "0 106px", xl: "0 206px" },
+        margin: { xs: "0 16px", md: "0 64px", lg: "0 106px", xl: "0 400px" },
       }}
     >
       <ClubDate />
@@ -16,7 +16,7 @@ const Metrics = () => {
         wrap="wrap"
         sx={{
           border: "0.89px solid #000000",
-          padding: { md: "70px 40px", xl: "86px 56px" },
+          padding: { xl: "25px 56px" },
         }}
       >
         <Grid item xs={12} sm={6} p={2} alignContent="center">
@@ -24,7 +24,7 @@ const Metrics = () => {
             variant="h4"
             sx={{ textAlign: { xs: "center", sm: "left" } }}
           >
-            Our club has held...
+            Our Club has held...
           </Typography>
         </Grid>
         <Metric color="#2D684B" number={3} label="Social Events" />
