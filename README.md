@@ -1,4 +1,4 @@
-# Contribiting Guide
+# Contribitin Guide
 
 Welcome to our project! We're thrilled to have you onboard. Here's how to set up your environment and start contributing through forking and using Visual Studio Code's user-friendly interface for Git commands.
 
@@ -38,7 +38,7 @@ Create a `.env` file in the root directory with the following code:
 VITE_FIREBASE_API_KEY=API_KEY_HERE
 ```
 
-Then, replace the "API_KEY_HERE" in with the API key mentioned in the provided Google Doc.
+Then, replace "API_KEY_HERE" with the API key mentioned in the provided Google Doc.
 
 5. **Run the Project**
 
