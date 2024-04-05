@@ -1,13 +1,15 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
+import { Typography, Button, Modal, Backdrop, Fade } from "@mui/material";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
-import TextEditor from "../../Components/TextEditor";
-
+import UpdateTextEditor from "./Components/UpdateTextEditor";
+import UpdateCard from "./Components/UpdatesFeed/UpdateCard";
+import UpdateFeed from "./Components/UpdatesFeed/UpdateFeed";
 const Updates = () => {
   const { currentUser } = useAuth();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -19,27 +21,27 @@ const Updates = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
+        <Box>
+          <GridItem>
+            <Typography variant="h3">Whats New Section</Typography>
+            <Typography variant="subtitle1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut.
+            </Typography>
+          </GridItem>
+        </Box>
+
         {currentUser && (
           <Box>
             <GridItem>
-              <TextEditor />
+              <UpdateTextEditor />
             </GridItem>
           </Box>
         )}
 
         <Box>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Whats New Section
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Updates Section
-            </Typography>
+            <UpdateFeed />
           </GridItem>
         </Box>
       </Grid>

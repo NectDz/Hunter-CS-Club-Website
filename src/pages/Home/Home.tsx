@@ -5,6 +5,8 @@ import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
+import NewsLetter from "./Components/NewsLetter/NewsLetter";
+import JoinUs from "./Components/JoinUs/JoinUs";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -21,14 +23,6 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        {currentUser && (
-          <Box>
-            <GridItem>
-              <TextEditor />
-            </GridItem>
-          </Box>
-        )}
-
         <Box>
           <GridItem>
             <Typography variant="h4" align="center">
@@ -65,10 +59,10 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box sx={{ width: "100%" }}>
           <GridItem>
             <Typography variant="h4" align="center">
-              Join Us
+              <JoinUs />
             </Typography>
           </GridItem>
         </Box>
@@ -81,11 +75,9 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box sx={{ width: "100%" }}>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Subscribe to our mailing list
-            </Typography>
+            <NewsLetter />
           </GridItem>
         </Box>
 
