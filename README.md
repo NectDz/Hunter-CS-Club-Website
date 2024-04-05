@@ -1,4 +1,4 @@
-# Contribitin Guide
+# Contributing Guide
 
 Welcome to our project! We're thrilled to have you onboard. Here's how to set up your environment and start contributing through forking and using Visual Studio Code's user-friendly interface for Git commands.
 
