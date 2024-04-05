@@ -1,10 +1,11 @@
-# Contribiting Guide
+# Contributing Guide
 
 Welcome to our project! We're thrilled to have you onboard. Here's how to set up your environment and start contributing through forking and using Visual Studio Code's user-friendly interface for Git commands.
 
 ## Prerequisites
 
 Ensure you have the following installed before you begin:
+
 - Git
 - Visual Studio Code (or your preferred IDE)
 - Node.js and npm
@@ -31,7 +32,13 @@ Ensure you have the following installed before you begin:
 npm install
 ```
 
-Then, replace the "api key" in `firebase-config.tsk` with the API key mentioned in the provided Google Doc.
+Create a `.env` file in the root directory with the following code:
+
+```
+VITE_FIREBASE_API_KEY=API_KEY_HERE
+```
+
+Then, replace "API_KEY_HERE" with the API key mentioned in the provided Google Doc.
 
 5. **Run the Project**
 
@@ -70,4 +77,3 @@ Go to your fork on GitHub, select your branch, and click "Pull request" to open 
 If you're stuck or have questions, don't hesitate to reach out to me on Discord. I'm happy to assist or jump on a call if needed.
 
 Thank you for contributing!
-
