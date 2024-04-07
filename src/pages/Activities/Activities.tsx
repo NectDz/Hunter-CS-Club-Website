@@ -1,13 +1,19 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
-import Metrics from "./Components/Metrics";
+import { Grid, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom"; // import useNavigate hook
+import Metrics from "./Components/Metrics/Metrics";
 
 const Activities = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate = useNavigate();
+  const handleAddActivity = () => {
+    console.log("Navigating to /activities/create");
+    navigate("/activities/create");
+  };
+
   return (
     <Grid
       container
@@ -20,9 +26,15 @@ const Activities = () => {
         <Metrics />
       </Grid>
 
+      <Grid item xs={12} style={{ textAlign: "center" }}>
+        <Button variant="contained" color="primary" onClick={handleAddActivity}>
+          Add New Activity
+        </Button>
+      </Grid>
+
       <Grid item xs={12}>
         <Typography variant="h3" align="center" gutterBottom>
-          Mission Statement
+          Recent Activities
         </Typography>
       </Grid>
 

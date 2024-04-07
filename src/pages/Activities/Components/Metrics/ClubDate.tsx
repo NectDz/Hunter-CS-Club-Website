@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { getYearsMonthsDaysFromDate } from "../../../utils";
+import { getYearsMonthsDaysFromDate } from "../../../../utils";
 
 const CLUB_START_DATE = new Date("August 1, 2023");
 const { years, months, days } = getYearsMonthsDaysFromDate(CLUB_START_DATE);
