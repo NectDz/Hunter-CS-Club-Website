@@ -7,6 +7,7 @@ import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
+import FAQSection from "./Components/FAQSection/FAQSection";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -86,6 +87,7 @@ const Home = () => {
             <Typography variant="h4" align="center">
               Contact
             </Typography>
+            <FAQSection />
           </GridItem>
         </Box>
       </Grid>
