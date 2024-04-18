@@ -16,10 +16,16 @@ const FAQSection = () => {
       >
         Check out our FAQ!
       </Typography>
-      <Grid container justifyContent="center" alignItems="stretch" spacing={4}>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="stretch"
+        spacing={4}
+        paddingX={{ sm: 2, lg: 20, xl: 24 }}
+      >
         {faqs.map((faq) => (
-          <Grid item key={faq.id} xs={6}>
-            <FAQAccordion faq={faq} style={{ height: "74px" }} />
+          <Grid item key={faq.id} xs={12} md={6}>
+            <FAQAccordion faq={faq} style={{ borderRadius: "20px" }} />
           </Grid>
         ))}
       </Grid>
