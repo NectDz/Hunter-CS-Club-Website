@@ -11,7 +11,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { db } from "../../../firebase-config";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useAuth } from "../../../Context/AuthContext";
 
 const UpdateTextEditor = () => {
@@ -31,6 +31,7 @@ const UpdateTextEditor = () => {
       return;
     }
 
+
     const update = {
       authorId: currentUser.uid,
       author: currentUser.displayName,
@@ -44,9 +45,12 @@ const UpdateTextEditor = () => {
     try {
       const docRef = await addDoc(collection(db, "updates"), update);
       console.log("Document written with ID: ", docRef.id);
+
+      await updateDoc(docRef, { postId: docRef.id });
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+
   };
 
   const handleClear = () => {
