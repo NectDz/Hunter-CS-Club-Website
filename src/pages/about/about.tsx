@@ -20,6 +20,24 @@ const About = () => {
           About Us Page
         </Typography>
       </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" gutterBottom>
+          About Us Mission Statement
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" gutterBottom>
+          Club Values
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" gutterBottom>
+          Meet the E-board 
+        </Typography>
+      </Grid>
     </Grid>
   );
 };
