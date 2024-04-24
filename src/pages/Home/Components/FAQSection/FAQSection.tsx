@@ -6,7 +6,7 @@ const FAQSection = () => {
   const faqs = faqsList.slice(0, 6);
 
   return (
-    <Box sx={{ margin: "100px  0 0 0" }}>
+    <Box >
       <Typography
         fontSize="35px"
         fontWeight="bold"
