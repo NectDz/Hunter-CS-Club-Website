@@ -35,18 +35,6 @@ const Home = () => {
         <Box>
           <GridItem>
             <Typography variant="h4" align="center">
-              Who we are
-            </Typography>
-            <Typography align="center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
               Latest
             </Typography>
           </GridItem>
