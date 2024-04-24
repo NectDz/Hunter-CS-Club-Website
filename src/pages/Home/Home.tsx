@@ -9,6 +9,7 @@ import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
 import ContactForm from "../Contact/Components/ContactForm";
+import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -41,12 +42,10 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              What we do
-            </Typography>
-          </GridItem>
+        <Box sx={{ width: "100%" }}>
+          <Grid sx={{ padding: 0 }}>
+            <WhatWeDo />
+          </Grid>
         </Box>
 
         <Box sx={{ width: "100%" }}>
@@ -77,7 +76,6 @@ const Home = () => {
           </GridItem>
         </Box>
 
-
         <Box>
           <GridItem>
             <Typography
@@ -86,8 +84,8 @@ const Home = () => {
               align="center"
               variant="h5"
               mb="32px"
-              >
-                Have more questions? Contact us!
+            >
+              Have more questions? Contact us!
             </Typography>
             <GridItem>
               <ContactForm />
