@@ -1,8 +1,8 @@
-import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
+import ClubValues from "./Components/ClubValues";
 
 const About = () => {
   const theme = useTheme();
@@ -29,13 +29,13 @@ const About = () => {
 
       <Grid item xs={12}>
         <Typography variant="h3" align="center" gutterBottom>
-          Club Values
+          <ClubValues />
         </Typography>
       </Grid>
 
       <Grid item xs={12}>
         <Typography variant="h3" align="center" gutterBottom>
-          Meet the E-board 
+          Meet the E-board
         </Typography>
       </Grid>
     </Grid>
