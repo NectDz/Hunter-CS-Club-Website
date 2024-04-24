@@ -80,12 +80,18 @@ const Home = () => {
 
         <Box>
           <GridItem>
-              <Typography variant="h4" align="center">
-                  Have more questions? Contact us!
-                </Typography>
-              <GridItem>
-                <ContactForm />
-              </GridItem>
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+              >
+                Have more questions? Contact us!
+            </Typography>
+            <GridItem>
+              <ContactForm />
+            </GridItem>
           </GridItem>
         </Box>
       </Grid>
