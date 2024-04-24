@@ -134,7 +134,7 @@ function Navbar() {
             {mainNavbarItems.map((item) => (
               <Button
                 key={item.id}
-                sx={{ color: "black", padding: "10px 15px" }}
+                sx={{ color: "white", padding: "10px 15px" }}
                 onClick={() => navigate(item.route)}
               >
                 {item.label}
