@@ -8,6 +8,7 @@ import TextEditor from "../../Components/TextEditor";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
+import ContactForm from "../Contact/Components/ContactForm";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -72,10 +73,19 @@ const Home = () => {
 
         <Box>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Contact
-            </Typography>
             <FAQSection />
+          </GridItem>
+        </Box>
+
+
+        <Box>
+          <GridItem>
+              <Typography variant="h4" align="center">
+                  Have more questions? Contact us!
+                </Typography>
+              <GridItem>
+                <ContactForm />
+              </GridItem>
           </GridItem>
         </Box>
       </Grid>

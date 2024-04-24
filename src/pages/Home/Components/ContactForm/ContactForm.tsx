@@ -15,7 +15,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Paper elevation={0} sx={{ padding: 4, margin: 'auto', maxWidth: 800, border:2, borderColor: 'purple', borderRadius: 4}}>
+    <Paper elevation={0} sx={{ padding: 4, margin: 'auto', maxWidth: 800, border:2, borderColor: 'purple', borderRadius: 4 }}>
       <Box
         component="form"
         noValidate
@@ -74,7 +74,7 @@ const ContactForm: React.FC = () => {
               required
               label="Body"
               multiline
-              rows={6}
+              rows={8}
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               fullWidth
