@@ -9,13 +9,13 @@ const boardMembers = [
   // Add all board members' details here
   { name: 'Shohruz Ernazarov', title: 'President', imageUrl: 'src/pages/about/Components/image.png' },
   { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Kevin Granados', title: 'Tech Lead', imageUrl: 'src/pages/about/Components/image.png' },
   { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Michelle Lee', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'George Sucuzhañay', title: 'Event Coordinator', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Hridia Tanha', title: 'Marketing Manager', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Ashley Ngo', title: 'Social Media Marketing Manager', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Sarah Perera', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/image.png' },
   // ...add more board members
 ];
 
@@ -61,7 +61,7 @@ const EBoardCarousel = () => {
                     }}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" sx ={{color:"#4d2e91"}}>
                     {member.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
