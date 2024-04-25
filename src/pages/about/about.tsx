@@ -3,6 +3,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import ClubValues from "./Components/ClubValues";
+import EBoardCarousel from "./Components/EBoardCarousel";
 
 const About = () => {
   const theme = useTheme();
@@ -37,6 +38,7 @@ const About = () => {
         <Typography variant="h3" align="center" gutterBottom>
           Meet the E-board
         </Typography>
+        <EBoardCarousel />
       </Grid>
     </Grid>
   );
