@@ -8,15 +8,15 @@ import { useTheme } from "@mui/material/styles";
 const boardMembers = [
   // Add all board members' details here
   { name: 'Shohruz Ernazarov', title: 'President', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/consts/Eboard/Mo.jpg' },
   { name: 'Kevin Granados', title: 'Tech Lead', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/consts/Eboard/Sum.jpg' },
   { name: 'Michelle Lee', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Matthew  LaBarca', title: 'Tresurer', imageUrl: '/src/pages/about/Components/consts/Eboard/Matt.jpg' },
   { name: 'George Sucuzhañay', title: 'Event Coordinator', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Hridia Tanha', title: 'Marketing Manager', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Ashley Ngo', title: 'Social Media Marketing Manager', imageUrl: 'src/pages/about/Components/image.png' },
-  { name: 'Sarah Perera', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/image.png' },
-  // ...add more board members
+  { name: 'Hridia Tanha', title: 'Marketing Manager', imageUrl: 'src/pages/about/Components/consts/Eboard/Hridia.jpg' },
+  { name: 'Ashley Ngo', title: 'Social Media Marketing Manager', imageUrl: 'src/pages/about/Components/consts/Eboard/Ash.jpg' },
+  { name: 'Sara Perera', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/consts/Eboard/Sara.jpg' },
 ];
 
 const EBoardCarousel = () => {
@@ -24,7 +24,7 @@ const EBoardCarousel = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
-  const itemsPerPage = isMobile ? 1 : isTablet ? 2 : 3; // adjust number of items for mobile/tablet/desktop
+  const itemsPerPage = isMobile ? 2 : isTablet ? 2 : 5; // adjust number of items for mobile/tablet/desktop
   const chunkedBoardMembers = []; // array to hold chunks of board members
 
   // Split board members into chunks
@@ -35,7 +35,7 @@ const EBoardCarousel = () => {
   return (
     <Carousel
       autoPlay={true}
-      interval={6000}
+      interval={8000}
       animation="fade"
       indicators={true}
       navButtonsAlwaysVisible={false}
@@ -48,10 +48,10 @@ const EBoardCarousel = () => {
         <Box key={index} display="flex" justifyContent="center">
           {chunk.map((member, i) => (
             <Box key={i} padding={1} flex={1} display="flex" justifyContent="center">
-              <Card elevation={0} sx={{ maxWidth: 345 }}>
+              <Card elevation={0} sx={{ maxWidth: 250 }}>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="250"
                     image={member.imageUrl}
                     alt={member.name}
                     onError={(e) => {
