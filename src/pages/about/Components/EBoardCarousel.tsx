@@ -7,9 +7,9 @@ import { useTheme } from "@mui/material/styles";
 
 const boardMembers = [
   // Add all board members' details here
-  { name: 'Shohruz Ernazarov', title: 'President', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Shohruz Ernazarov', title: 'President', imageUrl: 'src/pages/about/Components/consts/Eboard/Shoruz.jpg' },
   { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/consts/Eboard/Mo.jpg' },
-  { name: 'Kevin Granados', title: 'Tech Lead', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Kevin Granados', title: 'Tech Lead', imageUrl: 'src/pages/about/Components/consts/Eboard/Kev.jpg' },
   { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/consts/Eboard/Sum.jpg' },
   { name: 'Michelle Lee', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/image.png' },
   { name: 'Matthew  LaBarca', title: 'Tresurer', imageUrl: '/src/pages/about/Components/consts/Eboard/Matt.jpg' },
