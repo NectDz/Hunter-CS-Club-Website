@@ -11,7 +11,7 @@ const boardMembers = [
   { name: 'Muhammad Chaudhry', title: 'Vice President', imageUrl: 'src/pages/about/Components/consts/Eboard/Mo.jpg' },
   { name: 'Kevin Granados', title: 'Tech Lead', imageUrl: 'src/pages/about/Components/consts/Eboard/Kev.jpg' },
   { name: 'Sumayia Rashid', title: 'Secretary', imageUrl: 'src/pages/about/Components/consts/Eboard/Sum.jpg' },
-  { name: 'Michelle Lee', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/image.png' },
+  { name: 'Michelle Lee', title: 'Graphic Designer', imageUrl: 'src/pages/about/Components/consts/Eboard/Michelle.jpg' },
   { name: 'Matthew  LaBarca', title: 'Treasurer', imageUrl: '/src/pages/about/Components/consts/Eboard/Matt.jpg' },
   { name: 'George Sucuzhañay', title: 'Event Coordinator', imageUrl: 'src/pages/about/Components/image.png' },
   { name: 'Hridia Tanha', title: 'Marketing Manager', imageUrl: 'src/pages/about/Components/consts/Eboard/Hridia.jpg' },
