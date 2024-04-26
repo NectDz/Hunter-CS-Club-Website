@@ -10,6 +10,7 @@ import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
 import ContactForm from "../Contact/Components/ContactForm";
 import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
+import EBoardCarousel from "./Carousel/EBoardCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -56,11 +57,18 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box sx={{ width: "100%" }}>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Our team
+          <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              Meet the E-Board  
             </Typography>
+            <EBoardCarousel />
           </GridItem>
         </Box>
 

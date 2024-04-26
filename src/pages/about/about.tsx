@@ -36,7 +36,7 @@ const About = () => {
 
       <Grid item xs={12}>
         <Typography variant="h3" align="center" gutterBottom>
-          Meet the E-board
+          Meet the E-Board
         </Typography>
         <EBoardCarousel />
       </Grid>
