@@ -59,7 +59,7 @@ const WhatWeOffer = () => {
               return (
                 <Box
                   sx={{
-                    backgroundColor: "#9859AC",
+                    backgroundColor: "#4d2e91",
                     //add a background image  of ur choice here instead of color
                     padding: "60px 40px",
                     color: "white",
