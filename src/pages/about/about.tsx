@@ -2,6 +2,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
+import WhatWeOffer from "./Components/WhatWeOffer";
 import ClubValues from "./Components/ClubValues";
 import EBoardCarousel from "./Components/EBoardCarousel";
 import AboutUs from "./Components/AboutUs";
@@ -31,6 +32,8 @@ const About = () => {
         <Typography variant="h3" align="center" gutterBottom>
           Meet the E-Board
         </Typography>
+        {/* What we offer carosuel section */}
+        <WhatWeOffer />
         <EBoardCarousel />
       </Grid>
     </Grid>
