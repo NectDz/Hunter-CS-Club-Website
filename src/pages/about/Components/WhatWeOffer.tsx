@@ -69,14 +69,23 @@ const WhatWeOffer = () => {
                   <Typography variant="h4" align="center" gutterBottom>
                     {offer.name}
                   </Typography>
-                  <Typography
-                    fontSize={20}
-                    variant="body1"
-                    px={10}
-                    align="center"
+                  <Box
+                    sx={{
+                      minHeight: "150px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
                   >
-                    {offer.description}
-                  </Typography>
+                    <Typography
+                      fontSize={20}
+                      variant="body1"
+                      px={10}
+                      align="center"
+                    >
+                      {offer.description}
+                    </Typography>
+                  </Box>
                 </Box>
               );
             })}
