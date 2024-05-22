@@ -49,14 +49,18 @@ function ActivityCard({
         borderRadius: "16px",
         overflow: "hidden",
         margin: "auto",
-        border: ".5px solid black",
       }}
     >
       <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
         <Box sx={{ textAlign: "center", mb: 2 }}>
           <Avatar
             variant="square"
-            sx={{ width: "100%", height: 200, marginBottom: 2 }}
+            sx={{
+              width: "100%",
+              height: 200,
+              marginBottom: 2,
+              borderRadius: "16px",
+            }}
             src={thumbnailSrc}
           />
         </Box>
