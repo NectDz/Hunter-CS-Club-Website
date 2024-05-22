@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import ClubValues from "./Components/ClubValues";
 import EBoardCarousel from "./Components/EBoardCarousel";
+import AboutUs from "./Components/AboutUs";
 
 const About = () => {
   const theme = useTheme();
@@ -17,15 +18,7 @@ const About = () => {
       style={{ marginTop: isMobile ? "60px" : "0px" }}
     >
       <Grid item xs={12}>
-        <Typography variant="h3" align="center" gutterBottom>
-          About Us Page
-        </Typography>
-      </Grid>
-
-      <Grid item xs={12}>
-        <Typography variant="h3" align="center" gutterBottom>
-          About Us Mission Statement
-        </Typography>
+        <AboutUs />
       </Grid>
 
       <Grid item xs={12}>
