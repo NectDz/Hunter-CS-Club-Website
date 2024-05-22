@@ -42,7 +42,7 @@ export const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#FFFFF ",
+      main: "#4d2e91 ",
     },
   },
 });
