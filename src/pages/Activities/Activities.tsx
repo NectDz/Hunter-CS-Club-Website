@@ -2,9 +2,10 @@ import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Grid, Typography, Button } from "@mui/material";
-import { useNavigate, Outlet, useLocation } from 'react-router-dom';
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
+import ActivityCard from "./Components/ActivityPosts/ActivityCard";
 
 const Activities = () => {
   const theme = useTheme();
@@ -13,7 +14,7 @@ const Activities = () => {
   const location = useLocation();
   const { currentUser } = useAuth();
   // This checks if the current path is exactly '/activities'
-  const isMainActivitiesRoute = location.pathname === '/activities';
+  const isMainActivitiesRoute = location.pathname === "/activities";
 
   const handleAddActivity = () => {
     navigate("/activities/create");
@@ -34,19 +35,24 @@ const Activities = () => {
           </Grid>
 
           {currentUser && (
-          <Grid item xs={12} style={{ textAlign: "center" }}>
-            <Button variant="contained" color="primary" onClick={handleAddActivity}>
-              Add New Activity
-            </Button>
-          </Grid>
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAddActivity}
+              >
+                Add New Activity
+              </Button>
+            </Grid>
           )}
-
-          <Grid item xs={12}>
-            <Typography variant="h3" align="center" gutterBottom>
-              Recent Activities
-            </Typography>
-          </Grid>
-
+          <ActivityCard
+            thumbnailSrc="path/to/thumbnail"
+            activityName="Activity Name"
+            activityTag="Activity Tag"
+            description="Testing Description for the activity card"
+            postedTime={"Time"} // Update the postedTime prop to be of type FirestoreTimestamp
+            authorName="Author Name"
+          />
           <Grid item xs={12}>
             <Typography variant="h3" align="center" gutterBottom>
               Info Section
@@ -54,7 +60,7 @@ const Activities = () => {
           </Grid>
         </>
       )}
-      <Outlet />  
+      <Outlet />
     </Grid>
   );
 };
