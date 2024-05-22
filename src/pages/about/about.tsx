@@ -29,11 +29,13 @@ const About = () => {
       </Grid>
 
       <Grid item xs={12}>
+        <WhatWeOffer />
+      </Grid>
+
+      <Grid item xs={12}>
         <Typography variant="h3" align="center" gutterBottom>
           Meet the E-Board
         </Typography>
-        {/* What we offer carosuel section */}
-        <WhatWeOffer />
         <EBoardCarousel />
       </Grid>
     </Grid>
