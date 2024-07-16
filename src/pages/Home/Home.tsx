@@ -28,10 +28,10 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box>
-          <GridItem>
+        <Box sx={{ width: "100%" }}>
+          <Grid sx={{ paddingX: 0 }}>
             <HomeCarousel />
-          </GridItem>
+          </Grid>
         </Box>
 
         <Box>

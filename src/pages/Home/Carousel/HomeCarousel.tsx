@@ -3,17 +3,16 @@ import "slick-carousel/slick/slick-theme.css";
 import Carousel from "react-material-ui-carousel";
 import img1 from "./../consts/img1.png";
 import img2 from "./../consts/img2.png";
-import { Box, Button, Grid, Typography, colors } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+const maxHeight = "800px";
+const minHeight = "500px";
+
 const HomeCarousel = () => {
   const [current, setCurrent] = useState(0);
-
-  const next = () => {
-    setCurrent(current + 1);
-  };
-  const previous = () => {};
+  const mobile = useMediaQuery("(max-width: 899px)");
 
   //TODO: replace with the actual images
   const images = [
@@ -35,18 +34,30 @@ const HomeCarousel = () => {
   ];
 
   return (
-    <Grid container maxHeight="864px">
-      <Grid item xs={6} maxHeight="864px">
+    <Grid container maxHeight={{ xs: "100%", md: maxHeight }}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        order={{ xs: 2, md: 1 }}
+        maxHeight={{ xs: "100%", md: maxHeight }}
+      >
         <Carousel
           autoPlay={true}
           interval={8000}
-          animation="fade"
+          animation="slide"
           indicators={false}
           navButtonsAlwaysVisible={true}
           cycleNavigation={true}
           stopAutoPlayOnHover={false}
           swipe={true}
           fullHeightHover={false}
+          navButtonsProps={{
+            style: {
+              backgroundColor: "white",
+              color: "black",
+            },
+          }}
           next={() => {
             if (current + 1 >= images.length) {
               setCurrent(0);
@@ -68,7 +79,7 @@ const HomeCarousel = () => {
               alt={img.name}
               key={img.id}
               style={{
-                height: "864px",
+                height: mobile ? minHeight : maxHeight,
                 objectFit: "cover",
                 width: "100%",
               }}
@@ -78,12 +89,14 @@ const HomeCarousel = () => {
       </Grid>
       <Grid
         item
-        xs={6}
-        bgcolor="#4d2e91"
+        xs={12}
+        md={6}
+        order={{ xs: 1, md: 2 }}
         color="white"
+        bgcolor="#4d2e91"
         padding="32px 64px"
         alignContent="center"
-        maxHeight="864px"
+        maxHeight={{ xs: "100%", md: maxHeight }}
       >
         <Typography variant="h4" align="left" gutterBottom>
           Hello World!
