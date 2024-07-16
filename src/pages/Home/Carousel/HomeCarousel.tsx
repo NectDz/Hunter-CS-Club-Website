@@ -5,8 +5,16 @@ import img1 from "./../consts/img1.png";
 import img2 from "./../consts/img2.png";
 import { Box, Button, Grid, Typography, colors } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const HomeCarousel = () => {
+  const [current, setCurrent] = useState(0);
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+  const previous = () => {};
+
   //TODO: replace with the actual images
   const images = [
     {
@@ -27,21 +35,44 @@ const HomeCarousel = () => {
   ];
 
   return (
-    <Grid container>
-      <Grid item xs={6}>
+    <Grid container maxHeight="864px">
+      <Grid item xs={6} maxHeight="864px">
         <Carousel
           autoPlay={true}
           interval={8000}
           animation="fade"
-          indicators={true}
-          navButtonsAlwaysVisible={false}
+          indicators={false}
+          navButtonsAlwaysVisible={true}
           cycleNavigation={true}
           stopAutoPlayOnHover={false}
           swipe={true}
           fullHeightHover={false}
+          next={() => {
+            if (current + 1 >= images.length) {
+              setCurrent(0);
+            } else {
+              setCurrent(current + 1);
+            }
+          }}
+          prev={() => {
+            if (current - 1 <= 0) {
+              setCurrent(images.length - 1);
+            } else {
+              setCurrent(current - 1);
+            }
+          }}
         >
           {images.map((img) => (
-            <img src={img.source} alt={img.name} key={img.id} />
+            <img
+              src={img.source}
+              alt={img.name}
+              key={img.id}
+              style={{
+                height: "864px",
+                objectFit: "cover",
+                width: "100%",
+              }}
+            />
           ))}
         </Carousel>
       </Grid>
@@ -52,6 +83,7 @@ const HomeCarousel = () => {
         color="white"
         padding="32px 64px"
         alignContent="center"
+        maxHeight="864px"
       >
         <Typography variant="h4" align="left" gutterBottom>
           Hello World!
@@ -77,14 +109,17 @@ const HomeCarousel = () => {
           Become an official member
         </Button>
         <Box display="flex" gap="16px" marginTop="64px">
-          {images.map((img) => (
+          {images.map((img, index) => (
             <img
               src={img.source}
               alt={img.name}
               key={img.id}
               width="96px"
               height="96px"
-              style={{ objectFit: "cover", border: "1px solid white" }}
+              style={{
+                objectFit: "cover",
+                border: current === index ? "1px solid white" : "",
+              }}
             />
           ))}
         </Box>
