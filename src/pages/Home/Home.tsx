@@ -11,6 +11,7 @@ import FAQSection from "./Components/FAQSection/FAQSection";
 import ContactForm from "../Contact/Components/ContactForm";
 import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
+import HomeCarousel from "./Carousel/HomeCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -27,12 +28,10 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Carousel Section
-            </Typography>
-          </GridItem>
+        <Box sx={{ width: "100%" }}>
+          <Grid sx={{ paddingX: 0 }}>
+            <HomeCarousel />
+          </Grid>
         </Box>
 
         <Box>
@@ -59,14 +58,14 @@ const Home = () => {
 
         <Box sx={{ width: "100%" }}>
           <GridItem>
-          <Typography
+            <Typography
               fontSize="35px"
               fontWeight="bold"
               align="center"
               variant="h5"
               mb="32px"
             >
-              Meet the E-Board  
+              Meet the E-Board
             </Typography>
             <EBoardCarousel />
           </GridItem>
