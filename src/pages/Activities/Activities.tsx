@@ -1,13 +1,25 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
-import Metrics from "./Components/Metrics";
+import { Grid, Typography, Button } from "@mui/material";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext";
+import Metrics from "./Components/Metrics/Metrics";
+import ActivityCard from "./Components/ActivityPosts/ActivityCard";
 
 const Activities = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { currentUser } = useAuth();
+  // This checks if the current path is exactly '/activities'
+  const isMainActivitiesRoute = location.pathname === "/activities";
+
+  const handleAddActivity = () => {
+    navigate("/activities/create");
+  };
+
   return (
     <Grid
       container
@@ -16,21 +28,39 @@ const Activities = () => {
       alignItems="center"
       style={{ marginTop: isMobile ? "60px" : "0px" }}
     >
-      <Grid item xs={12}>
-        <Metrics />
-      </Grid>
+      {isMainActivitiesRoute && (
+        <>
+          <Grid item xs={12}>
+            <Metrics />
+          </Grid>
 
-      <Grid item xs={12}>
-        <Typography variant="h3" align="center" gutterBottom>
-          Mission Statement
-        </Typography>
-      </Grid>
-
-      <Grid item xs={12}>
-        <Typography variant="h3" align="center" gutterBottom>
-          Info Section
-        </Typography>
-      </Grid>
+          {currentUser && (
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAddActivity}
+              >
+                Add New Activity
+              </Button>
+            </Grid>
+          )}
+          <ActivityCard
+            thumbnailSrc="path/to/thumbnail"
+            activityName="Activity Name"
+            activityTag="Activity Tag"
+            description="Testing Description for the activity card"
+            postedTime={"Time"} // Update the postedTime prop to be of type FirestoreTimestamp
+            authorName="Author Name"
+          />
+          <Grid item xs={12}>
+            <Typography variant="h3" align="center" gutterBottom>
+              Info Section
+            </Typography>
+          </Grid>
+        </>
+      )}
+      <Outlet />
     </Grid>
   );
 };

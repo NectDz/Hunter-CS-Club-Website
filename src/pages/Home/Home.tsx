@@ -7,6 +7,11 @@ import { useAuth } from "../../Context/AuthContext";
 import TextEditor from "../../Components/TextEditor";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
+import FAQSection from "./Components/FAQSection/FAQSection";
+import ContactForm from "../Contact/Components/ContactForm";
+import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
+import EBoardCarousel from "./Carousel/EBoardCarousel";
+import HomeCarousel from "./Carousel/HomeCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -23,24 +28,10 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Carousel Section
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              Who we are
-            </Typography>
-            <Typography align="center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Typography>
-          </GridItem>
+        <Box sx={{ width: "100%" }}>
+          <Grid sx={{ paddingX: 0 }}>
+            <HomeCarousel />
+          </Grid>
         </Box>
 
         <Box>
@@ -51,12 +42,10 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              What we do
-            </Typography>
-          </GridItem>
+        <Box sx={{ width: "100%" }}>
+          <Grid sx={{ padding: 0 }}>
+            <WhatWeDo />
+          </Grid>
         </Box>
 
         <Box sx={{ width: "100%" }}>
@@ -67,11 +56,18 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box sx={{ width: "100%" }}>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Our team
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              Meet the E-Board
             </Typography>
+            <EBoardCarousel />
           </GridItem>
         </Box>
 
@@ -83,9 +79,24 @@ const Home = () => {
 
         <Box>
           <GridItem>
-            <Typography variant="h4" align="center">
-              Contact
+            <FAQSection />
+          </GridItem>
+        </Box>
+
+        <Box>
+          <GridItem>
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              Have more questions? Contact us!
             </Typography>
+            <GridItem>
+              <ContactForm />
+            </GridItem>
           </GridItem>
         </Box>
       </Grid>

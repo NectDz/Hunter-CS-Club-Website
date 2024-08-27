@@ -12,6 +12,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "./consts/Logo.png";
 import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
+import { JOIN_US_URL } from "../../pages/Home/Components/JoinUs/consts/texts";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { currentUser, signOut } = useAuth();
@@ -71,7 +73,9 @@ function Navbar() {
             >
               <Button
                 variant="outlined"
-                onClick={() => navigate("/join-us")}
+                component={Link}
+                to={JOIN_US_URL}
+                target="_blank"
                 color="inherit"
               >
                 Join us
@@ -130,7 +134,7 @@ function Navbar() {
             {mainNavbarItems.map((item) => (
               <Button
                 key={item.id}
-                sx={{ color: "black", padding: "10px 15px" }}
+                sx={{ color: "white", padding: "10px 15px" }}
                 onClick={() => navigate(item.route)}
               >
                 {item.label}
