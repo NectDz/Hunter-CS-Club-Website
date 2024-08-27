@@ -34,12 +34,16 @@ const HomeCarousel = () => {
   ];
 
   return (
-    <Grid container maxHeight={{ xs: "100%", md: maxHeight }}>
+    <Grid
+      container
+      direction={mobile ? "column" : "row"}
+      maxHeight={{ xs: "100%", md: maxHeight }}
+    >
       <Grid
         item
         xs={12}
         md={6}
-        order={{ xs: 2, md: 1 }}
+        order={{ xs: 1, md: 1 }}
         maxHeight={{ xs: "100%", md: maxHeight }}
       >
         <Carousel
@@ -91,7 +95,7 @@ const HomeCarousel = () => {
         item
         xs={12}
         md={6}
-        order={{ xs: 1, md: 2 }}
+        order={{ xs: 2, md: 2 }}
         color="white"
         bgcolor="#4d2e91"
         padding="32px 64px"
@@ -121,21 +125,23 @@ const HomeCarousel = () => {
         >
           Become an official member
         </Button>
-        <Box display="flex" gap="16px" marginTop="64px">
-          {images.map((img, index) => (
-            <img
-              src={img.source}
-              alt={img.name}
-              key={img.id}
-              width="96px"
-              height="96px"
-              style={{
-                objectFit: "cover",
-                border: current === index ? "1px solid white" : "",
-              }}
-            />
-          ))}
-        </Box>
+        {!mobile && (
+          <Box display="flex" gap="16px" marginTop="64px">
+            {images.map((img, index) => (
+              <img
+                src={img.source}
+                alt={img.name}
+                key={img.id}
+                width="96px"
+                height="96px"
+                style={{
+                  objectFit: "cover",
+                  border: current === index ? "1px solid white" : "",
+                }}
+              />
+            ))}
+          </Box>
+        )}
       </Grid>
     </Grid>
   );
