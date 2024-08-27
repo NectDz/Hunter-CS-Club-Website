@@ -1,10 +1,8 @@
-import React from "react";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
-import TextEditor from "../../Components/TextEditor";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
