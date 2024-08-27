@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Grid, Typography, Button } from "@mui/material";
@@ -6,6 +5,7 @@ import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
 import ActivityCard from "./Components/ActivityPosts/ActivityCard";
+import { Timestamp } from "firebase/firestore";
 
 const Activities = () => {
   const theme = useTheme();
@@ -15,6 +15,7 @@ const Activities = () => {
   const { currentUser } = useAuth();
   // This checks if the current path is exactly '/activities'
   const isMainActivitiesRoute = location.pathname === "/activities";
+  const mockedTimestamp = Timestamp.fromDate(new Date());
 
   const handleAddActivity = () => {
     navigate("/activities/create");
@@ -50,7 +51,7 @@ const Activities = () => {
             activityName="Activity Name"
             activityTag="Activity Tag"
             description="Testing Description for the activity card"
-            postedTime={"Time"} // Update the postedTime prop to be of type FirestoreTimestamp
+            postedTime={mockedTimestamp} // Update the postedTime prop to be of type FirestoreTimestamp
             authorName="Author Name"
           />
           <Grid item xs={12}>
