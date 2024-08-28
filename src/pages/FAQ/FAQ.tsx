@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Grid from "@mui/material/Grid";
@@ -8,6 +9,16 @@ import { faqs } from "./consts/faqs";
 const FAQ = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [marginBottom, setMarginBottom] = useState<string | number>("0px");
+
+  useEffect(() => {
+    if (!isMobile) {
+      const availableHeight = window.innerHeight - document.body.scrollHeight;
+      setMarginBottom(`${availableHeight > 150 ? availableHeight : 150}px`);
+    } else {
+      setMarginBottom("0px");
+    }
+  }, [isMobile]);
 
   return (
     <Grid
@@ -15,7 +26,7 @@ const FAQ = () => {
       spacing={8}
       justifyContent="center"
       alignItems="center"
-      style={{ marginTop: isMobile ? "60px" : "0px" }}
+      style={{ marginBottom }}
     >
       <Grid item xs={12}>
         {/* Title */}
@@ -38,7 +49,7 @@ const FAQ = () => {
               Questions
             </span>
           </Typography>
-          {/* Questions  */}
+          {/* Questions */}
           <div>
             {faqs.map((faq, index) => {
               return (
