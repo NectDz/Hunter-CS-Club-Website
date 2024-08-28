@@ -27,7 +27,7 @@ const Home = () => {
         sx={{ width: "100%" }}
       >
         <Box sx={{ width: "100%" }}>
-          <Grid sx={{ paddingX: 0 }}>
+          <Grid sx={{ paddingX: 0, paddingY: 2 }}>
             <HomeCarousel />
           </Grid>
         </Box>
