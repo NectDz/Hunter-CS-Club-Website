@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, storage } from '../../../../firebase-config';
 
 interface ActivityCreationProps {
   // Define props if needed
@@ -30,10 +33,39 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
     setSelectedTag(event.target.value as string);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Logic to upload data to Firebase
-    console.log(title, body, thumbnail, selectedTag);
+    
+    if (!title || !body || !selectedTag || !thumbnail) {
+      console.error("All fields are required");
+      return;
+    }
+    
+    try {
+      // Upload thumbnail
+      const thumbnailRef = ref(storage, `thumbnails/${thumbnail.name}`);
+      await uploadBytes(thumbnailRef, thumbnail);
+      const thumbnailURL = await getDownloadURL(thumbnailRef);
+  
+      // Add data to Firestore
+      await addDoc(collection(db, 'activities'), {
+        title,
+        body,
+        thumbnailURL,
+        tag: selectedTag,
+        createdAt: new Date()  // Use Firestore Timestamp here if needed
+      });
+  
+      // Reset state after successful submission
+      setTitle("");
+      setBody("");
+      setThumbnail(null);
+      setSelectedTag("");
+  
+      console.log("Activity saved successfully");
+    } catch (error) {
+      console.error("Error saving activity: ", error);
+    }
   };
 
   return (
@@ -84,3 +116,4 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
 };
 
 export default ActivityCreation;
+

@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardHeader,
-  CardContent,
-  Skeleton,
-} from "@mui/material";
+import { Box, Grid, Card, CardHeader, CardContent, Skeleton } from "@mui/material";
 import ActivityCard from "./ActivityCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
@@ -15,9 +8,10 @@ interface Activity {
   id: string;
   title: string;
   body: string;
-  avatarSrc?: string;
-  author: string;
-  timePosted: FirestoreTimestamp;
+  thumbnailURL: string;
+  tag: string;
+  createdAt: FirestoreTimestamp;
+  author: string; // Ensure that this is present
 }
 
 interface FirestoreTimestamp {
@@ -35,10 +29,13 @@ const ActivityFeed = () => {
       const activitiesSnapshot = await getDocs(activitiesCollection);
       const activitiesList = activitiesSnapshot.docs
         .map((doc) => {
-          const { id, ...data } = doc.data() as Activity;
-          return { id: doc.id, ...data };
+          const data = doc.data();
+          return {
+            id: doc.id,
+            ...data,
+          } as Activity;
         })
-        .sort((a, b) => b.timePosted.seconds - a.timePosted.seconds);
+        .sort((a, b) => b.createdAt.seconds - a.createdAt.seconds); // Sort by creation date
 
       setActivities(activitiesList);
       setLoading(false);
@@ -81,11 +78,12 @@ const ActivityFeed = () => {
         {activities.map((activity) => (
           <Grid item xs={12} key={activity.id}>
             <ActivityCard
-              heading={activity.title}
-              body={activity.body}
-              avatarSrc={activity.avatarSrc || "/path/to/avatar.jpg"}
-              author={activity.author}
-              time={activity.timePosted}
+              thumbnailSrc={activity.thumbnailURL}
+              activityName={activity.title}
+              activityTag={activity.tag}
+              description={activity.body}
+              postedTime={activity.createdAt}
+              authorName={activity.author}
             />
           </Grid>
         ))}
