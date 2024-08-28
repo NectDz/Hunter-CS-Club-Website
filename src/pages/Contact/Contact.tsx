@@ -2,6 +2,8 @@ import Grid from "@mui/material/Grid";
 import { Box, Typography } from "@mui/material";
 import ContactForm from "./Components/ContactForm";
 import GridItem from "../../Components/common/GridItem";
+import NewsLetter from "../Home/Components/NewsLetter/NewsLetter";
+
 const Contact = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,6 +30,12 @@ const Contact = () => {
         <Box>
           <GridItem>
             <ContactForm />
+          </GridItem>
+        </Box>
+
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
+            <NewsLetter />
           </GridItem>
         </Box>
       </Grid>

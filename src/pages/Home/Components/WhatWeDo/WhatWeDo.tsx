@@ -6,7 +6,7 @@ import guestSpeakers from "./consts/guestSpeakers.png";
 
 const WhatWeDo = () => {
   return (
-    <Box sx={{ background: "#8D7CB6", padding: "64px" }}>
+    <Box sx={{ background: "#4d2e91", padding: "64px" }}>
       <Typography
         variant="h4"
         align="center"

@@ -27,7 +27,7 @@ const Home = () => {
         sx={{ width: "100%" }}
       >
         <Box sx={{ width: "100%" }}>
-          <Grid sx={{ paddingX: 0 }}>
+          <Grid sx={{ paddingX: 0, paddingY: 2 }}>
             <HomeCarousel />
           </Grid>
         </Box>
@@ -56,6 +56,12 @@ const Home = () => {
 
         <Box sx={{ width: "100%" }}>
           <GridItem>
+            <NewsLetter />
+          </GridItem>
+        </Box>
+
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
             <Typography
               fontSize="35px"
               fontWeight="bold"
@@ -66,12 +72,6 @@ const Home = () => {
               Meet the E-Board
             </Typography>
             <EBoardCarousel />
-          </GridItem>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <NewsLetter />
           </GridItem>
         </Box>
 

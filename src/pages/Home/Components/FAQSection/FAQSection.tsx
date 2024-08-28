@@ -6,7 +6,7 @@ const FAQSection = () => {
   const faqs = faqsList.slice(0, 6);
 
   return (
-    <Box >
+    <Box>
       <Typography
         fontSize="35px"
         fontWeight="bold"

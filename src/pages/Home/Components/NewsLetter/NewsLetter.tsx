@@ -13,7 +13,7 @@ const NewsLetter = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#8D7CB6",
+        backgroundColor: "#4d2e91",
         paddingTop: "100px",
         paddingBottom: "140px",
         paddingX: "100px",
@@ -57,7 +57,7 @@ const NewsLetter = () => {
           type="submit"
           variant="contained"
           sx={{
-            backgroundColor: "#46165C",
+            backgroundColor: "#8D7CB6",
             color: "#FFFFFF",
             borderRadius: "0px 50px 50px 0px",
             paddingX: "34px",
