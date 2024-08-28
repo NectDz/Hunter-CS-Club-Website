@@ -14,7 +14,6 @@ const HomeCarousel = () => {
   const [current, setCurrent] = useState(0);
   const mobile = useMediaQuery("(max-width: 899px)");
 
-  //TODO: replace with the actual images
   const images = [
     {
       id: "img1",
@@ -38,6 +37,7 @@ const HomeCarousel = () => {
       container
       direction={mobile ? "column" : "row"}
       maxHeight={{ xs: "100%", md: maxHeight }}
+      bgcolor="#f5f5f5"
     >
       <Grid
         item
@@ -58,34 +58,29 @@ const HomeCarousel = () => {
           fullHeightHover={false}
           navButtonsProps={{
             style: {
-              backgroundColor: "white",
-              color: "black",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              color: "white",
+              borderRadius: "50%",
+              padding: "10px",
             },
           }}
           next={() => {
-            if (current + 1 >= images.length) {
-              setCurrent(0);
-            } else {
-              setCurrent(current + 1);
-            }
+            setCurrent((prev) => (prev + 1) % images.length);
           }}
           prev={() => {
-            if (current - 1 <= 0) {
-              setCurrent(images.length - 1);
-            } else {
-              setCurrent(current - 1);
-            }
+            setCurrent((prev) => (prev - 1 + images.length) % images.length);
           }}
         >
           {images.map((img) => (
-            <img
-              src={img.source}
-              alt={img.name}
+            <Box
               key={img.id}
-              style={{
+              sx={{
+                backgroundImage: `url(${img.source})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
                 height: mobile ? minHeight : maxHeight,
-                objectFit: "cover",
                 width: "100%",
+                filter: "brightness(0.85)", // Slightly darken the image for better text contrast
               }}
             />
           ))}
@@ -101,11 +96,28 @@ const HomeCarousel = () => {
         padding="32px 64px"
         alignContent="center"
         maxHeight={{ xs: "100%", md: maxHeight }}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
       >
-        <Typography variant="h4" align="left" gutterBottom>
+        <Typography
+          variant="h3"
+          align="left"
+          gutterBottom
+          sx={{ fontWeight: "bold", fontFamily: "Arial, sans-serif" }}
+        >
           Hello World!
         </Typography>
-        <Typography variant="h6" align="left" gutterBottom>
+        <Typography
+          variant="h6"
+          align="left"
+          gutterBottom
+          sx={{
+            lineHeight: 1.6,
+            fontFamily: "Arial, sans-serif",
+            fontSize: mobile ? "0.875rem" : "1.25rem",
+          }}
+        >
           The Computer Science Club fosters a diverse and inclusive community of
           students at Hunter College. Through collaborative learning and
           hands-on projects, we aim to empower members to become innovative
@@ -117,10 +129,16 @@ const HomeCarousel = () => {
           to={"/about"}
           variant="outlined"
           sx={{
-            borderRadius: 0,
+            borderRadius: "4px",
             border: "1px solid white",
             color: "white",
             marginTop: "32px",
+            padding: "10px 20px",
+            fontFamily: "Arial, sans-serif",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#333",
+            },
           }}
         >
           Become an official member
@@ -136,7 +154,9 @@ const HomeCarousel = () => {
                 height="96px"
                 style={{
                   objectFit: "cover",
-                  border: current === index ? "1px solid white" : "",
+                  border:
+                    current === index ? "2px solid white" : "1px solid #555",
+                  borderRadius: "8px",
                 }}
               />
             ))}
