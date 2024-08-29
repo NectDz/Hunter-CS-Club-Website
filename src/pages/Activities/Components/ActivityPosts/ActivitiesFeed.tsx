@@ -29,11 +29,8 @@ const ActivityFeed = () => {
       const activitiesSnapshot = await getDocs(activitiesCollection);
       const activitiesList = activitiesSnapshot.docs
         .map((doc) => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            ...data,
-          } as Activity;
+          const { id, ...data } = doc.data() as Activity;
+          return { id: doc.id, ...data };
         })
         .sort((a, b) => b.createdAt.seconds - a.createdAt.seconds); // Sort by creation date
 

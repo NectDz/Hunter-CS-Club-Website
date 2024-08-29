@@ -6,6 +6,7 @@ import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
 import ActivityCard from "./Components/ActivityPosts/ActivityCard";
+import ActivityFeed from "./Components/ActivityPosts/ActivitiesFeed";
 
 const Activities = () => {
   const theme = useTheme();
@@ -54,13 +55,7 @@ const Activities = () => {
                 </Button>
               </Grid>
             )}
-            <ActivityCard
-              thumbnailSrc="path/to/thumbnail"
-              activityName="Activity Name"
-              activityTag="Activity Tag"
-              description="Testing Description for the activity card"
-              postedTime={new Date(eventTime)} // Update the postedTime prop to be of type FirestoreTimestamp
-              authorName="Author Name" />
+            <ActivityFeed/>
             <Grid item xs={12}>
               <Typography variant="h3" align="center" gutterBottom>
                 Info Section
