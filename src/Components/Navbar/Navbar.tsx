@@ -70,19 +70,16 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
           ) : (
-            <Box
-              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
+            <Button
+              variant="outlined"
+              component={Link}
+              to={JOIN_US_URL}
+              target="_blank"
+              color="inherit"
+              sx={{ position: "absolute", left: 10 }}
             >
-              <Button
-                variant="outlined"
-                component={Link}
-                to={JOIN_US_URL}
-                target="_blank"
-                color="inherit"
-              >
-                Join us
-              </Button>
-            </Box>
+              Join us
+            </Button>
           )}
 
           <Box
@@ -103,6 +100,7 @@ function Navbar() {
             </Typography>
           </Box>
 
+          {/*
           {!isMobile && (
             <Box
               sx={{ display: "flex", justifyContent: "center", width: "100%" }}
@@ -126,6 +124,7 @@ function Navbar() {
               )}
             </Box>
           )}
+          */}
         </Toolbar>
         {/*
         {isMobile ? null : (
