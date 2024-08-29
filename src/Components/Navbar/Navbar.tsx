@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "./consts/Logo.png";
-import { mainNavbarItems } from "./consts/navbarItems";
+// import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
 import { JOIN_US_URL } from "../../pages/Home/Components/JoinUs/consts/texts";
 import { Link } from "react-router-dom";
@@ -31,6 +31,7 @@ function Navbar() {
     navigate("/login");
   };
 
+  /*
   const drawerContent = (
     <Box
       sx={{
@@ -52,6 +53,7 @@ function Navbar() {
       ))}
     </Box>
   );
+  */
 
   return (
     <>
@@ -125,6 +127,7 @@ function Navbar() {
             </Box>
           )}
         </Toolbar>
+        {/*
         {isMobile ? null : (
           <Toolbar
             component="nav"
@@ -142,7 +145,9 @@ function Navbar() {
             ))}
           </Toolbar>
         )}
+        */}
       </AppBar>
+      {/* 
       <Drawer
         anchor="top"
         open={drawerOpen}
@@ -153,6 +158,7 @@ function Navbar() {
       >
         {drawerContent}
       </Drawer>
+      */}
     </>
   );
 }
