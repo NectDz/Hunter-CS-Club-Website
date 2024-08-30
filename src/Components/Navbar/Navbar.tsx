@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "./consts/Logo.png";
-// import { mainNavbarItems } from "./consts/navbarItems";
+import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
 import { JOIN_US_URL } from "../../pages/Home/Components/JoinUs/consts/texts";
 import { Link } from "react-router-dom";
@@ -31,7 +31,6 @@ function Navbar() {
     navigate("/login");
   };
 
-  /*
   const drawerContent = (
     <Box
       sx={{
@@ -53,23 +52,35 @@ function Navbar() {
       ))}
     </Box>
   );
-  */
 
   return (
     <>
       <AppBar position="static" color="primary" elevation={0}>
         <Toolbar>
-          {!isMobile && (
-            <Button
-              variant="outlined"
-              component={Link}
-              to={JOIN_US_URL}
-              target="_blank"
+          {isMobile ? (
+            <IconButton
               color="inherit"
-              sx={{ position: "absolute", left: 10 }}
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}
             >
-              Join us
-            </Button>
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <Box
+              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
+            >
+              <Button
+                variant="outlined"
+                component={Link}
+                to={JOIN_US_URL}
+                target="_blank"
+                color="inherit"
+              >
+                Join us
+              </Button>
+            </Box>
           )}
 
           <Box
@@ -90,7 +101,6 @@ function Navbar() {
             </Typography>
           </Box>
 
-          {/*
           {!isMobile && (
             <Box
               sx={{ display: "flex", justifyContent: "center", width: "100%" }}
@@ -114,9 +124,7 @@ function Navbar() {
               )}
             </Box>
           )}
-          */}
         </Toolbar>
-        {/*
         {isMobile ? null : (
           <Toolbar
             component="nav"
@@ -134,9 +142,7 @@ function Navbar() {
             ))}
           </Toolbar>
         )}
-        */}
       </AppBar>
-      {/* 
       <Drawer
         anchor="top"
         open={drawerOpen}
@@ -147,7 +153,6 @@ function Navbar() {
       >
         {drawerContent}
       </Drawer>
-      */}
     </>
   );
 }

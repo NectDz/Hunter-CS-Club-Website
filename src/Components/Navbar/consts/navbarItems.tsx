@@ -1,5 +1,4 @@
 export const mainNavbarItems = [
-  /*
   {
     id: 0,
     label: "Home",
@@ -10,6 +9,7 @@ export const mainNavbarItems = [
     label: "Updates",
     route: "updates",
   },
+  /* 
   {
     id: 2,
     label: "Activities",
@@ -20,6 +20,7 @@ export const mainNavbarItems = [
     label: "About",
     route: "about",
   },
+  */
   {
     id: 4,
     label: "FAQ",
@@ -30,5 +31,4 @@ export const mainNavbarItems = [
     label: "Contact",
     route: "contact",
   },
-  */
 ];
