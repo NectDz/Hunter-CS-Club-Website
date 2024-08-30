@@ -23,7 +23,7 @@ const NewsLetter = () => {
       <Typography
         variant="h4"
         align="center"
-        sx={{ color: "#FFFFFF", marginBottom: "24px", fontWeight: "bold" }}
+        sx={{ color: "#EAC566", marginBottom: "24px", fontWeight: "bold" }}
       >
         JOIN OUR NEWSLETTER
       </Typography>
