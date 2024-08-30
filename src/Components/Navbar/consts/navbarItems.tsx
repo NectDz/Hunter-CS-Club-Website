@@ -9,9 +9,10 @@ export const mainNavbarItems = [
     label: "Updates",
     route: "updates",
   },
+  /* 
   {
     id: 2,
-    label: "Activties",
+    label: "Activities",
     route: "activities",
   },
   {
@@ -19,6 +20,7 @@ export const mainNavbarItems = [
     label: "About",
     route: "about",
   },
+  */
   {
     id: 4,
     label: "FAQ",
