@@ -59,17 +59,7 @@ function Navbar() {
     <>
       <AppBar position="static" color="primary" elevation={0}>
         <Toolbar>
-          {isMobile ? (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
+          {!isMobile && (
             <Button
               variant="outlined"
               component={Link}
