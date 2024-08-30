@@ -48,7 +48,7 @@ const boardMembers = [
   {
     name: "George Sucuzhañay",
     title: "Event Coordinator",
-    imageUrl: George,
+    imageUrl: "",
   },
   {
     name: "Hridia Tanha",
