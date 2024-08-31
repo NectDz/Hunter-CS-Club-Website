@@ -1,8 +1,12 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Carousel from "react-material-ui-carousel";
-import img1 from "./../consts/img1.png";
-import img2 from "./../consts/img2.png";
+import img1 from "./consts/img1.jpg";
+import img2 from "./consts/img2.jpg";
+import img3 from "./consts/img3.jpg";
+import img5 from "./consts/img5.jpeg";
+import img6 from "./consts/img6.jpg";
+import img8 from "./consts/img8.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -28,7 +32,22 @@ const HomeCarousel = () => {
     {
       id: "img3",
       name: "Image 3",
-      source: img1,
+      source: img5,
+    },
+    {
+      id: "img4",
+      name: "Image 4",
+      source: img8,
+    },
+    {
+      id: "img5",
+      name: "Image 5",
+      source: img3,
+    },
+    {
+      id: "img6",
+      name: "Image 6",
+      source: img6,
     },
   ];
 
@@ -103,6 +122,7 @@ const HomeCarousel = () => {
         <Typography
           variant="h3"
           align="left"
+          color="#EAC566"
           gutterBottom
           sx={{ fontWeight: "bold", fontFamily: "Arial, sans-serif" }}
         >
@@ -124,25 +144,6 @@ const HomeCarousel = () => {
           problem solvers, critical thinkers, and ethical leaders in the rapidly
           evolving field of tech.
         </Typography>
-        <Button
-          component={Link}
-          to={"/about"}
-          variant="outlined"
-          sx={{
-            borderRadius: "4px",
-            border: "1px solid white",
-            color: "white",
-            marginTop: "32px",
-            padding: "10px 20px",
-            fontFamily: "Arial, sans-serif",
-            "&:hover": {
-              backgroundColor: "white",
-              color: "#333",
-            },
-          }}
-        >
-          Become an official member
-        </Button>
         {!mobile && (
           <Box display="flex" gap="16px" marginTop="64px">
             {images.map((img, index) => (
@@ -162,6 +163,28 @@ const HomeCarousel = () => {
             ))}
           </Box>
         )}
+        <Button
+          component={Link}
+          to={
+            "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
+          }
+          variant="outlined"
+          sx={{
+            borderRadius: "4px",
+            border: "1px solid white",
+            color: "white",
+            marginTop: "32px",
+            padding: "10px 20px",
+            fontFamily: "Arial, sans-serif",
+            fontWeight: "bold",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#333",
+            },
+          }}
+        >
+          Become an official member
+        </Button>
       </Grid>
     </Grid>
   );

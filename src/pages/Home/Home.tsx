@@ -1,3 +1,5 @@
+import { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
@@ -13,6 +15,20 @@ import HomeCarousel from "./Carousel/HomeCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
+  const updateRef = useRef<HTMLDivElement>(null!);
+  const faqRef = useRef<HTMLDivElement>(null!);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      if (location.state.scrollTo === "faq" && faqRef.current) {
+        faqRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "updates" && updateRef.current) {
+        updateRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   console.log(currentUser);
 
   return (
@@ -37,7 +53,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box>
+        <Box ref={updateRef}>
           <GridItem>
             <Typography variant="h4" align="center">
               Latest
@@ -80,7 +96,7 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box ref={faqRef}>
           <GridItem>
             <FAQSection />
           </GridItem>
