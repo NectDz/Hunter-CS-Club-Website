@@ -46,7 +46,7 @@ const Home = () => {
           <Grid
             sx={{
               paddingX: 0,
-              paddingY: { xs: 0, sm: 2 }, // 0 for mobile (xs), 2 for small screens and up
+              paddingY: { xs: 0, sm: 0 }, // 0 for mobile (xs), 2 for small screens and up
             }}
           >
             <HomeCarousel />
