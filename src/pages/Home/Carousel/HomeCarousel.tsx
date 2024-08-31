@@ -4,6 +4,7 @@ import Carousel from "react-material-ui-carousel";
 import img1 from "./consts/img1.jpg";
 import img2 from "./consts/img2.jpg";
 import img3 from "./consts/img3.jpg";
+import img5 from "./consts/img5.jpeg";
 import img6 from "./consts/img6.jpg";
 import img8 from "./consts/img8.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
@@ -31,7 +32,7 @@ const HomeCarousel = () => {
     {
       id: "img3",
       name: "Image 3",
-      source: img6,
+      source: img5,
     },
     {
       id: "img4",
@@ -42,6 +43,11 @@ const HomeCarousel = () => {
       id: "img5",
       name: "Image 5",
       source: img3,
+    },
+    {
+      id: "img6",
+      name: "Image 6",
+      source: img6,
     },
   ];
 
@@ -116,6 +122,7 @@ const HomeCarousel = () => {
         <Typography
           variant="h3"
           align="left"
+          color="#EAC566"
           gutterBottom
           sx={{ fontWeight: "bold", fontFamily: "Arial, sans-serif" }}
         >
