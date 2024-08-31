@@ -144,27 +144,6 @@ const HomeCarousel = () => {
           problem solvers, critical thinkers, and ethical leaders in the rapidly
           evolving field of tech.
         </Typography>
-        <Button
-          component={Link}
-          to={
-            "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
-          }
-          variant="outlined"
-          sx={{
-            borderRadius: "4px",
-            border: "1px solid white",
-            color: "white",
-            marginTop: "32px",
-            padding: "10px 20px",
-            fontFamily: "Arial, sans-serif",
-            "&:hover": {
-              backgroundColor: "white",
-              color: "#333",
-            },
-          }}
-        >
-          Become an official member
-        </Button>
         {!mobile && (
           <Box display="flex" gap="16px" marginTop="64px">
             {images.map((img, index) => (
@@ -184,6 +163,28 @@ const HomeCarousel = () => {
             ))}
           </Box>
         )}
+        <Button
+          component={Link}
+          to={
+            "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
+          }
+          variant="outlined"
+          sx={{
+            borderRadius: "4px",
+            border: "1px solid white",
+            color: "white",
+            marginTop: "32px",
+            padding: "10px 20px",
+            fontFamily: "Arial, sans-serif",
+            fontWeight: "bold",
+            "&:hover": {
+              backgroundColor: "white",
+              color: "#333",
+            },
+          }}
+        >
+          Become an official member
+        </Button>
       </Grid>
     </Grid>
   );
