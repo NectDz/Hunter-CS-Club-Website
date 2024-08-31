@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import axios from "axios";
 
 const NewsLetter = () => {
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (evt: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    //TODO: use email to sign user to the NewsLetter
-    console.log("EMAIL: ", email);
+
+    try {
+      const response = await axios.post("http://localhost:5000/subscribe", {
+        email,
+      });
+      setMessage(response.data.message); // Display success message
+    } catch (error) {
+      setMessage("Subscription failed. Please try again.");
+    }
   };
 
   return (
@@ -40,7 +49,7 @@ const NewsLetter = () => {
           id="email-address"
           variant="standard"
           placeholder="Email Address"
-          defaultValue={email}
+          value={email} // Updated from defaultValue to value
           onChange={({ target }) => setEmail(target.value)}
           sx={{
             backgroundColor: "#FFFFFF",
@@ -67,6 +76,18 @@ const NewsLetter = () => {
           Subscribe
         </Button>
       </form>
+      {message && (
+        <Typography
+          variant="body2"
+          align="center"
+          sx={{
+            color: message.includes("failed") ? "red" : "green",
+            marginTop: "12px",
+          }}
+        >
+          {message}
+        </Typography>
+      )}
     </Box>
   );
 };
