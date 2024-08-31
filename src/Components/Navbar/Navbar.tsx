@@ -65,7 +65,12 @@ function Navbar() {
 
   return (
     <>
-      <AppBar position="static" color="primary" elevation={0}>
+      <AppBar
+        position="static"
+        color="primary"
+        elevation={0}
+        sx={{ borderBottom: "2px solid #CBC3E3" }}
+      >
         <Toolbar>
           {isMobile ? (
             <IconButton
@@ -113,7 +118,12 @@ function Navbar() {
 
           {!isMobile && (
             <Box
-              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                visibility: "hidden",
+              }}
             >
               {currentUser ? (
                 <Button

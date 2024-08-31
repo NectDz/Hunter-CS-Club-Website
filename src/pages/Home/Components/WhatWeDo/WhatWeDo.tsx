@@ -30,17 +30,18 @@ const WhatWeDo = () => {
         <WhatWeDoCard
           img={workshops}
           title="Workshops"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          description="Workshops on coding, project development, and getting internships! These sessions empower students with the skills needed to excel in the tech industry."
         />
         <WhatWeDoCard
           img={projects}
           title="Projects"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          description="Hands-on projects that allow students to apply their coding skills and collaborate on real-world tech solutions. These projects foster innovation and teamwork, preparing members for future challenges in the tech industry."
         />
         <WhatWeDoCard
           img={guestSpeakers}
           title="Guest Speakers"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
+          description="
+Guest speakers from the tech industry are invited to share insights and career advice, helping students connect with professionals and find inspiration for their own paths in tech."
         />
       </Grid>
     </Box>
