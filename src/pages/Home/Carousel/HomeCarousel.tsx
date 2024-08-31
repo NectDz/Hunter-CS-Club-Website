@@ -1,8 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Carousel from "react-material-ui-carousel";
-import img1 from "./../consts/img1.png";
-import img2 from "./../consts/img2.png";
+import img1 from "./consts/img1.jpg";
+import img2 from "./consts/img2.jpg";
+import img3 from "./consts/img3.jpg";
+import img6 from "./consts/img6.jpg";
+import img8 from "./consts/img8.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -28,7 +31,17 @@ const HomeCarousel = () => {
     {
       id: "img3",
       name: "Image 3",
-      source: img1,
+      source: img6,
+    },
+    {
+      id: "img4",
+      name: "Image 4",
+      source: img8,
+    },
+    {
+      id: "img5",
+      name: "Image 5",
+      source: img3,
     },
   ];
 
