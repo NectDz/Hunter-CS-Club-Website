@@ -126,7 +126,9 @@ const HomeCarousel = () => {
         </Typography>
         <Button
           component={Link}
-          to={"/about"}
+          to={
+            "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
+          }
           variant="outlined"
           sx={{
             borderRadius: "4px",

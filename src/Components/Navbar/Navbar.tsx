@@ -31,6 +31,16 @@ function Navbar() {
     navigate("/login");
   };
 
+  const handleNavItemClick = (route: string) => {
+    if (route === "faq") {
+      navigate("/", { state: { scrollTo: "faq" } });
+    } else if (route === "updates") {
+      navigate("/", { state: { scrollTo: "updates" } });
+    } else {
+      navigate(route);
+    }
+  };
+
   const drawerContent = (
     <Box
       sx={{
@@ -45,7 +55,7 @@ function Navbar() {
         <Button
           key={item.id}
           sx={{ textAlign: "left", padding: theme.spacing(2) }}
-          onClick={() => navigate(item.route)}
+          onClick={() => handleNavItemClick(item.route)}
         >
           {item.label}
         </Button>
@@ -135,7 +145,7 @@ function Navbar() {
               <Button
                 key={item.id}
                 sx={{ color: "white", padding: "10px 15px" }}
-                onClick={() => navigate(item.route)}
+                onClick={() => handleNavItemClick(item.route)}
               >
                 {item.label}
               </Button>
