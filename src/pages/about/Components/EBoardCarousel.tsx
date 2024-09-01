@@ -32,7 +32,7 @@ const boardMembers = [
     imageUrl: "src/pages/about/Components/consts/Eboard/Michelle.jpg",
   },
   {
-    name: "Matthew  LaBarca",
+    name: "George Guerrero",
     title: "Treasurer",
     imageUrl: "/src/pages/about/Components/consts/Eboard/Matt.jpg",
   },
