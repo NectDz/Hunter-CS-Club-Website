@@ -2,14 +2,12 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Logo from "./consts/Logo.png";
 import CompSci from "./consts/CompSci.png";
 import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
@@ -35,6 +33,8 @@ function Navbar() {
   const handleNavItemClick = (route: string) => {
     if (route === "faq") {
       navigate("/", { state: { scrollTo: "faq" } });
+    } else if (route === "about") {
+      navigate("/", { state: { scrollTo: "about" } });
     } else if (route === "updates") {
       navigate("/", { state: { scrollTo: "updates" } });
     } else {

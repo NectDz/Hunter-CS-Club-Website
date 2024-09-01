@@ -15,6 +15,7 @@ import HomeCarousel from "./Carousel/HomeCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
+  const aboutRef = useRef<HTMLDivElement>(null!);
   const updateRef = useRef<HTMLDivElement>(null!);
   const faqRef = useRef<HTMLDivElement>(null!);
   const location = useLocation();
@@ -23,6 +24,8 @@ const Home = () => {
     if (location.state?.scrollTo) {
       if (location.state.scrollTo === "faq" && faqRef.current) {
         faqRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "about" && aboutRef.current) {
+        aboutRef.current.scrollIntoView({ behavior: "smooth" });
       } else if (location.state.scrollTo === "updates" && updateRef.current) {
         updateRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -61,7 +64,7 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
+        <Box ref={aboutRef} sx={{ width: "100%" }}>
           <Grid sx={{ padding: 0 }}>
             <WhatWeDo />
           </Grid>
