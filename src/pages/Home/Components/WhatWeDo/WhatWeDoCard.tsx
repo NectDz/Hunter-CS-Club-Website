@@ -16,27 +16,27 @@ const WhatWeDoCard: React.FC<WhatWeDoCardProps> = ({
       item
       sx={{
         border: "3px solid #ffffff",
-        padding: "20px",
-        borderTopRightRadius: "200px",
-        borderTopLeftRadius: "200px",
+        padding: "30px",
+        borderTopRightRadius: "20px",
+        borderTopLeftRadius: "20px",
       }}
     >
       <img
         src={img}
         alt={title}
         style={{
-          width: "300px",
-          height: "350px",
-          maxWidth: "300px",
-          maxHeight: "350px",
+          width: "350px",
+          height: "400px",
+          maxWidth: "330px",
+          maxHeight: "470px",
           objectFit: "cover",
-          borderTopRightRadius: "200px",
-          borderTopLeftRadius: "200px",
+          borderTopRightRadius: "20px",
+          borderTopLeftRadius: "20px",
           border: ".5px solid #000000",
         }}
       />
       <Typography
-        variant="h6"
+        variant="h5"
         color="#EAC566"
         align="center"
         sx={{ marginTop: "12px" }}
