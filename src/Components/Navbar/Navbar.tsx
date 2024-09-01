@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "./consts/Logo.png";
+import CompSci from "./consts/CompSci.png";
 import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
 import { JOIN_US_URL } from "../../pages/Home/Components/JoinUs/consts/texts";
@@ -107,13 +108,14 @@ function Navbar() {
             }}
           >
             <img
-              src={Logo}
-              alt="Logo"
-              style={{ height: "40px", marginRight: "10px" }}
+              src={CompSci}
+              alt="CompSci Logo"
+              style={
+                isMobile
+                  ? { height: "40px", left: "42%", position: "absolute" }
+                  : { height: "50px" }
+              }
             />
-            <Typography variant="h6" noWrap component="div">
-              COMP SCI CLUB
-            </Typography>
           </Box>
 
           {!isMobile && (
