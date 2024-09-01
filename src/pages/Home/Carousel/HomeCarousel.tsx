@@ -119,72 +119,83 @@ const HomeCarousel = () => {
         flexDirection="column"
         justifyContent="center"
       >
-        <Typography
-          variant="h3"
-          align="left"
-          color="#EAC566"
-          gutterBottom
-          sx={{ fontWeight: "bold", fontFamily: "Arial, sans-serif" }}
-        >
-          Hello World!
-        </Typography>
-        <Typography
-          variant="h6"
-          align="left"
-          gutterBottom
+        <Box
           sx={{
-            lineHeight: 1.6,
-            fontFamily: "Arial, sans-serif",
-            fontSize: mobile ? "0.875rem" : "1.25rem",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Transparent dark background
+            padding: "20px", // Optional: Add some padding
+            width: "100%",
+            borderRadius: "8px", // Optional: Add border radius
+            margin: "0 auto",
+            boxSizing: "border-box",
           }}
         >
-          The Computer Science Club fosters a diverse and inclusive community of
-          students at Hunter College. Through collaborative learning and
-          hands-on projects, we aim to empower members to become innovative
-          problem solvers, critical thinkers, and ethical leaders in the rapidly
-          evolving field of tech.
-        </Typography>
-        {!mobile && (
-          <Box display="flex" gap="16px" marginTop="64px">
-            {images.map((img, index) => (
-              <img
-                src={img.source}
-                alt={img.name}
-                key={img.id}
-                width="96px"
-                height="96px"
-                style={{
-                  objectFit: "cover",
-                  border:
-                    current === index ? "2px solid white" : "1px solid #555",
-                  borderRadius: "8px",
-                }}
-              />
-            ))}
-          </Box>
-        )}
-        <Button
-          component={Link}
-          to={
-            "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
-          }
-          variant="outlined"
-          sx={{
-            borderRadius: "4px",
-            border: "1px solid white",
-            color: "white",
-            marginTop: "32px",
-            padding: "10px 20px",
-            fontFamily: "Arial, sans-serif",
-            fontWeight: "bold",
-            "&:hover": {
-              backgroundColor: "white",
-              color: "#333",
-            },
-          }}
-        >
-          Become an official member
-        </Button>
+          <Typography
+            variant="h3"
+            align="left"
+            color="#EAC566"
+            gutterBottom
+            sx={{ fontWeight: "bold", fontFamily: "Arial, sans-serif" }}
+          >
+            Hello World!
+          </Typography>
+          <Typography
+            variant="h6"
+            align="left"
+            gutterBottom
+            sx={{
+              lineHeight: 1.6,
+              fontFamily: "Arial, sans-serif",
+              fontSize: mobile ? "0.875rem" : "1.25rem",
+            }}
+          >
+            The Computer Science Club fosters a diverse and inclusive community
+            of students at Hunter College. Through collaborative learning and
+            hands-on projects, we aim to empower members to become innovative
+            problem solvers, critical thinkers, and ethical leaders in the
+            rapidly evolving field of tech.
+          </Typography>
+          {!mobile && (
+            <Box display="flex" gap="16px" marginTop="64px">
+              {images.map((img, index) => (
+                <img
+                  src={img.source}
+                  alt={img.name}
+                  key={img.id}
+                  width="96px"
+                  height="96px"
+                  style={{
+                    objectFit: "cover",
+                    border:
+                      current === index ? "2px solid white" : "1px solid #555",
+                    borderRadius: "8px",
+                  }}
+                />
+              ))}
+            </Box>
+          )}
+          <Button
+            component={Link}
+            to={
+              "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
+            }
+            variant="outlined"
+            sx={{
+              borderRadius: "4px",
+              border: "1px solid white",
+              color: "white",
+              marginTop: "32px",
+              padding: "10px 20px",
+              fontFamily: "Arial, sans-serif",
+              fontWeight: "bold",
+              "&:hover": {
+                backgroundColor: "white",
+                color: "#333",
+              },
+            }}
+          >
+            Become an official member
+          </Button>
+        </Box>
       </Grid>
     </Grid>
   );
