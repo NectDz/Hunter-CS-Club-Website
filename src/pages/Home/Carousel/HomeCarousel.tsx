@@ -121,10 +121,10 @@ const HomeCarousel = () => {
       >
         <Box
           sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)", // Transparent dark background
-            padding: "20px", // Optional: Add some padding
-            width: "100%",
-            borderRadius: "8px", // Optional: Add border radius
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            padding: mobile ? "20px" : "40px",
+            width: mobile ? "100%" : "90%",
+            borderRadius: "8px",
             margin: "0 auto",
             boxSizing: "border-box",
           }}
@@ -154,25 +154,6 @@ const HomeCarousel = () => {
             problem solvers, critical thinkers, and ethical leaders in the
             rapidly evolving field of tech.
           </Typography>
-          {!mobile && (
-            <Box display="flex" gap="16px" marginTop="64px">
-              {images.map((img, index) => (
-                <img
-                  src={img.source}
-                  alt={img.name}
-                  key={img.id}
-                  width="96px"
-                  height="96px"
-                  style={{
-                    objectFit: "cover",
-                    border:
-                      current === index ? "2px solid white" : "1px solid #555",
-                    borderRadius: "8px",
-                  }}
-                />
-              ))}
-            </Box>
-          )}
           <Button
             component={Link}
             to={
@@ -195,6 +176,25 @@ const HomeCarousel = () => {
           >
             Become an official member
           </Button>
+          {!mobile && (
+            <Box display="flex" gap="16px" marginTop="64px">
+              {images.map((img, index) => (
+                <img
+                  src={img.source}
+                  alt={img.name}
+                  key={img.id}
+                  width="96px"
+                  height="96px"
+                  style={{
+                    objectFit: "cover",
+                    border:
+                      current === index ? "2px solid white" : "1px solid #555",
+                    borderRadius: "8px",
+                  }}
+                />
+              ))}
+            </Box>
+          )}
         </Box>
       </Grid>
     </Grid>
