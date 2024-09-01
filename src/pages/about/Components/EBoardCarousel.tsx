@@ -12,9 +12,9 @@ const boardMembers = [
     imageUrl: "src/pages/about/Components/consts/Eboard/Shoruz.jpg",
   },
   {
-    name: "Muhammad Chaudhry",
+    name: "Sumayia Rashid",
     title: "Vice President",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Mo.jpg",
+    imageUrl: "src/pages/about/Components/consts/Eboard/Sum.jpg",
   },
   {
     name: "Kevin Granados",
@@ -22,9 +22,9 @@ const boardMembers = [
     imageUrl: "src/pages/about/Components/consts/Eboard/Kev.jpg",
   },
   {
-    name: "Sumayia Rashid",
-    title: "Secretary",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Sum.jpg",
+    name: "Justin Chu",
+    title: "Tech Lead",
+    imageUrl: "src/pages/about/Components/consts/Eboard/Justin.jpg",
   },
   {
     name: "Michelle Lee",
@@ -37,24 +37,24 @@ const boardMembers = [
     imageUrl: "/src/pages/about/Components/consts/Eboard/Matt.jpg",
   },
   {
-    name: "George Sucuzhañay",
+    name: "Kartic Vanjani",
     title: "Event Coordinator",
-    imageUrl: "src/pages/about/Components/image.png",
+    imageUrl: "src/pages/about/Components/consts/Eboard/kartic.jpg",
   },
   {
     name: "Hridia Tanha",
-    title: "Marketing Manager",
+    title: "Secretary",
     imageUrl: "src/pages/about/Components/consts/Eboard/Hridia.jpg",
   },
   {
     name: "Ashley Ngo",
-    title: "Marketing Manager",
+    title: "Social Media Manager",
     imageUrl: "src/pages/about/Components/consts/Eboard/Ash.jpg",
   },
   {
-    name: "Sara Perera",
-    title: "Graphic Designer",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Sara.jpg",
+    name: "Ayesha Ahmad",
+    title: "Marketing Manager",
+    imageUrl: "src/pages/about/Components/consts/Eboard/Ayesha.jpg",
   },
 ];
 
