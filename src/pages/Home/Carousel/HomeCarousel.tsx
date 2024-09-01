@@ -8,6 +8,7 @@ import img5 from "./consts/img5.jpeg";
 import img6 from "./consts/img6.jpg";
 import img8 from "./consts/img8.png";
 import hunter from "./consts/hunter.png";
+import arrowImage from "./consts/arrowImage.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -169,20 +170,41 @@ const HomeCarousel = () => {
             variant="outlined"
             sx={{
               borderRadius: "4px",
-              border: "1px solid white",
-              color: "white",
+              border: "2px solid #EAC566", // Solid border with the desired color
+              color: "#EAC566",
               marginTop: "32px",
               padding: "10px 20px",
               fontFamily: "Arial, sans-serif",
               fontWeight: "bold",
+              textTransform: "uppercase",
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: "transparent !important", // Override any background color change on hover
               "&:hover": {
-                backgroundColor: "white",
-                color: "#333",
+                border: "2px solid #f4e2b2 !important",
+                backgroundColor: "transparent !important", // Force the background to stay transparent
+                color: "#f4e2b2 !important", // Keep the text color the same
+                "& img": {
+                  // Only target the arrow image for hover effect
+                  transform: "translateX(8px)", // Move the arrow to the right
+                },
               },
             }}
           >
             Become an official member
+            <Box
+              component="img"
+              src={arrowImage}
+              alt="Arrow"
+              sx={{
+                marginLeft: "8px",
+                width: "50px",
+                height: "auto",
+                transition: "transform 0.3s ease", // Smooth transition for the arrow
+              }}
+            />
           </Button>
+
           {!mobile && (
             <Box display="flex" gap="16px" marginTop="64px">
               {images.map((img, index) => (
