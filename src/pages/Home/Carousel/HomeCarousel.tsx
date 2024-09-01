@@ -7,6 +7,7 @@ import img3 from "./consts/img3.jpg";
 import img5 from "./consts/img5.jpeg";
 import img6 from "./consts/img6.jpg";
 import img8 from "./consts/img8.png";
+import hunter from "./consts/hunter.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -111,13 +112,19 @@ const HomeCarousel = () => {
         md={6}
         order={{ xs: 2, md: 2 }}
         color="white"
-        bgcolor="#4d2e91"
         padding="32px 64px"
         alignContent="center"
         maxHeight={{ xs: "100%", md: maxHeight }}
         display="flex"
         flexDirection="column"
         justifyContent="center"
+        sx={{
+          backgroundImage: `url(${hunter})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundColor: "rgba(77, 46, 145, 1)",
+          backgroundBlendMode: "overlay",
+        }}
       >
         <Box
           sx={{
