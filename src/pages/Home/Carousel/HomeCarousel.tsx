@@ -53,6 +53,14 @@ const HomeCarousel = () => {
     },
   ];
 
+  const handleScroll = (index) => {
+    const scrollIndex = index * 96; // Assuming each thumbnail is 96px wide
+    document.getElementById("thumbnail-container").scrollTo({
+      left: scrollIndex,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Grid
       container
@@ -86,10 +94,18 @@ const HomeCarousel = () => {
             },
           }}
           next={() => {
-            setCurrent((prev) => (prev + 1) % images.length);
+            setCurrent((prev) => {
+              const nextIndex = (prev + 1) % images.length;
+              handleScroll(nextIndex);
+              return nextIndex;
+            });
           }}
           prev={() => {
-            setCurrent((prev) => (prev - 1 + images.length) % images.length);
+            setCurrent((prev) => {
+              const prevIndex = (prev - 1 + images.length) % images.length;
+              handleScroll(prevIndex);
+              return prevIndex;
+            });
           }}
         >
           {images.map((img) => (
@@ -206,7 +222,17 @@ const HomeCarousel = () => {
           </Button>
 
           {!mobile && (
-            <Box display="flex" gap="16px" marginTop="64px">
+            <Box
+              id="thumbnail-container"
+              display="flex"
+              gap="16px"
+              marginTop="64px"
+              maxWidth="100%"
+              overflow="hidden" // Hide the overflowing part
+              sx={{
+                whiteSpace: "nowrap", // Prevent line breaks in the thumbnails
+              }}
+            >
               {images.map((img, index) => (
                 <img
                   src={img.source}
@@ -219,6 +245,11 @@ const HomeCarousel = () => {
                     border:
                       current === index ? "2px solid white" : "1px solid #555",
                     borderRadius: "8px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setCurrent(index);
+                    handleScroll(index);
                   }}
                 />
               ))}
