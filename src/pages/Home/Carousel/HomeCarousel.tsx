@@ -164,6 +164,7 @@ const HomeCarousel = () => {
           </Typography>
           <Button
             component={Link}
+            target="_blank"
             to={
               "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
             }
