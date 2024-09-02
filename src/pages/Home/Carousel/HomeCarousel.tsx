@@ -128,18 +128,15 @@ const HomeCarousel = () => {
         }}
       >
       <Box
-  sx={{
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: mobile ? "80px 40px" : "40px",
-    width: mobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
-    borderRadius: "8px",
-    margin: mobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
-    boxSizing: "border-box",
-  }}
->
-
-
-
+       sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          padding: mobile ? "80px 40px" : "40px",
+          width: mobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
+          borderRadius: "8px",
+          margin: mobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
+          boxSizing: "border-box",
+        }}
+      >
           <Typography
             variant="h3"
             align="left"
