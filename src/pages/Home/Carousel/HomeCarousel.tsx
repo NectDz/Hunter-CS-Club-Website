@@ -53,12 +53,15 @@ const HomeCarousel = () => {
     },
   ];
 
-  const handleScroll = (index) => {
+  const handleScroll = (index: number) => {
     const scrollIndex = index * 96; // Assuming each thumbnail is 96px wide
-    document.getElementById("thumbnail-container").scrollTo({
-      left: scrollIndex,
-      behavior: "smooth",
-    });
+    const element = document.getElementById("thumbnail-container");
+    if (element) {
+      element.scrollTo({
+        left: scrollIndex,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
