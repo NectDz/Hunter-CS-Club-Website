@@ -12,15 +12,16 @@ const WhatWeDoCard: React.FC<WhatWeDoCardProps> = ({
   description,
 }) => {
   return (
-    <Grid
-      item
-      sx={{
-        border: "3px solid #ffffff",
-        padding: "30px",
-        borderTopRightRadius: "20px",
-        borderTopLeftRadius: "20px",
-      }}
-    >
+<Grid
+  item
+  sx={{
+    border: "2px solid #EAC566",
+    padding: "30px",
+    borderTopRightRadius: "20px",
+    borderTopLeftRadius: "20px",
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // This will make the background transparent dark
+  }}
+>
       <img
         src={img}
         alt={title}
