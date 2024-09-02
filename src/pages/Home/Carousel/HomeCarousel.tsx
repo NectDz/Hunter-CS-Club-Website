@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Carousel from "react-material-ui-carousel";
@@ -11,47 +12,42 @@ import hunter from "./consts/hunter.png";
 import arrowImage from "./consts/arrowImage.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const maxHeight = "800px";
 const minHeight = "500px";
 
 const HomeCarousel = () => {
   const [current, setCurrent] = useState(0);
+  const [displayText, setDisplayText] = useState("");
   const mobile = useMediaQuery("(max-width: 899px)");
 
   const images = [
-    {
-      id: "img1",
-      name: "Image 1",
-      source: img1,
-    },
-    {
-      id: "img2",
-      name: "Image 2",
-      source: img2,
-    },
-    {
-      id: "img3",
-      name: "Image 3",
-      source: img5,
-    },
-    {
-      id: "img4",
-      name: "Image 4",
-      source: img8,
-    },
-    {
-      id: "img5",
-      name: "Image 5",
-      source: img3,
-    },
-    {
-      id: "img6",
-      name: "Image 6",
-      source: img6,
-    },
+    { id: "img1", name: "Image 1", source: img1 },
+    { id: "img2", name: "Image 2", source: img2 },
+    { id: "img3", name: "Image 3", source: img5 },
+    { id: "img4", name: "Image 4", source: img8 },
+    { id: "img5", name: "Image 5", source: img3 },
+    { id: "img6", name: "Image 6", source: img6 },
   ];
+
+  useEffect(() => {
+    if (!mobile) {
+      setDisplayText(""); // Reset displayText
+      const fullText = "Heello World!";
+      let index = 0;
+
+      const typingInterval = setInterval(() => {
+        if (index < fullText.length) {
+          setDisplayText((prev) => prev + fullText.charAt(index));
+          index++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, 100);
+
+      return () => clearInterval(typingInterval);
+    }
+  }, [mobile]);
 
   const handleScroll = (index: number) => {
     const scrollIndex = index * 96; // Assuming each thumbnail is 96px wide
@@ -161,9 +157,25 @@ const HomeCarousel = () => {
             align="left"
             color="#EAC566"
             gutterBottom
-            sx={{ fontWeight: "bold", fontFamily: "Arial, sans-serif" }}
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "Arial, sans-serif",
+              position: "relative",
+              display: "inline-block",
+              "&::after": {
+                content: mobile ? "''" : "'|'", // Conditionally render the cursor effect
+                position: "absolute",
+                right: "-20px", // Adjust the position of the cursor to add space
+                animation: "blink 1s infinite", // Blinking animation
+              },
+              "@keyframes blink": {
+                "0%": { opacity: 1 },
+                "50%": { opacity: 0 },
+                "100%": { opacity: 1 },
+              },
+            }}
           >
-            Hello World!
+            {mobile ? "Hello World!" : displayText}
           </Typography>
           <Typography
             variant="h6"

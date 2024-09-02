@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
+import hunter from "./consts/hunter.png";
 
 const NewsLetter = () => {
   const [email, setEmail] = useState("");
@@ -27,6 +28,10 @@ const NewsLetter = () => {
         paddingBottom: "140px",
         paddingX: "100px",
         marginX: "-49px", //Removes parents' horizontal padding
+        backgroundImage: `url(${hunter})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundBlendMode: "overlay"
       }}
     >
       <Typography
@@ -66,11 +71,16 @@ const NewsLetter = () => {
           type="submit"
           variant="contained"
           sx={{
-            backgroundColor: "#8D7CB6",
+            backgroundColor: "#EAC566",
             color: "#FFFFFF",
             borderRadius: "0px 50px 50px 0px",
             paddingX: "34px",
             textTransform: "none",
+            '&:hover': {
+              backgroundColor: "#dbb34d !important", 
+              boxShadow: "none !important", 
+              color: "#FFFFFF !important",
+            },
           }}
         >
           Subscribe

@@ -3,10 +3,15 @@ import WhatWeDoCard from "./WhatWeDoCard";
 import workshops from "./consts/workshops.png";
 import projects from "./consts/projects.png";
 import guestSpeakers from "./consts/guestSpeakers.png";
+import gameRoom from "./consts/gameRoom.png";
 
 const WhatWeDo = () => {
   return (
-    <Box sx={{ background: "#4d2e91", padding: "64px" }}>
+    <Box sx={{ background: "#4d2e91", padding: "64px",  backgroundImage: `url(${gameRoom})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundColor: "rgba(77, 46, 145, 1)",
+    backgroundBlendMode: "overlay", }}>
       <Typography
         variant="h4"
         align="center"
