@@ -34,7 +34,7 @@ const boardMembers = [
   {
     name: "George Guerrero",
     title: "Treasurer",
-    imageUrl: "/src/pages/about/Components/consts/Eboard/Matt.jpg",
+    imageUrl: "/src/pages/about/Components/consts/Eboard/george.jpg",
   },
   {
     name: "Kartic Vanjani",

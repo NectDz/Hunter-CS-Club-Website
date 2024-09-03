@@ -15,6 +15,7 @@ import Sara from "../../about/Components/consts/Eboard/Sara.jpg";
 import Justin from "../../about/Components/consts/Eboard/Justin.jpg";
 import Kartic from "../../about/Components/consts/Eboard/kartic.jpg";
 import Ayesha from "../../about/Components/consts/Eboard/Ayesha.jpg";
+import George from "../../about/Components/consts/Eboard/george.jpg";
 
 
 const boardMembers = [
@@ -57,7 +58,7 @@ const boardMembers = [
   {
     name: "George Guerrero",
     title: "Treasurer",
-    imageUrl: "",
+    imageUrl: George,
   },
   {
     name: "Kartic Vanjani",
