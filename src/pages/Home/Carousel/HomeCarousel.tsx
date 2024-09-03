@@ -142,16 +142,16 @@ const HomeCarousel = () => {
           backgroundBlendMode: "overlay",
         }}
       >
-      <Box
-       sx={{
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-          padding: mobile ? "80px 40px" : "40px",
-          width: mobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
-          borderRadius: "8px",
-          margin: mobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
-          boxSizing: "border-box",
-        }}
-      >
+        <Box
+          sx={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            padding: mobile ? "80px 40px" : "40px",
+            width: mobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
+            borderRadius: "8px",
+            margin: mobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
+            boxSizing: "border-box",
+          }}
+        >
           <Typography
             variant="h3"
             align="left"
@@ -184,7 +184,7 @@ const HomeCarousel = () => {
             sx={{
               lineHeight: 1.6,
               fontFamily: "Arial, sans-serif",
-              fontSize: mobile ? "0.875rem" : "1.25rem",
+              fontSize: mobile ? "1.00rem" : "1.25rem",
             }}
           >
             The Computer Science Club fosters a diverse and inclusive community
