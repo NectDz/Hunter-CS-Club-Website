@@ -42,9 +42,11 @@ const Footer = () => {
               <IconButton aria-label="Twitter" size="large" color="inherit">
                 <TwitterIcon />
               </IconButton>
-              <IconButton aria-label="Instagram" size="large" color="inherit">
-                <InstagramIcon />
+              <a href="https://www.instagram.com/huntercsclub/" target="_blank" rel="noopener noreferrer">
+             <IconButton aria-label="Instagram" size="large" color = "inherit">
+             <InstagramIcon sx={{ color: 'white' }} />
               </IconButton>
+              </a>
             </Grid>
           </Grid>
         </Toolbar>

@@ -70,7 +70,7 @@ function Navbar() {
         position="static"
         color="primary"
         elevation={0}
-        sx={{ borderBottom: "2px solid #CBC3E3" }}
+        sx={{ borderBottom: "2px solid #EAC566" }}
       >
         <Toolbar>
           {isMobile ? (

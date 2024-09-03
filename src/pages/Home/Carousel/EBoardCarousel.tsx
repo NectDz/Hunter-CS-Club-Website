@@ -4,14 +4,16 @@ import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Shoruz from "../../about/Components/consts/Eboard/Shoruz.jpg";
-import Mo from "../../about/Components/consts/Eboard/Mo.jpg";
 import Kev from "../../about/Components/consts/Eboard/Kev.jpg";
 import Sum from "../../about/Components/consts/Eboard/Sum.jpg";
 import Michelle from "../../about/Components/consts/Eboard/Michelle.jpg";
-import Matt from "../../about/Components/consts/Eboard/Matt.jpg";
 import Hridia from "../../about/Components/consts/Eboard/Hridia.jpg";
 import Ash from "../../about/Components/consts/Eboard/Ash.jpg";
-import Sara from "../../about/Components/consts/Eboard/Sara.jpg";
+import Justin from "../../about/Components/consts/Eboard/Justin.jpg";
+import Kartic from "../../about/Components/consts/Eboard/kartic.jpg";
+import Ayesha from "../../about/Components/consts/Eboard/Ayesha.jpg";
+import George from "../../about/Components/consts/Eboard/george.jpg";
+
 
 const boardMembers = [
   // Add all board members' details here
@@ -21,9 +23,9 @@ const boardMembers = [
     imageUrl: Shoruz,
   },
   {
-    name: "Muhammad Chaudhry",
+    name: "Sumayia Rashid",
     title: "Vice President",
-    imageUrl: Mo,
+    imageUrl: Sum,
   },
   {
     name: "Kevin Granados",
@@ -31,9 +33,14 @@ const boardMembers = [
     imageUrl: Kev,
   },
   {
-    name: "Sumayia Rashid",
+    name: "Justin Chu",
+    title: "Tech Lead",
+    imageUrl: Justin,
+  },
+  {
+    name: "Hridia Tanha",
     title: "Secretary",
-    imageUrl: Sum,
+    imageUrl: Hridia,
   },
   {
     name: "Michelle Lee",
@@ -41,29 +48,29 @@ const boardMembers = [
     imageUrl: Michelle,
   },
   {
-    name: "Matthew  LaBarca",
-    title: "Treasurer",
-    imageUrl: Matt,
-  },
-  {
-    name: "George Sucuzhañay",
-    title: "Event Coordinator",
+    name: "Nico Bautista-Libreros",
+    title: "Graphic Designer",
     imageUrl: "",
   },
   {
-    name: "Hridia Tanha",
+    name: "George Guerrero",
+    title: "Treasurer",
+    imageUrl: George,
+  },
+  {
+    name: "Kartic Vanjani",
+    title: "Event Coordinator",
+    imageUrl: Kartic,
+  },
+  {
+    name: "Ayesha Ahmed",
     title: "Marketing Manager",
-    imageUrl: Hridia,
+    imageUrl: Ayesha,
   },
   {
     name: "Ashley Ngo",
-    title: "Marketing Manager",
+    title: "Social Media Manager",
     imageUrl: Ash,
-  },
-  {
-    name: "Sara Perera",
-    title: "Graphic Designer",
-    imageUrl: Sara,
   },
 ];
 
