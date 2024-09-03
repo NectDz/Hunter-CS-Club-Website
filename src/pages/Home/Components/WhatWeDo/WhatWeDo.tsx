@@ -7,11 +7,17 @@ import gameRoom from "./consts/gameRoom.png";
 
 const WhatWeDo = () => {
   return (
-    <Box sx={{ background: "#4d2e91", padding: "64px",  backgroundImage: `url(${gameRoom})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundColor: "rgba(77, 46, 145, 1)",
-    backgroundBlendMode: "overlay", }}>
+    <Box
+      sx={{
+        background: "#4d2e91",
+        padding: "64px",
+        backgroundImage: `url(${gameRoom})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "rgba(77, 46, 145, 1)",
+        backgroundBlendMode: "overlay",
+      }}
+    >
       <Typography
         variant="h4"
         align="center"
@@ -40,7 +46,7 @@ const WhatWeDo = () => {
         <WhatWeDoCard
           img={projects}
           title="Projects"
-          description="Hands-on projects that allow students to apply their coding skills and collaborate on real-world tech solutions. These projects foster innovation and teamwork, preparing members for future challenges in the tech industry."
+          description="Hands-on projects that allow students to apply their coding skills and collaborate on real-world tech solutions. These projects prepare members for future challenges in the tech industry."
         />
         <WhatWeDoCard
           img={guestSpeakers}
