@@ -142,16 +142,16 @@ const HomeCarousel = () => {
           backgroundBlendMode: "overlay",
         }}
       >
-        <Box
-          sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            padding: mobile ? "20px" : "40px",
-            width: mobile ? "100%" : "90%",
-            borderRadius: "8px",
-            margin: "0 auto",
-            boxSizing: "border-box",
-          }}
-        >
+      <Box
+       sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          padding: mobile ? "80px 40px" : "40px",
+          width: mobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
+          borderRadius: "8px",
+          margin: mobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
+          boxSizing: "border-box",
+        }}
+      >
           <Typography
             variant="h3"
             align="left"
@@ -195,6 +195,7 @@ const HomeCarousel = () => {
           </Typography>
           <Button
             component={Link}
+            target="_blank"
             to={
               "https://docs.google.com/forms/d/e/1FAIpQLSc7GuIvMOy-VsetYr_-PSvH5km3T18VP8cYB6BhiJjpEC09wg/viewform"
             }
