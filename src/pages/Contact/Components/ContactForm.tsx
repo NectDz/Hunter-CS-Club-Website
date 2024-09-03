@@ -1,12 +1,12 @@
-import React, { useState, FormEvent } from 'react';
-import { Box, TextField, Button, Grid, Paper, Typography } from '@mui/material';
+import React, { useState, FormEvent } from "react";
+import { Box, TextField, Button, Grid, Paper } from "@mui/material";
 
 const ContactForm: React.FC = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [discordUsername, setDiscordUsername] = useState('');
-  const [subject, setSubject] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [discordUsername, setDiscordUsername] = useState("");
+  const [subject, setSubject] = useState("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,7 +15,17 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Paper elevation={0} sx={{ padding: 4, margin: 'auto', maxWidth: 800, border:2, borderColor: 'purple', borderRadius: 4}}>
+    <Paper
+      elevation={0}
+      sx={{
+        padding: 4,
+        margin: "auto",
+        maxWidth: 800,
+        border: 2,
+        borderColor: "purple",
+        borderRadius: 4,
+      }}
+    >
       <Box
         component="form"
         noValidate
@@ -82,7 +92,7 @@ const ContactForm: React.FC = () => {
             />
           </Grid>
           <Grid item xs={12} sm={3}>
-            <Button type="submit" variant="outlined" color="inherit" fullWidth >
+            <Button type="submit" variant="outlined" color="inherit" fullWidth>
               Submit
             </Button>
           </Grid>

@@ -1,11 +1,9 @@
-import React from "react";
 import Grid from "@mui/material/Grid";
-import { Typography, Button, Modal, Backdrop, Fade } from "@mui/material";
+import { Typography } from "@mui/material";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
 import UpdateTextEditor from "./Components/UpdateTextEditor";
-import UpdateCard from "./Components/UpdatesFeed/UpdateCard";
 import UpdateFeed from "./Components/UpdatesFeed/UpdateFeed";
 const Updates = () => {
   const { currentUser } = useAuth();

@@ -1,5 +1,4 @@
 // EBoardCarousel.jsx
-import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";

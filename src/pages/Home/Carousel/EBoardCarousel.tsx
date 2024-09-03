@@ -1,61 +1,69 @@
 // EBoardCarousel.jsx
-import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import Shoruz from "../../about/Components/consts/Eboard/Shoruz.jpg";
+import Mo from "../../about/Components/consts/Eboard/Mo.jpg";
+import Kev from "../../about/Components/consts/Eboard/Kev.jpg";
+import Sum from "../../about/Components/consts/Eboard/Sum.jpg";
+import Michelle from "../../about/Components/consts/Eboard/Michelle.jpg";
+import Matt from "../../about/Components/consts/Eboard/Matt.jpg";
+import Hridia from "../../about/Components/consts/Eboard/Hridia.jpg";
+import Ash from "../../about/Components/consts/Eboard/Ash.jpg";
+import Sara from "../../about/Components/consts/Eboard/Sara.jpg";
 
 const boardMembers = [
   // Add all board members' details here
   {
     name: "Shohruz Ernazarov",
     title: "President",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Shoruz.jpg",
+    imageUrl: Shoruz,
   },
   {
     name: "Muhammad Chaudhry",
     title: "Vice President",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Mo.jpg",
+    imageUrl: Mo,
   },
   {
     name: "Kevin Granados",
     title: "Tech Lead",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Kev.jpg",
+    imageUrl: Kev,
   },
   {
     name: "Sumayia Rashid",
     title: "Secretary",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Sum.jpg",
+    imageUrl: Sum,
   },
   {
     name: "Michelle Lee",
     title: "Graphic Designer",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Michelle.jpg",
+    imageUrl: Michelle,
   },
   {
     name: "Matthew  LaBarca",
     title: "Treasurer",
-    imageUrl: "/src/pages/about/Components/consts/Eboard/Matt.jpg",
+    imageUrl: Matt,
   },
   {
     name: "George Sucuzhañay",
     title: "Event Coordinator",
-    imageUrl: "src/pages/about/Components/image.png",
+    imageUrl: "",
   },
   {
     name: "Hridia Tanha",
     title: "Marketing Manager",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Hridia.jpg",
+    imageUrl: Hridia,
   },
   {
     name: "Ashley Ngo",
     title: "Marketing Manager",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Ash.jpg",
+    imageUrl: Ash,
   },
   {
     name: "Sara Perera",
     title: "Graphic Designer",
-    imageUrl: "src/pages/about/Components/consts/Eboard/Sara.jpg",
+    imageUrl: Sara,
   },
 ];
 

@@ -1,10 +1,10 @@
-import React from "react";
+import { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Typography from "@mui/material/Typography";
 import GridItem from "../../Components/common/GridItem";
 import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
-import TextEditor from "../../Components/TextEditor";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
@@ -15,6 +15,23 @@ import HomeCarousel from "./Carousel/HomeCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
+  const aboutRef = useRef<HTMLDivElement>(null!);
+  const updateRef = useRef<HTMLDivElement>(null!);
+  const faqRef = useRef<HTMLDivElement>(null!);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      if (location.state.scrollTo === "faq" && faqRef.current) {
+        faqRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "about" && aboutRef.current) {
+        aboutRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "updates" && updateRef.current) {
+        updateRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   console.log(currentUser);
 
   return (
@@ -29,12 +46,17 @@ const Home = () => {
         sx={{ width: "100%" }}
       >
         <Box sx={{ width: "100%" }}>
-          <Grid sx={{ paddingX: 0 }}>
+          <Grid
+            sx={{
+              paddingX: 0,
+              paddingY: { xs: 0, sm: 0 }, // 0 for mobile (xs), 2 for small screens and up
+            }}
+          >
             <HomeCarousel />
           </Grid>
         </Box>
 
-        <Box>
+        <Box ref={updateRef}>
           <GridItem>
             <Typography variant="h4" align="center">
               Latest
@@ -42,7 +64,7 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
+        <Box ref={aboutRef} sx={{ width: "100%" }}>
           <Grid sx={{ padding: 0 }}>
             <WhatWeDo />
           </Grid>
@@ -53,6 +75,12 @@ const Home = () => {
             <Typography variant="h4" align="center">
               <JoinUs />
             </Typography>
+          </GridItem>
+        </Box>
+
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
+            <NewsLetter />
           </GridItem>
         </Box>
 
@@ -71,13 +99,7 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <NewsLetter />
-          </GridItem>
-        </Box>
-
-        <Box>
+        <Box ref={faqRef}>
           <GridItem>
             <FAQSection />
           </GridItem>

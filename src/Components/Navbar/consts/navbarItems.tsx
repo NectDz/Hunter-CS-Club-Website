@@ -6,26 +6,28 @@ export const mainNavbarItems = [
   },
   {
     id: 1,
+    label: "About",
+    route: "about",
+  },
+  {
+    id: 2,
     label: "Updates",
     route: "updates",
   },
+  /* 
   {
     id: 2,
     label: "Activities",
     route: "activities",
   },
+  */
   {
     id: 3,
-    label: "About",
-    route: "about",
-  },
-  {
-    id: 4,
     label: "FAQ",
     route: "faq",
   },
   {
-    id: 5,
+    id: 4,
     label: "Contact",
     route: "contact",
   },

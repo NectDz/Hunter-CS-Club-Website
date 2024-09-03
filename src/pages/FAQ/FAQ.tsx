@@ -15,7 +15,7 @@ const FAQ = () => {
       spacing={8}
       justifyContent="center"
       alignItems="center"
-      style={{ marginTop: isMobile ? "60px" : "0px" }}
+      style={{ marginBottom: isMobile ? "0px" : "150px" }}
     >
       <Grid item xs={12}>
         {/* Title */}
@@ -38,7 +38,7 @@ const FAQ = () => {
               Questions
             </span>
           </Typography>
-          {/* Questions  */}
+          {/* Questions */}
           <div>
             {faqs.map((faq, index) => {
               return (

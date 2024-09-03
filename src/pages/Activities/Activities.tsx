@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Grid, Typography, Button } from "@mui/material";
@@ -7,6 +6,7 @@ import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
 import ActivityCard from "./Components/ActivityPosts/ActivityCard";
 import ActivityFeed from "./Components/ActivityPosts/ActivitiesFeed";
+import { Timestamp } from "firebase/firestore";
 
 const Activities = () => {
   const theme = useTheme();
@@ -17,6 +17,7 @@ const Activities = () => {
   const eventTime = "";
   // This checks if the current path is exactly '/activities'
   const isMainActivitiesRoute = location.pathname === "/activities";
+  const mockedTimestamp = Timestamp.fromDate(new Date());
 
   const handleAddActivity = () => {
     navigate("/activities/create");

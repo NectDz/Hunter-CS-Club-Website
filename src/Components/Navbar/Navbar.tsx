@@ -2,14 +2,13 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
 import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Logo from "./consts/Logo.png";
+import CompSci from "./consts/CompSci.png";
 import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
 import { JOIN_US_URL } from "../../pages/Home/Components/JoinUs/consts/texts";
@@ -31,6 +30,18 @@ function Navbar() {
     navigate("/login");
   };
 
+  const handleNavItemClick = (route: string) => {
+    if (route === "faq") {
+      navigate("/", { state: { scrollTo: "faq" } });
+    } else if (route === "about") {
+      navigate("/", { state: { scrollTo: "about" } });
+    } else if (route === "updates") {
+      navigate("/", { state: { scrollTo: "updates" } });
+    } else {
+      navigate(route);
+    }
+  };
+
   const drawerContent = (
     <Box
       sx={{
@@ -45,7 +56,7 @@ function Navbar() {
         <Button
           key={item.id}
           sx={{ textAlign: "left", padding: theme.spacing(2) }}
-          onClick={() => navigate(item.route)}
+          onClick={() => handleNavItemClick(item.route)}
         >
           {item.label}
         </Button>
@@ -55,7 +66,12 @@ function Navbar() {
 
   return (
     <>
-      <AppBar position="static" color="primary" elevation={0}>
+      <AppBar
+        position="static"
+        color="primary"
+        elevation={0}
+        sx={{ borderBottom: "2px solid #CBC3E3" }}
+      >
         <Toolbar>
           {isMobile ? (
             <IconButton
@@ -92,18 +108,24 @@ function Navbar() {
             }}
           >
             <img
-              src={Logo}
-              alt="Logo"
-              style={{ height: "40px", marginRight: "10px" }}
+              src={CompSci}
+              alt="CompSci Logo"
+              style={
+                isMobile
+                  ? { height: "40px", left: "42%", position: "absolute" }
+                  : { height: "50px" }
+              }
             />
-            <Typography variant="h6" noWrap component="div">
-              COMP SCI CLUB
-            </Typography>
           </Box>
 
           {!isMobile && (
             <Box
-              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                visibility: "hidden",
+              }}
             >
               {currentUser ? (
                 <Button
@@ -135,7 +157,7 @@ function Navbar() {
               <Button
                 key={item.id}
                 sx={{ color: "white", padding: "10px 15px" }}
-                onClick={() => navigate(item.route)}
+                onClick={() => handleNavItemClick(item.route)}
               >
                 {item.label}
               </Button>
