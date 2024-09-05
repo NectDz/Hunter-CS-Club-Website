@@ -1,24 +1,35 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import axios from "axios";
 import hunter from "./consts/hunter.png";
 
 const NewsLetter = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = (evt: React.SyntheticEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:5000/subscribe", {
-        email,
-      });
-      setMessage(response.data.message); // Display success message
-    } catch (error) {
-      setMessage("Subscription failed. Please try again.");
+  
+    // Get the current list of emails from localStorage or initialize an empty array if not present
+    const storedEmails = JSON.parse(localStorage.getItem("emails") || "[]"); // Fallback to an empty array
+  
+    // Check if the email is already subscribed
+    if (storedEmails.includes(email)) {
+      setMessage("Email is already subscribed.");
+    } else {
+      // Add the new email to the list
+      storedEmails.push(email);
+  
+      // Store the updated list in localStorage
+      localStorage.setItem("emails", JSON.stringify(storedEmails));
+  
+      // Update message to show success
+      setMessage("Successfully subscribed!");
     }
+  
+    // Clear the input field
+    setEmail("");
   };
+  
 
   return (
     <Box
@@ -27,11 +38,11 @@ const NewsLetter = () => {
         paddingTop: "100px",
         paddingBottom: "140px",
         paddingX: "100px",
-        marginX: "-49px", //Removes parents' horizontal padding
+        marginX: "-49px",
         backgroundImage: `url(${hunter})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundBlendMode: "overlay"
+        backgroundBlendMode: "overlay",
       }}
     >
       <Typography
@@ -54,7 +65,7 @@ const NewsLetter = () => {
           id="email-address"
           variant="standard"
           placeholder="Email Address"
-          value={email} // Updated from defaultValue to value
+          value={email}
           onChange={({ target }) => setEmail(target.value)}
           sx={{
             backgroundColor: "#FFFFFF",
@@ -76,9 +87,9 @@ const NewsLetter = () => {
             borderRadius: "0px 50px 50px 0px",
             paddingX: "34px",
             textTransform: "none",
-            '&:hover': {
-              backgroundColor: "#dbb34d !important", 
-              boxShadow: "none !important", 
+            "&:hover": {
+              backgroundColor: "#dbb34d !important",
+              boxShadow: "none !important",
               color: "#FFFFFF !important",
             },
           }}
