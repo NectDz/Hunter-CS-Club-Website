@@ -1,35 +1,39 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { db } from "../../../../firebase-config"; // Ensure your Firebase config is properly set
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import hunter from "./consts/hunter.png";
 
 const NewsLetter = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (evt: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
     evt.preventDefault();
   
-    // Get the current list of emails from localStorage or initialize an empty array if not present
-    const storedEmails = JSON.parse(localStorage.getItem("emails") || "[]"); // Fallback to an empty array
+    try {
+      // Check if email is not empty and valid (basic email format check)
+      if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        setMessage("Please enter a valid email.");
+        return;
+      }
   
-    // Check if the email is already subscribed
-    if (storedEmails.includes(email)) {
-      setMessage("Email is already subscribed.");
-    } else {
-      // Add the new email to the list
-      storedEmails.push(email);
+      // Add email to Firestore with timestamp
+      await addDoc(collection(db, "emails"), {
+        student_email: email,
+        timestamp: serverTimestamp(),
+      });
   
-      // Store the updated list in localStorage
-      localStorage.setItem("emails", JSON.stringify(storedEmails));
-  
-      // Update message to show success
+      // Update the message to show success
       setMessage("Successfully subscribed!");
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      setMessage("Failed to subscribe. Please try again.");
     }
   
     // Clear the input field
     setEmail("");
   };
-  
 
   return (
     <Box
