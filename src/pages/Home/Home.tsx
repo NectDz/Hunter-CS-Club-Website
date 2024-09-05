@@ -59,7 +59,6 @@ const Home = () => {
         <Box ref={updateRef}>
           <GridItem>
             <Typography variant="h4" align="center">
-              Latest
             </Typography>
           </GridItem>
         </Box>
