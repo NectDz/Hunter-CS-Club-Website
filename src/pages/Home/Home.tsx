@@ -56,10 +56,18 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box ref={updateRef}>
+        <Box sx={{ width: "100%" }}>
           <GridItem>
-            <Typography variant="h4" align="center">
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              Meet the E-Board
             </Typography>
+            <EBoardCarousel />
           </GridItem>
         </Box>
 
@@ -80,21 +88,6 @@ const Home = () => {
         <Box sx={{ width: "100%" }}>
           <GridItem>
             <NewsLetter />
-          </GridItem>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <Typography
-              fontSize="35px"
-              fontWeight="bold"
-              align="center"
-              variant="h5"
-              mb="32px"
-            >
-              Meet the E-Board
-            </Typography>
-            <EBoardCarousel />
           </GridItem>
         </Box>
 
