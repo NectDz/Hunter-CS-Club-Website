@@ -50,8 +50,6 @@ const Footer = () => {
               </a>
               <a href="https://discord.gg/WhZSaHX7gd" target="_blank" rel="noopener noreferrer">
               <IconButton aria-label="Discord" size="large" color = "inherit">
-              <a href="https://discord.gg/WhZSaHX7gd" target="_blank" rel="noopener noreferrer">
-              </a>
                 <DiscordIcon sx={{ color: 'white '}} />
               </IconButton>
               </a>
