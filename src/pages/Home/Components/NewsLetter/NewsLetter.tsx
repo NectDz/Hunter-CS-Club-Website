@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import axios from "axios";
+import { db } from "../../../../firebase-config"; // Ensure your Firebase config is properly set
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import hunter from "./consts/hunter.png";
 
 const NewsLetter = () => {
@@ -9,15 +10,29 @@ const NewsLetter = () => {
 
   const handleSubmit = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
+  
     try {
-      const response = await axios.post("http://localhost:5000/subscribe", {
-        email,
+      // Check if email is not empty and valid (basic email format check)
+      if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        setMessage("Please enter a valid email.");
+        return;
+      }
+  
+      // Add email to Firestore with timestamp
+      await addDoc(collection(db, "emails"), {
+        student_email: email,
+        timestamp: serverTimestamp(),
       });
-      setMessage(response.data.message); // Display success message
+  
+      // Update the message to show success
+      setMessage("Successfully subscribed!");
     } catch (error) {
-      setMessage("Subscription failed. Please try again.");
+      console.error("Error subscribing:", error);
+      setMessage("Failed to subscribe. Please try again.");
     }
+  
+    // Clear the input field
+    setEmail("");
   };
 
   return (
@@ -27,11 +42,11 @@ const NewsLetter = () => {
         paddingTop: "100px",
         paddingBottom: "140px",
         paddingX: "100px",
-        marginX: "-49px", //Removes parents' horizontal padding
+        marginX: "-49px",
         backgroundImage: `url(${hunter})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundBlendMode: "overlay"
+        backgroundBlendMode: "overlay",
       }}
     >
       <Typography
@@ -54,7 +69,7 @@ const NewsLetter = () => {
           id="email-address"
           variant="standard"
           placeholder="Email Address"
-          value={email} // Updated from defaultValue to value
+          value={email}
           onChange={({ target }) => setEmail(target.value)}
           sx={{
             backgroundColor: "#FFFFFF",
@@ -76,9 +91,9 @@ const NewsLetter = () => {
             borderRadius: "0px 50px 50px 0px",
             paddingX: "34px",
             textTransform: "none",
-            '&:hover': {
-              backgroundColor: "#dbb34d !important", 
-              boxShadow: "none !important", 
+            "&:hover": {
+              backgroundColor: "#dbb34d !important",
+              boxShadow: "none !important",
               color: "#FFFFFF !important",
             },
           }}
