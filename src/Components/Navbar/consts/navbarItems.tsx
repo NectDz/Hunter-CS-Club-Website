@@ -31,4 +31,9 @@ export const mainNavbarItems = [
     label: "Contact",
     route: "contact",
   },
+  {
+    id: 5,
+    label: "Resources",
+    route: "Resources",
+  },
 ];

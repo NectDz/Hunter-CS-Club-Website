@@ -10,6 +10,7 @@ import Updates from "./pages/Updates/Updates.tsx";
 import About from "./pages/about/about.tsx";
 import Contact from "./pages/Contact/Contact.tsx";
 import Login from "./pages/Login/Login.tsx";
+import Resources from "./pages/Resources/Resources.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme.tsx";
@@ -65,6 +66,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               </Route>
               <Route path="faq" element={<FAQ />} />
               <Route path="contact" element={<Contact />} />
+              <Route path="resources" element={<Resources />} />
               <Route path="login" element={<Login />} />
             </Route>
           </Routes>
