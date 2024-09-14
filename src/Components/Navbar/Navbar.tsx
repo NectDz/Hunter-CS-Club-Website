@@ -72,7 +72,7 @@ function Navbar() {
         elevation={0}
         sx={{ borderBottom: "2px solid #EAC566" }}
       >
-        <Toolbar>
+        <Toolbar sx={{ position: "relative" }}>
           {isMobile ? (
             <IconButton
               color="inherit"
@@ -105,16 +105,17 @@ function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              ...(isMobile && {
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+              }),
             }}
           >
             <img
               src={CompSci}
               alt="CompSci Logo"
-              style={
-                isMobile
-                  ? { height: "40px", left: "42%", position: "absolute" }
-                  : { height: "50px" }
-              }
+              style={{ height: isMobile ? "45px" : "54px" }}
             />
           </Box>
 
@@ -147,6 +148,7 @@ function Navbar() {
             </Box>
           )}
         </Toolbar>
+
         {isMobile ? null : (
           <Toolbar
             component="nav"
@@ -165,6 +167,7 @@ function Navbar() {
           </Toolbar>
         )}
       </AppBar>
+
       <Drawer
         anchor="top"
         open={drawerOpen}

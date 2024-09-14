@@ -14,7 +14,7 @@ const JoinUs = () => {
       <Typography
         variant="h4"
         align="center"
-        sx={{ marginBottom: "48px", fontWeight: "bold" }}
+        sx={{ marginBottom: "40px", fontWeight: "bold" }}
       >
         JOIN US
       </Typography>
@@ -34,7 +34,7 @@ const JoinUs = () => {
             container
             direction="column"
             justifyContent="flex-end"
-            gap="24px"
+            gap={{ xs: "24px", md: "50px" }}
             sx={{
               height: "100%",
               width: "100%",
