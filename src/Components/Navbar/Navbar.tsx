@@ -115,7 +115,7 @@ function Navbar() {
             <img
               src={CompSci}
               alt="CompSci Logo"
-              style={{ height: isMobile ? "40px" : "50px" }}
+              style={{ height: isMobile ? "45px" : "50px" }}
             />
           </Box>
 
