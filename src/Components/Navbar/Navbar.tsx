@@ -112,7 +112,7 @@ function Navbar() {
               alt="CompSci Logo"
               style={
                 isMobile
-                  ? { height: "40px", left: "42%", position: "absolute" }
+                  ? { height: "40px", left: "41%", position: "absolute" }
                   : { height: "50px" }
               }
             />
