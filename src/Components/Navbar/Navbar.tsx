@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CompSci from "./consts/CompSci.png";
@@ -16,7 +16,6 @@ function Navbar() {
   const { currentUser, signOut } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
-  const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
