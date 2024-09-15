@@ -162,10 +162,15 @@ const HomeCarousel = () => {
           sx={{
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             padding: isMobile ? "80px 40px" : "40px",
-            width: isMobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
+            width: isMobile
+              ? "calc(100% + 80px)"
+              : isMediumScreen
+              ? "95%" // Make it wider for medium screens
+              : "90%", // Default for non-mobile and non-medium screens
             borderRadius: "8px",
-            margin: isMobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
+            margin: isMobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins for mobile
             boxSizing: "border-box",
+            border: "1px solid #EAC566",
           }}
         >
           <Typography
