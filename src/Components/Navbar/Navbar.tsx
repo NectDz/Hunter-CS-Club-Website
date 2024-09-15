@@ -86,15 +86,13 @@ function Navbar() {
   return (
     <>
       <AppBar
-        position={isHomePage ? "fixed" : "static"}
+        position="fixed"
         elevation={0}
         sx={{
           top: 0,
           width: "100%",
           zIndex: theme.zIndex.appBar,
-          backgroundColor: isHomePage
-            ? "rgba(77, 46, 145, 0.8)" // Transparent for homepage
-            : "rgba(77, 46, 145, 1)", // Solid for other pages
+          backgroundColor: "rgba(77, 46, 145, 0.9)",
         }}
       >
         <Toolbar
