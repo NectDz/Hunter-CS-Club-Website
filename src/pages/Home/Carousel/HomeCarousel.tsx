@@ -170,6 +170,7 @@ const HomeCarousel = () => {
             borderRadius: "8px",
             margin: isMobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins for mobile
             boxSizing: "border-box",
+            border: "1px solid #EAC566",
           }}
         >
           <Typography
