@@ -26,11 +26,15 @@ const HomeCarousel = () => {
 
   const theme = useTheme(); // Access the theme object
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Mobile screens
-  const isMediumScreen = useMediaQuery(theme.breakpoints.between("md", "lg")); // Medium screens
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg")); // Large screens
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("md", "xl")); // Medium screens
+  const isXLargeScreen = useMediaQuery(theme.breakpoints.up("xl")); // Large screens
 
   // Setting dynamic heights based on screen size
-  const maxHeight = isLargeScreen ? "950px" : isMediumScreen ? "850px" : "100%";
+  const maxHeight = isXLargeScreen
+    ? "950px"
+    : isMediumScreen
+    ? "850px"
+    : "100%";
   const minHeight = isMobile ? "500px" : maxHeight;
 
   const images = [
