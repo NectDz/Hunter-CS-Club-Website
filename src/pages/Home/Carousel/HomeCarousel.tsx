@@ -13,7 +13,7 @@ import arrowImage from "./consts/arrowImage.png";
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const maxHeight = "800px";
+const maxHeight = "950px";
 const minHeight = "500px";
 
 const HomeCarousel = () => {

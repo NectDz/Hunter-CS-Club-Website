@@ -26,8 +26,7 @@ export const theme = createTheme({
         root: {
           fontSize: "1rem",
           "&:hover": {
-            backgroundColor: "#ffffff",
-            color: "#000000",
+            backgroundColor: "rgba(0, 0, 0, 0.1)",
           },
           disableFocusRipple: true,
         },
