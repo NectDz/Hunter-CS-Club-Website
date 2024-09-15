@@ -8,7 +8,7 @@ import { useAuth } from "../../Context/AuthContext";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
-import ContactForm from "../Contact/Components/ContactForm";
+import ContactForm from "./Components/ContactForm/ContactForm";
 import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
