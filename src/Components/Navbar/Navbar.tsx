@@ -16,7 +16,6 @@ function Navbar() {
   const { currentUser, signOut } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
-  const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
