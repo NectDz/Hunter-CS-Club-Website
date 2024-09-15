@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme, useMediaQuery } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CompSci from "./consts/CompSci.png";
@@ -16,6 +16,7 @@ function Navbar() {
   const { currentUser, signOut } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
+  const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -80,17 +81,18 @@ function Navbar() {
     </Box>
   );
 
+  const isHomePage = location.pathname === "/";
+
   return (
     <>
       <AppBar
         position="fixed"
-        color="transparent"
         elevation={0}
         sx={{
           top: 0,
           width: "100%",
           zIndex: theme.zIndex.appBar,
-          backgroundColor: "rgba(77, 46, 145, 0.8)",
+          backgroundColor: "rgba(77, 46, 145, 0.9)",
         }}
       >
         <Toolbar

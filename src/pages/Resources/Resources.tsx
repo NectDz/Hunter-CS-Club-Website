@@ -144,7 +144,7 @@ const Resources = () => {
     <Box
       sx={{
         flexGrow: 1,
-        paddingY: "40px",
+        paddingY: "80px",
         background: "linear-gradient(to bottom, #eae0ff 0%, #FFFFFF 30%)", // Dark purple 70%, white 30%
         minHeight: "100vh", // Ensures the gradient covers the full viewport height
       }}
