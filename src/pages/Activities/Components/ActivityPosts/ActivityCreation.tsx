@@ -29,9 +29,9 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
     }
   };
 
-  const handleTagChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSelectedTag(event.target.value as string);
-  };
+  // const handleTagChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  //   setSelectedTag(event.target.value as string);
+  // };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -98,7 +98,7 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
             <InputLabel>Tag</InputLabel>
             <Select
               value={selectedTag}
-              onChange={handleTagChange}
+              // onChange={handleTagChange}
               label="Tag"
             >
               {tags.map((tag) => (

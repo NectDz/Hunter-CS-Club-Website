@@ -4,9 +4,9 @@ import { Grid, Typography, Button } from "@mui/material";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
-import ActivityCard from "./Components/ActivityPosts/ActivityCard";
-import ActivityFeed from "./Components/ActivityPosts/ActivitiesFeed";
-import { Timestamp } from "firebase/firestore";
+// import ActivityCard from "./Components/ActivityPosts/ActivityCard";
+// import ActivityFeed from "./Components/ActivityPosts/ActivitiesFeed";
+// import { Timestamp } from "firebase/firestore";
 
 const Activities = () => {
   const theme = useTheme();
@@ -14,10 +14,10 @@ const Activities = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { currentUser } = useAuth();
-  const eventTime = "";
+  // const eventTime = "";
   // This checks if the current path is exactly '/activities'
   const isMainActivitiesRoute = location.pathname === "/activities";
-  const mockedTimestamp = Timestamp.fromDate(new Date());
+  // const mockedTimestamp = Timestamp.fromDate(new Date());
 
   const handleAddActivity = () => {
     navigate("/activities/create");
@@ -56,7 +56,7 @@ const Activities = () => {
                 </Button>
               </Grid>
             )}
-            <ActivityFeed/>
+            {/* <ActivityFeed/> */}
             <Grid item xs={12}>
               <Typography variant="h3" align="center" gutterBottom>
                 Info Section
