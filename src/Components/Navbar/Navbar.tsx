@@ -11,14 +11,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CompSci from "./consts/CompSci.png";
 import { mainNavbarItems } from "./consts/navbarItems";
 import { useAuth } from "../../Context/AuthContext";
-import { JOIN_US_URL } from "../../pages/Home/Components/JoinUs/consts/texts";
-import { Link } from "react-router-dom";
 
 function Navbar() {
   const { currentUser, signOut } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -63,111 +62,115 @@ function Navbar() {
           {item.label}
         </Button>
       ))}
+      {currentUser ? (
+        <Button
+          sx={{ textAlign: "left", padding: theme.spacing(2) }}
+          onClick={handleSignOut}
+        >
+          Log Out
+        </Button>
+      ) : (
+        <Button
+          sx={{ textAlign: "left", padding: theme.spacing(2) }}
+          onClick={() => navigate("/login")}
+        >
+          Sign In
+        </Button>
+      )}
     </Box>
   );
 
   return (
     <>
       <AppBar
-        position="static"
-        color="primary"
+        position="fixed"
+        color="transparent"
         elevation={0}
-        sx={{ borderBottom: "2px solid #EAC566" }}
+        sx={{
+          top: 0,
+          width: "100%",
+          zIndex: theme.zIndex.appBar,
+          backgroundColor: "rgba(77, 46, 145, 0.8)",
+        }}
       >
-        <Toolbar sx={{ position: "relative" }}>
-          {isMobile ? (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <Box
-              sx={{ display: "flex", justifyContent: "center", width: "100%" }}
-            >
-              <Button
-                variant="outlined"
-                component={Link}
-                to={JOIN_US_URL}
-                target="_blank"
-                color="inherit"
-              >
-                Join us
-              </Button>
-            </Box>
-          )}
-
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+            maxWidth: isMediumScreen ? "1600px" : "1300px",
+            width: "100%",
+            margin: "0 auto",
+            paddingLeft: isMobile ? theme.spacing(2) : theme.spacing(4),
+            paddingRight: isMobile ? theme.spacing(2) : theme.spacing(4),
+            [theme.breakpoints.up("lg")]: {
+              paddingLeft: theme.spacing(10),
+              paddingRight: theme.spacing(10),
+            },
+          }}
+        >
           <Box
             sx={{
-              flexGrow: 1,
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              ...(isMobile && {
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }),
+              justifyContent: isMobile ? "center" : "space-between",
+              width: "100%",
+              maxWidth: "1300px",
+              paddingLeft: isMobile ? theme.spacing(2) : 0,
+              paddingRight: isMobile ? theme.spacing(2) : 0,
             }}
           >
-            <img
-              src={CompSci}
-              alt="CompSci Logo"
-              style={{ height: isMobile ? "45px" : "54px" }}
-            />
-          </Box>
-
-          {!isMobile && (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                width: "100%",
-                visibility: "hidden",
-              }}
-            >
-              {currentUser ? (
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  onClick={handleSignOut}
-                >
-                  Log Out
-                </Button>
-              ) : (
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  onClick={() => navigate("/login")}
-                >
-                  Sign In
-                </Button>
-              )}
-            </Box>
-          )}
-        </Toolbar>
-
-        {isMobile ? null : (
-          <Toolbar
-            component="nav"
-            variant="dense"
-            sx={{ justifyContent: "center", overflowX: "auto" }}
-          >
-            {mainNavbarItems.map((item) => (
-              <Button
-                key={item.id}
-                sx={{ color: "white", padding: "10px 15px" }}
-                onClick={() => handleNavItemClick(item.route)}
+            {/* Left Side: Hamburger Menu on Mobile */}
+            {isMobile && (
+              <IconButton
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ color: "white" }}
               >
-                {item.label}
-              </Button>
-            ))}
-          </Toolbar>
-        )}
+                <MenuIcon />
+              </IconButton>
+            )}
+
+            {/* Centered Logo */}
+            <Box
+              sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}
+            >
+              <img
+                src={CompSci}
+                alt="CompSci Logo"
+                style={{
+                  height: isMobile ? "40px" : "54px",
+                  marginRight: isMobile ? 0 : theme.spacing(4),
+                }}
+              />
+            </Box>
+
+            {isMobile && <Box sx={{ width: theme.spacing(6) }} />}
+
+            {/* Navbar items on Desktop */}
+            {!isMobile && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: theme.spacing(50), // Space between logo and navbar items
+                }}
+              >
+                {mainNavbarItems.map((item) => (
+                  <Button
+                    key={item.id}
+                    sx={{ color: "white", padding: "10px 15px" }}
+                    onClick={() => handleNavItemClick(item.route)}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </Box>
+            )}
+          </Box>
+        </Toolbar>
       </AppBar>
 
       <Drawer
