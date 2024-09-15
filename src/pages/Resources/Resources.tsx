@@ -35,23 +35,79 @@ const sections = [
     faqs: [
       {
         id: 5,
-        question: "CUNY Tech Prep",
-        answer: "Details about this program.",
+        question: "Microsoft New Techs Program (Freshman/Sophmore)",
+        answer: (
+          <>
+            <p>
+              7-week hands-on training program. Mentorship from Microsoft senior
+              staff.
+            </p>
+            <a
+              href="https://newtechnologists.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://newtechnologists.com/
+            </a>
+          </>
+        ),
       },
       {
         id: 6,
-        question: "Break Through Tech",
-        answer: "Details about this program.",
+        question: "IBM Accelerate (Sophomore)",
+        answer: (
+          <>
+            <p>
+              8-week summer virtual learning experience in tracks such as
+              Software, Hardware, Design, etc.
+            </p>
+            <a
+              href="https://careers.ibm.com/campaign/accelerate-application-form/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://careers.ibm.com/campaign/accelerate-application-form/
+            </a>
+          </>
+        ),
       },
       {
         id: 7,
-        question: "CUNY Apprenticeship Program",
-        answer: "Details about this program.",
+        question: "Jane Street Immersion Program (Freshman)",
+        answer: (
+          <>
+            <p>
+              Software engineering fellowship at Jane Street NYC. Scholarship
+              available.
+            </p>
+            <a
+              href="https://www.janestreet.com/join-jane-street/programs-and-events/jsip/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.janestreet.com/join-jane-street/programs-and-events/jsip/
+            </a>
+          </>
+        ),
       },
       {
         id: 8,
-        question: "Basta Fellowship",
-        answer: "Details about this program.",
+        question: "Year Up (All Students)",
+        answer: (
+          <>
+            <p>
+              Free hybrid training program. Get matched to an internship after
+              training
+            </p>
+            <a
+              href="https://www.yearup.org/students"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.yearup.org/students
+            </a>
+          </>
+        ),
       },
     ],
   },
@@ -81,32 +137,6 @@ const sections = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "Upcoming Networking Events",
-    faqs: [
-      {
-        id: 13,
-        question: "Google Developer Student Clubs",
-        answer: "Details about this program.",
-      },
-      {
-        id: 14,
-        question: "GitHub Campus Expert Program",
-        answer: "Details about this program.",
-      },
-      {
-        id: 15,
-        question: "Postman Student Leader Program",
-        answer: "Details about this program.",
-      },
-      {
-        id: 16,
-        question: "Microsoft Learn Student Ambassadors",
-        answer: "Details about this program.",
-      },
-    ],
-  },
 ];
 
 const Resources = () => {
@@ -122,10 +152,13 @@ const Resources = () => {
       <Typography fontWeight="bold" align="center" variant="h3" mb="32px">
         Resources for Students
       </Typography>
+      <Typography fontWeight="bold" align="center" variant="h5" mb="32px">
+        Checkout the resources hand picked by the Hunter CS Club to help you in
+        your Computer Science Journey!
+      </Typography>
 
       {sections.map((section) => (
         <Box key={section.id} sx={{ marginBottom: "40px" }}>
-          {/* Section Header */}
           <Typography
             fontSize="28px"
             fontWeight="bold"
