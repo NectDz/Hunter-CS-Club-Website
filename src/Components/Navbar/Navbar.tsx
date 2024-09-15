@@ -81,8 +81,6 @@ function Navbar() {
     </Box>
   );
 
-  const isHomePage = location.pathname === "/";
-
   return (
     <>
       <AppBar
