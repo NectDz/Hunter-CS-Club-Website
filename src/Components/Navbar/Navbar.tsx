@@ -37,6 +37,8 @@ function Navbar() {
       navigate("/", { state: { scrollTo: "about" } });
     } else if (route === "updates") {
       navigate("/", { state: { scrollTo: "updates" } });
+    } else if (route === "contact") {
+      navigate("/", { state: { scrollTo: "contact" } });
     } else {
       navigate(route);
     }

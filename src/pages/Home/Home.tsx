@@ -18,6 +18,7 @@ const Home = () => {
   const aboutRef = useRef<HTMLDivElement>(null!);
   const updateRef = useRef<HTMLDivElement>(null!);
   const faqRef = useRef<HTMLDivElement>(null!);
+  const contactRef = useRef<HTMLDivElement>(null!);
   const location = useLocation();
 
   useEffect(() => {
@@ -28,6 +29,8 @@ const Home = () => {
         aboutRef.current.scrollIntoView({ behavior: "smooth" });
       } else if (location.state.scrollTo === "updates" && updateRef.current) {
         updateRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "contact" && contactRef.current) {
+        contactRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, [location]);
@@ -97,7 +100,7 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box ref={contactRef}>
           <GridItem>
             <Typography
               fontSize="35px"

@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import DiscordIcon from "./DiscordIcon";
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const Footer = () => {
   return (
@@ -31,26 +31,37 @@ const Footer = () => {
 
             <Grid item xs={12} style={{ textAlign: "center" }}>
               <Typography variant="body1">
-                Copyright © 2023 Hunter CS Club All Rights Reserved
+                Copyright © 2024 Hunter CS Club All Rights Reserved
               </Typography>
             </Grid>
 
             <Grid item xs={12} style={{ textAlign: "center" }}>
-              
-            <a href="https://www.linkedin.com/company/huntercsclub" target="_blank" rel="noopener noreferrer">
-             <IconButton aria-label="LinkedIn" size="large" color = "inherit">
-             <LinkedInIcon sx={{ color: 'white' }} />
-              </IconButton>
+              <a
+                href="https://www.linkedin.com/company/huntercsclub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconButton aria-label="LinkedIn" size="large" color="inherit">
+                  <LinkedInIcon sx={{ color: "white" }} />
+                </IconButton>
               </a>
-              <a href="https://www.instagram.com/huntercsclub/" target="_blank" rel="noopener noreferrer">
-             <IconButton aria-label="Instagram" size="large" color = "inherit">
-             <InstagramIcon sx={{ color: 'white' }} />
-              </IconButton>
+              <a
+                href="https://www.instagram.com/huntercsclub/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconButton aria-label="Instagram" size="large" color="inherit">
+                  <InstagramIcon sx={{ color: "white" }} />
+                </IconButton>
               </a>
-              <a href="https://discord.gg/WhZSaHX7gd" target="_blank" rel="noopener noreferrer">
-              <IconButton aria-label="Discord" size="large" color = "inherit">
-                <DiscordIcon sx={{ color: 'white '}} />
-              </IconButton>
+              <a
+                href="https://discord.gg/WhZSaHX7gd"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconButton aria-label="Discord" size="large" color="inherit">
+                  <DiscordIcon sx={{ color: "white " }} />
+                </IconButton>
               </a>
             </Grid>
           </Grid>

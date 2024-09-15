@@ -9,12 +9,13 @@ export const mainNavbarItems = [
     label: "About",
     route: "about",
   },
+  /* 
   {
     id: 2,
     label: "Updates",
     route: "updates",
   },
-  /* 
+  
   {
     id: 2,
     label: "Activities",
