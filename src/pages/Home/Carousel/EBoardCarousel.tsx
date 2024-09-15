@@ -15,7 +15,6 @@ import Ayesha from "../../about/Components/consts/Eboard/Ayesha.jpg";
 import George from "../../about/Components/consts/Eboard/george.jpg";
 import Nico from "../../about/Components/consts/Eboard/nico.png";
 
-
 const boardMembers = [
   // Add all board members' details here
   {
@@ -29,6 +28,11 @@ const boardMembers = [
     imageUrl: Sum,
   },
   {
+    name: "Hridia Tanha",
+    title: "Secretary",
+    imageUrl: Hridia,
+  },
+  {
     name: "Kevin Granados",
     title: "Tech Lead",
     imageUrl: Kev,
@@ -39,9 +43,9 @@ const boardMembers = [
     imageUrl: Justin,
   },
   {
-    name: "Hridia Tanha",
-    title: "Secretary",
-    imageUrl: Hridia,
+    name: "George Guerrero",
+    title: "Treasurer",
+    imageUrl: George,
   },
   {
     name: "Michelle Lee",
@@ -52,11 +56,6 @@ const boardMembers = [
     name: "Nico Bautista-Libreros",
     title: "Graphic Designer",
     imageUrl: Nico,
-  },
-  {
-    name: "George Guerrero",
-    title: "Treasurer",
-    imageUrl: George,
   },
   {
     name: "Kartic Vanjani",

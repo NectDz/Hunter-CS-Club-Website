@@ -1,7 +1,7 @@
-import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 
 interface WhatWeDoCardProps {
-  img: any;
+  img: string;
   title: string;
   description: string;
 }
@@ -19,52 +19,38 @@ const WhatWeDoCard: React.FC<WhatWeDoCardProps> = ({
       item
       sx={{
         border: "2px solid #EAC566",
-        padding: "30px",
-        borderTopRightRadius: "20px",
-        borderTopLeftRadius: "20px",
-        borderBottomRightRadius: "20px",
-        borderBottomLeftRadius: "20px",
-        backgroundColor: "rgba(0, 0, 0, 0.5)", // This will make the background transparent dark
+        borderRadius: 5,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        padding: 3,
+        maxWidth: 350,
+        margin: "0 auto",
       }}
     >
-      <div
-        style={{
+      <Box
+        sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          overflow: "hidden",
+          borderRadius: 5,
+          border: "0.5px solid #000",
         }}
       >
-        <img
+        <Box
+          component="img"
           src={img}
           alt={title}
-          style={{
-            width: isMobile ? "250px" : "350px",
-            height: isMobile ? "250px" : "350px",
-            maxWidth: isMobile ? "300px" : "300px",
-            maxHeight: isMobile ? "300px" : "3500px",
+          sx={{
+            width: isMobile ? 250 : 350,
+            height: isMobile ? 250 : 350,
             objectFit: "cover",
-            borderTopRightRadius: "20px",
-            borderTopLeftRadius: "20px",
-            borderBottomRightRadius: "20px",
-            borderBottomLeftRadius: "20px",
-            border: ".5px solid #000000",
           }}
         />
-      </div>
-      <Typography
-        variant="h5"
-        color="#EAC566"
-        align="center"
-        sx={{ marginTop: "12px" }}
-      >
+      </Box>
+      <Typography variant="h5" color="#EAC566" align="center" sx={{ mt: 2 }}>
         {title}
       </Typography>
-      <Typography
-        variant="body1"
-        color="#ffffff"
-        align="center"
-        sx={{ maxWidth: "300px" }}
-      >
+      <Typography variant="body1" color="#FFFFFF" align="center" sx={{ mt: 1 }}>
         {description}
       </Typography>
     </Grid>

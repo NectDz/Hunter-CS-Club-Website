@@ -8,7 +8,7 @@ import { useAuth } from "../../Context/AuthContext";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import FAQSection from "./Components/FAQSection/FAQSection";
-import ContactForm from "../Contact/Components/ContactForm";
+import ContactForm from "./Components/ContactForm/ContactForm";
 import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
@@ -18,6 +18,7 @@ const Home = () => {
   const aboutRef = useRef<HTMLDivElement>(null!);
   const updateRef = useRef<HTMLDivElement>(null!);
   const faqRef = useRef<HTMLDivElement>(null!);
+  const contactRef = useRef<HTMLDivElement>(null!);
   const location = useLocation();
 
   useEffect(() => {
@@ -28,6 +29,8 @@ const Home = () => {
         aboutRef.current.scrollIntoView({ behavior: "smooth" });
       } else if (location.state.scrollTo === "updates" && updateRef.current) {
         updateRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "contact" && contactRef.current) {
+        contactRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, [location]);
@@ -97,7 +100,7 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box>
+        <Box ref={contactRef}>
           <GridItem>
             <Typography
               fontSize="35px"
