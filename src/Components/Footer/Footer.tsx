@@ -4,9 +4,9 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import DiscordIcon from "./DiscordIcon";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
   return (
@@ -36,15 +36,20 @@ const Footer = () => {
             </Grid>
 
             <Grid item xs={12} style={{ textAlign: "center" }}>
-              <IconButton aria-label="Facebook" size="large" color="inherit">
-                <FacebookIcon />
+              
+            <a href="https://www.linkedin.com/company/huntercsclub" target="_blank" rel="noopener noreferrer">
+             <IconButton aria-label="LinkedIn" size="large" color = "inherit">
+             <LinkedInIcon sx={{ color: 'white' }} />
               </IconButton>
-              <IconButton aria-label="Twitter" size="large" color="inherit">
-                <TwitterIcon />
-              </IconButton>
+              </a>
               <a href="https://www.instagram.com/huntercsclub/" target="_blank" rel="noopener noreferrer">
              <IconButton aria-label="Instagram" size="large" color = "inherit">
              <InstagramIcon sx={{ color: 'white' }} />
+              </IconButton>
+              </a>
+              <a href="https://discord.gg/WhZSaHX7gd" target="_blank" rel="noopener noreferrer">
+              <IconButton aria-label="Discord" size="large" color = "inherit">
+                <DiscordIcon sx={{ color: 'white '}} />
               </IconButton>
               </a>
             </Grid>

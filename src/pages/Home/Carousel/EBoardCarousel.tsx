@@ -13,6 +13,7 @@ import Justin from "../../about/Components/consts/Eboard/Justin.jpg";
 import Kartic from "../../about/Components/consts/Eboard/kartic.jpg";
 import Ayesha from "../../about/Components/consts/Eboard/Ayesha.jpg";
 import George from "../../about/Components/consts/Eboard/george.jpg";
+import Nico from "../../about/Components/consts/Eboard/nico.png";
 
 const boardMembers = [
   // Add all board members' details here
@@ -54,7 +55,7 @@ const boardMembers = [
   {
     name: "Nico Bautista-Libreros",
     title: "Graphic Designer",
-    imageUrl: "",
+    imageUrl: Nico,
   },
   {
     name: "Kartic Vanjani",
