@@ -10,16 +10,28 @@ import img6 from "./consts/img6.jpg";
 import img8 from "./consts/img8.png";
 import hunter from "./consts/hunter.png";
 import arrowImage from "./consts/arrowImage.png";
-import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-
-const maxHeight = "950px";
-const minHeight = "500px";
 
 const HomeCarousel = () => {
   const [current, setCurrent] = useState(0);
   const [displayText, setDisplayText] = useState("");
-  const mobile = useMediaQuery("(max-width: 899px)");
+
+  const theme = useTheme(); // Access the theme object
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Mobile screens
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("md", "lg")); // Medium screens
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg")); // Large screens
+
+  // Setting dynamic heights based on screen size
+  const maxHeight = isLargeScreen ? "950px" : isMediumScreen ? "850px" : "100%";
+  const minHeight = isMobile ? "500px" : maxHeight;
 
   const images = [
     { id: "img1", name: "Image 1", source: img1 },
@@ -31,7 +43,7 @@ const HomeCarousel = () => {
   ];
 
   useEffect(() => {
-    if (!mobile) {
+    if (!isMobile) {
       setDisplayText(""); // Reset displayText
       const fullText = "Heello World!";
       let index = 0;
@@ -47,7 +59,7 @@ const HomeCarousel = () => {
 
       return () => clearInterval(typingInterval);
     }
-  }, [mobile]);
+  }, [isMobile]);
 
   const handleScroll = (index: number) => {
     const scrollIndex = index * 96; // Assuming each thumbnail is 96px wide
@@ -63,7 +75,7 @@ const HomeCarousel = () => {
   return (
     <Grid
       container
-      direction={mobile ? "column" : "row"}
+      direction={isMobile ? "column" : "row"}
       maxHeight={{ xs: "100%", md: maxHeight }}
       bgcolor="#f5f5f5"
     >
@@ -114,7 +126,7 @@ const HomeCarousel = () => {
                 backgroundImage: `url(${img.source})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                height: mobile ? minHeight : maxHeight,
+                height: isMobile ? minHeight : maxHeight,
                 width: "100%",
                 filter: "brightness(0.85)", // Slightly darken the image for better text contrast
               }}
@@ -145,10 +157,10 @@ const HomeCarousel = () => {
         <Box
           sx={{
             backgroundColor: "rgba(0, 0, 0, 0.5)",
-            padding: mobile ? "80px 40px" : "40px",
-            width: mobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
+            padding: isMobile ? "80px 40px" : "40px",
+            width: isMobile ? "calc(100% + 80px)" : "90%", // Increase width for mobile
             borderRadius: "8px",
-            margin: mobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
+            margin: isMobile ? "0 -40px" : "0 auto", // Center horizontally with negative margins
             boxSizing: "border-box",
           }}
         >
@@ -163,7 +175,7 @@ const HomeCarousel = () => {
               position: "relative",
               display: "inline-block",
               "&::after": {
-                content: mobile ? "''" : "'|'", // Conditionally render the cursor effect
+                content: isMobile ? "''" : "'|'", // Conditionally render the cursor effect
                 position: "absolute",
                 right: "-20px", // Adjust the position of the cursor to add space
                 animation: "blink 1s infinite", // Blinking animation
@@ -175,7 +187,7 @@ const HomeCarousel = () => {
               },
             }}
           >
-            {mobile ? "Hello World!" : displayText}
+            {isMobile ? "Hello World!" : displayText}
           </Typography>
           <Typography
             variant="h6"
@@ -184,7 +196,7 @@ const HomeCarousel = () => {
             sx={{
               lineHeight: 1.6,
               fontFamily: "Arial, sans-serif",
-              fontSize: mobile ? "1.00rem" : "1.25rem",
+              fontSize: isMobile ? "1.00rem" : "1.25rem",
             }}
           >
             The Computer Science Club fosters a diverse and inclusive community
@@ -237,7 +249,7 @@ const HomeCarousel = () => {
             />
           </Button>
 
-          {!mobile && (
+          {!isMobile && (
             <Box
               id="thumbnail-container"
               display="flex"
