@@ -86,7 +86,7 @@ const HomeCarousel = () => {
       <Grid
         item
         xs={12}
-        md={7}
+        md={isMediumScreen ? 6 : 7}
         order={{ xs: 1, md: 1 }}
         maxHeight={{ xs: "100%", md: maxHeight }}
       >
@@ -141,7 +141,7 @@ const HomeCarousel = () => {
       <Grid
         item
         xs={12}
-        md={5}
+        md={isMediumScreen ? 6 : 5}
         order={{ xs: 2, md: 2 }}
         color="white"
         padding="32px 64px"
