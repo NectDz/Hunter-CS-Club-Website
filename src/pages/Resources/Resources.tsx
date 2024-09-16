@@ -258,7 +258,7 @@ const Resources = () => {
             paddingX={{ sm: 2, lg: 20, xl: 24 }}
           >
             {section.faqs.map((faq) => (
-              <Grid item key={faq.id} xs={12} md={5}>
+              <Grid item key={faq.id} xs={10} md={5}>
                 <FAQAccordion faq={faq} style={{ borderRadius: "20px" }} />
               </Grid>
             ))}
