@@ -17,6 +17,7 @@ const sections = [
               href="https://github.com/SimplifyJobs/Summer2025-Internships"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://github.com/SimplifyJobs/Summer2025-Internships
             </a>
@@ -33,6 +34,7 @@ const sections = [
               href="https://www.lockheedmartinjobs.com/job/annapolis-junction/software-developer-cyber-intern/694/69572556224"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://www.lockheedmartinjobs.com/job/annapolis-junction/software-developer-cyber-intern/694/69572556224
             </a>
@@ -49,6 +51,7 @@ const sections = [
               href="https://salesforce.wd12.myworkdayjobs.com/Slack/job/California---San-Francisco/Summer-2025-Intern---Software-Engineer_JR262842-3"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://salesforce.wd12.myworkdayjobs.com/Slack/job/California---San-Francisco/Summer-2025-Intern---Software-Engineer_JR262842-3
             </a>
@@ -65,6 +68,7 @@ const sections = [
               href="https://jobs.smartrecruiters.com/ServiceNow/744000011666405"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://jobs.smartrecruiters.com/ServiceNow/744000011666405
             </a>
@@ -87,6 +91,7 @@ const sections = [
               href="https://ourcodingclub.github.io/tutorials.html"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://ourcodingclub.github.io/tutorials.html
             </a>
@@ -103,6 +108,7 @@ const sections = [
               href="https://developer.apple.com/swift/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://developer.apple.com/swift/
             </a>
@@ -114,11 +120,12 @@ const sections = [
         question: "HTML Tutorials",
         answer: (
           <>
-            <p>Learn how to program in HTML with these Tutortials!</p>
+            <p>Learn how to program in HTML with these Tutorials!</p>
             <a
               href="https://www.tutorialrepublic.com/html-tutorial/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://www.tutorialrepublic.com/html-tutorial/
             </a>
@@ -135,6 +142,7 @@ const sections = [
               href="https://developer.android.com/courses/android-basics-compose/course#1"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://developer.android.com/courses/android-basics-compose/course#1
             </a>
@@ -161,6 +169,7 @@ const sections = [
               href="https://www.codepath.org/courses/tech-interview-prep"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://www.codepath.org/courses/tech-interview-prep
             </a>
@@ -177,6 +186,7 @@ const sections = [
               href="https://www.techinterviewhandbook.org/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://www.techinterviewhandbook.org/
             </a>
@@ -196,6 +206,7 @@ const sections = [
               href="https://neetcode.io/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://neetcode.io/
             </a>
@@ -212,6 +223,7 @@ const sections = [
               href="https://leetcode.com/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
               https://leetcode.com/
             </a>
@@ -234,8 +246,8 @@ const Resources = () => {
       <Typography fontWeight="bold" align="center" variant="h3" mb="32px">
         Resources for Students
       </Typography>
-      <Typography fontWeight="bold" align="center" variant="h5" mb="32px">
-        Checkout the resources hand picked by the Hunter CS Club to help you in
+      <Typography fontWeight="bold" align="center" variant="h6" mb="32px">
+        Checkout the resources hand-picked by the Hunter CS Club to help you in
         your Computer Science Journey!
       </Typography>
 
