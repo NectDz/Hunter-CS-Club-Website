@@ -62,8 +62,21 @@ const Resources = () => {
                 textAlign: { xs: "center", md: "start" },
               }}
             >
-              Looking for internships, fellowships, or interview resources?
+              Looking for{" "}
+              <Box component="span" sx={{ color: "purple" }}>
+                internships
+              </Box>
+              ,{" "}
+              <Box component="span" sx={{ color: "purple" }}>
+                fellowships
+              </Box>
+              , or{" "}
+              <Box component="span" sx={{ color: "purple" }}>
+                interview
+              </Box>{" "}
+              resources?
             </Typography>
+
             <Typography
               variant="h6"
               align="left"
@@ -72,9 +85,21 @@ const Resources = () => {
                 textAlign: { xs: "center", md: "start" },
               }}
             >
-              Explore a wide array of opportunities and resources designed to
-              help you excel in your career journey!
+              Explore a wide array of{" "}
+              <Box component="span" sx={{ color: "purple" }}>
+                opportunities
+              </Box>{" "}
+              and{" "}
+              <Box component="span" sx={{ color: "purple" }}>
+                resources
+              </Box>{" "}
+              designed to help you{" "}
+              <Box component="span" sx={{ color: "purple" }}>
+                excel
+              </Box>{" "}
+              in your career journey!
             </Typography>
+
             <Box
               sx={{
                 display: "flex",
