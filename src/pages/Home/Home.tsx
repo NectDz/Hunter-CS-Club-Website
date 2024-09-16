@@ -12,6 +12,7 @@ import ContactForm from "./Components/ContactForm/ContactForm";
 import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
+import Resources from "./Components/Resources/Resources";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -68,9 +69,9 @@ const Home = () => {
               variant="h5"
               mb="32px"
             >
-              Meet the E-Board
+              RESOURCES
             </Typography>
-            <EBoardCarousel />
+            <Resources />
           </GridItem>
         </Box>
 
@@ -91,6 +92,21 @@ const Home = () => {
         <Box sx={{ width: "100%" }}>
           <GridItem>
             <NewsLetter />
+          </GridItem>
+        </Box>
+
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              Meet the E-Board
+            </Typography>
+            <EBoardCarousel />
           </GridItem>
         </Box>
 

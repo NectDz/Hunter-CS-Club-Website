@@ -145,8 +145,7 @@ const Resources = () => {
       sx={{
         flexGrow: 1,
         paddingY: "80px",
-        background: "linear-gradient(to bottom, #eae0ff 0%, #FFFFFF 30%)", // Dark purple 70%, white 30%
-        minHeight: "100vh", // Ensures the gradient covers the full viewport height
+        minHeight: "100vh",
       }}
     >
       <Typography fontWeight="bold" align="center" variant="h3" mb="32px">
