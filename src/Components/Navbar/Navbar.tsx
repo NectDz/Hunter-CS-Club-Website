@@ -140,8 +140,8 @@ function Navbar() {
                 src={CompSci}
                 alt="CompSci Logo"
                 style={{
-                  height: isMobile ? "40px" : "54px",
-                  marginRight: isMobile ? 0 : theme.spacing(4),
+                  height: isMobile ? "40px" : "48px",
+                  marginRight: isMobile ? 0 : theme.spacing(0),
                 }}
               />
             </Box>

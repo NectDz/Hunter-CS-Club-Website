@@ -69,7 +69,7 @@ const boardMembers = [
   },
   {
     name: "Ashley Ngo",
-    title: "Social Media Manager",
+    title: "Media Manager",
     imageUrl: Ash,
   },
 ];
