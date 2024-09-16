@@ -60,7 +60,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
           <GridItem>
             <Typography
               fontSize="35px"
@@ -68,7 +68,6 @@ const Home = () => {
               align="center"
               variant="h5"
               mb="32px"
-              padding="20px"
             >
               RESOURCES
             </Typography>
@@ -82,7 +81,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
           <GridItem>
             <Typography variant="h4" align="center">
               <JoinUs />
