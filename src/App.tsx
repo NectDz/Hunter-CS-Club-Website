@@ -5,9 +5,12 @@ import Footer from "./Components/Footer/Footer";
 import { ThemeProvider } from "@mui/material/styles";
 import "./App.css"; // Make sure this CSS doesn't introduce extra margins or paddings
 import { theme } from "./theme.tsx";
+import ScrollToTop from "./Components/ScrollToTop.tsx";
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <ScrollToTop />
       <Navbar />
       <Container
         maxWidth={false}

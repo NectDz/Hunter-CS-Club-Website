@@ -39,7 +39,7 @@ const Resources = () => {
             src={resourcesImg}
             alt="Resources Image"
             sx={{
-              width: { xs: "70%", md: "18%" },
+              width: { xs: "75%", md: "18%" },
               objectFit: "cover",
               marginRight: { xs: 0, md: "40px" }, // Extra margin on the right for desktop
             }}

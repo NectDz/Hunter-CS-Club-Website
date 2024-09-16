@@ -68,6 +68,7 @@ const Home = () => {
               align="center"
               variant="h5"
               mb="32px"
+              padding="20px"
             >
               RESOURCES
             </Typography>
