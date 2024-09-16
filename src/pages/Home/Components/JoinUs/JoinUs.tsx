@@ -72,7 +72,7 @@ const JoinUs = () => {
                 target="_blank"
                 variant="outlined"
                 color="inherit"
-                sx={{ borderRadius: 0 }}
+                sx={{ borderRadius: 0, padding: "10px 20px" }}
               >
                 Become an official member
               </Button>

@@ -9,102 +9,142 @@ const sections = [
     faqs: [
       {
         id: 1,
-        question: "Freshman/Sophmore Internships",
-        answer: "Details about this internship.",
+        question: "Summer 2025 Tech Internships ",
+        answer: (
+          <>
+            <p></p>
+            <a
+              href="https://github.com/SimplifyJobs/Summer2025-Internships"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://github.com/SimplifyJobs/Summer2025-Internships
+            </a>
+          </>
+        ),
       },
       {
         id: 2,
-        question: "Software Engineering Internships",
-        answer: "Details about this internship.",
+        question: "Lockheed Martin Software Engineer Internship",
+        answer: (
+          <>
+            <p></p>
+            <a
+              href="https://www.lockheedmartinjobs.com/job/annapolis-junction/software-developer-cyber-intern/694/69572556224"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://www.lockheedmartinjobs.com/job/annapolis-junction/software-developer-cyber-intern/694/69572556224
+            </a>
+          </>
+        ),
       },
       {
         id: 3,
-        question: "CUNY Internship to Employment (I2E) Internship",
-        answer: "Details about this internship.",
+        question: "Slack Software Engineer Internship",
+        answer: (
+          <>
+            <p></p>
+            <a
+              href="https://salesforce.wd12.myworkdayjobs.com/Slack/job/California---San-Francisco/Summer-2025-Intern---Software-Engineer_JR262842-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://salesforce.wd12.myworkdayjobs.com/Slack/job/California---San-Francisco/Summer-2025-Intern---Software-Engineer_JR262842-3
+            </a>
+          </>
+        ),
       },
       {
         id: 4,
-        question: "CUNY Internship Programs Portal",
-        answer: "Details about this internship.",
+        question: "ServiceNow Software Engineer Internship",
+        answer: (
+          <>
+            <p></p>
+            <a
+              href="https://jobs.smartrecruiters.com/ServiceNow/744000011666405"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://jobs.smartrecruiters.com/ServiceNow/744000011666405
+            </a>
+          </>
+        ),
       },
     ],
   },
   {
     id: 2,
-    title: "Tech Fellowship/Apprenticeship Programs",
+    title: "Programming Resources",
     faqs: [
       {
         id: 5,
-        question: "Microsoft New Techs Program (Freshman/Sophmore)",
+        question: "Coding Tutorials",
         answer: (
           <>
-            <p>
-              7-week hands-on training program. Mentorship from Microsoft senior
-              staff.
-            </p>
+            <p>A hub of coding tutorials!</p>
             <a
-              href="https://newtechnologists.com/"
+              href="https://ourcodingclub.github.io/tutorials.html"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
-              https://newtechnologists.com/
+              https://ourcodingclub.github.io/tutorials.html
             </a>
           </>
         ),
       },
       {
         id: 6,
-        question: "IBM Accelerate (Sophomore)",
+        question: "IOS Developer",
         answer: (
           <>
-            <p>
-              8-week summer virtual learning experience in tracks such as
-              Software, Hardware, Design, etc.
-            </p>
+            <p>Learn to develop IOS apps</p>
             <a
-              href="https://careers.ibm.com/campaign/accelerate-application-form/"
+              href="https://developer.apple.com/swift/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
-              https://careers.ibm.com/campaign/accelerate-application-form/
+              https://developer.apple.com/swift/
             </a>
           </>
         ),
       },
       {
         id: 7,
-        question: "Jane Street Immersion Program (Freshman)",
+        question: "HTML Tutorials",
         answer: (
           <>
-            <p>
-              Software engineering fellowship at Jane Street NYC. Scholarship
-              available.
-            </p>
+            <p>Learn how to program in HTML with these Tutorials!</p>
             <a
-              href="https://www.janestreet.com/join-jane-street/programs-and-events/jsip/"
+              href="https://www.tutorialrepublic.com/html-tutorial/"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
-              https://www.janestreet.com/join-jane-street/programs-and-events/jsip/
+              https://www.tutorialrepublic.com/html-tutorial/
             </a>
           </>
         ),
       },
       {
         id: 8,
-        question: "Year Up (All Students)",
+        question: "Android Development",
         answer: (
           <>
-            <p>
-              Free hybrid training program. Get matched to an internship after
-              training
-            </p>
+            <p>Learn how to develop Android apps with these tutorials and</p>
             <a
-              href="https://www.yearup.org/students"
+              href="https://developer.android.com/courses/android-basics-compose/course#1"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
-              https://www.yearup.org/students
+              https://developer.android.com/courses/android-basics-compose/course#1
             </a>
           </>
         ),
@@ -118,22 +158,77 @@ const sections = [
       {
         id: 9,
         question: "CodePath - Technical Interview Prep Course",
-        answer: "Details about this course.",
+        answer: (
+          <>
+            <p>
+              The courses are designed to prepare students to solve challenging
+              algorithmic problems commonly used in interviews for top
+              companies.
+            </p>
+            <a
+              href="https://www.codepath.org/courses/tech-interview-prep"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://www.codepath.org/courses/tech-interview-prep
+            </a>
+          </>
+        ),
       },
       {
         id: 10,
         question: "Tech Interview Handbook",
-        answer: "Details about this resource.",
+        answer: (
+          <>
+            <p></p>
+            <a
+              href="https://www.techinterviewhandbook.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://www.techinterviewhandbook.org/
+            </a>
+          </>
+        ),
       },
       {
         id: 11,
-        question: "ByteByteGo - System Design Interview",
-        answer: "Details about this resource.",
+        question: "Neetcode",
+        answer: (
+          <>
+            <p>
+              Tutorials and path to get started with LeetCode Questions for
+              Interviews!
+            </p>
+            <a
+              href="https://neetcode.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://neetcode.io/
+            </a>
+          </>
+        ),
       },
       {
         id: 12,
-        question: "LeetCode - Algorithm Practices",
-        answer: "Details about this resource.",
+        question: "LeetCode",
+        answer: (
+          <>
+            <p></p>
+            <a
+              href="https://leetcode.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
+            >
+              https://leetcode.com/
+            </a>
+          </>
+        ),
       },
     ],
   },
@@ -145,15 +240,14 @@ const Resources = () => {
       sx={{
         flexGrow: 1,
         paddingY: "80px",
-        background: "linear-gradient(to bottom, #eae0ff 0%, #FFFFFF 30%)", // Dark purple 70%, white 30%
-        minHeight: "100vh", // Ensures the gradient covers the full viewport height
+        minHeight: "100vh",
       }}
     >
       <Typography fontWeight="bold" align="center" variant="h3" mb="32px">
         Resources for Students
       </Typography>
-      <Typography fontWeight="bold" align="center" variant="h5" mb="32px">
-        Checkout the resources hand picked by the Hunter CS Club to help you in
+      <Typography fontWeight="bold" align="center" variant="h6" mb="32px">
+        Checkout the resources hand-picked by the Hunter CS Club to help you in
         your Computer Science Journey!
       </Typography>
 
@@ -176,7 +270,7 @@ const Resources = () => {
             paddingX={{ sm: 2, lg: 20, xl: 24 }}
           >
             {section.faqs.map((faq) => (
-              <Grid item key={faq.id} xs={12} md={5}>
+              <Grid item key={faq.id} xs={10} md={5}>
                 <FAQAccordion faq={faq} style={{ borderRadius: "20px" }} />
               </Grid>
             ))}

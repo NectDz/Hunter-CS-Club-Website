@@ -12,9 +12,11 @@ import ContactForm from "./Components/ContactForm/ContactForm";
 import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
+import Resources from "./Components/Resources/Resources";
 
 const Home = () => {
   const { currentUser } = useAuth();
+  const homeRef = useRef<HTMLDivElement>(null!);
   const aboutRef = useRef<HTMLDivElement>(null!);
   const updateRef = useRef<HTMLDivElement>(null!);
   const faqRef = useRef<HTMLDivElement>(null!);
@@ -31,6 +33,8 @@ const Home = () => {
         updateRef.current.scrollIntoView({ behavior: "smooth" });
       } else if (location.state.scrollTo === "contact" && contactRef.current) {
         contactRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "home" && homeRef.current) {
+        homeRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, [location]);
@@ -48,7 +52,7 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box sx={{ width: "100%" }}>
+        <Box ref={homeRef} sx={{ width: "100%" }}>
           <Grid
             sx={{
               paddingX: 0,
@@ -57,6 +61,41 @@ const Home = () => {
           >
             <HomeCarousel />
           </Grid>
+        </Box>
+
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
+          <GridItem>
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              RESOURCES
+            </Typography>
+            <Resources />
+          </GridItem>
+        </Box>
+
+        <Box ref={aboutRef} sx={{ width: "100%" }}>
+          <Grid sx={{ padding: 0 }}>
+            <WhatWeDo />
+          </Grid>
+        </Box>
+
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
+          <GridItem>
+            <Typography variant="h4" align="center">
+              <JoinUs />
+            </Typography>
+          </GridItem>
+        </Box>
+
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
+            <NewsLetter />
+          </GridItem>
         </Box>
 
         <Box sx={{ width: "100%" }}>
@@ -71,26 +110,6 @@ const Home = () => {
               Meet the E-Board
             </Typography>
             <EBoardCarousel />
-          </GridItem>
-        </Box>
-
-        <Box ref={aboutRef} sx={{ width: "100%" }}>
-          <Grid sx={{ padding: 0 }}>
-            <WhatWeDo />
-          </Grid>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <Typography variant="h4" align="center">
-              <JoinUs />
-            </Typography>
-          </GridItem>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <NewsLetter />
           </GridItem>
         </Box>
 
