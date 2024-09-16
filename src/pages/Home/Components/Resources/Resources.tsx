@@ -70,7 +70,7 @@ const Resources = () => {
               }}
             >
               Explore a wide array of opportunities and resources designed to
-              help you excel in your career journey.
+              help you excel in your career journey!
             </Typography>
             <Box
               sx={{
