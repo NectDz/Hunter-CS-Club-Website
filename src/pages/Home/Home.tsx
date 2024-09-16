@@ -16,6 +16,7 @@ import Resources from "./Components/Resources/Resources";
 
 const Home = () => {
   const { currentUser } = useAuth();
+  const homeRef = useRef<HTMLDivElement>(null!);
   const aboutRef = useRef<HTMLDivElement>(null!);
   const updateRef = useRef<HTMLDivElement>(null!);
   const faqRef = useRef<HTMLDivElement>(null!);
@@ -32,6 +33,8 @@ const Home = () => {
         updateRef.current.scrollIntoView({ behavior: "smooth" });
       } else if (location.state.scrollTo === "contact" && contactRef.current) {
         contactRef.current.scrollIntoView({ behavior: "smooth" });
+      } else if (location.state.scrollTo === "home" && homeRef.current) {
+        homeRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, [location]);
@@ -49,7 +52,7 @@ const Home = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box sx={{ width: "100%" }}>
+        <Box ref={homeRef} sx={{ width: "100%" }}>
           <Grid
             sx={{
               paddingX: 0,

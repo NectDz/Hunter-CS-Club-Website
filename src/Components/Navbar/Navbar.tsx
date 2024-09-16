@@ -6,14 +6,14 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Drawer from "@mui/material/Drawer";
 import { useNavigate } from "react-router-dom";
-import { useTheme, useMediaQuery } from "@mui/material";
+import { useTheme, useMediaQuery, Stack } from "@mui/material"; // Import Stack
 import MenuIcon from "@mui/icons-material/Menu";
 import CompSci from "./consts/CompSci.png";
 import { mainNavbarItems } from "./consts/navbarItems";
-import { useAuth } from "../../Context/AuthContext";
+//import { useAuth } from "../../Context/AuthContext";
 
 function Navbar() {
-  const { currentUser, signOut } = useAuth();
+  //const { currentUser, signOut } = useAuth();
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -24,10 +24,10 @@ function Navbar() {
     setDrawerOpen(!drawerOpen);
   };
 
-  const handleSignOut = async () => {
-    await signOut();
-    navigate("/login");
-  };
+  //const handleSignOut = async () => {
+  //  await signOut();
+  //  navigate("/login");
+  //};
 
   const handleNavItemClick = (route: string) => {
     if (route === "faq") {
@@ -46,22 +46,42 @@ function Navbar() {
   const drawerContent = (
     <Box
       sx={{
-        width: 250,
+        width: "100%",
         paddingTop: theme.spacing(5),
+        backgroundColor: "rgba(77, 46, 145)", // Transparent purple background
       }}
       role="presentation"
       onClick={handleDrawerToggle}
       onKeyDown={handleDrawerToggle}
     >
-      {mainNavbarItems.map((item) => (
-        <Button
-          key={item.id}
-          sx={{ textAlign: "left", padding: theme.spacing(2) }}
-          onClick={() => handleNavItemClick(item.route)}
-        >
-          {item.label}
-        </Button>
-      ))}
+      {/* Using Stack for vertical alignment */}
+      <Stack
+        spacing={2}
+        sx={{ paddingLeft: theme.spacing(2), paddingRight: theme.spacing(2) }}
+      >
+        {mainNavbarItems.map((item, index) => (
+          <Button
+            key={item.id}
+            sx={{
+              textAlign: "left", // Align text to the left
+              padding: theme.spacing(2),
+              opacity: 0,
+              transform: "translateY(20px)",
+              transition: `all 0.3s ease-out`,
+              transitionDelay: `${index * 0.1}s`,
+              color: "#fff", // Make text white to contrast against purple
+              backgroundColor: "transparent", // Ensure button background is transparent
+            }}
+            onClick={() => handleNavItemClick(item.route)}
+            style={{
+              opacity: drawerOpen ? 1 : 0,
+              transform: drawerOpen ? "translateY(0)" : "translateY(20px)",
+            }}
+          >
+            {item.label}
+          </Button>
+        ))}
+      </Stack>
     </Box>
   );
 
