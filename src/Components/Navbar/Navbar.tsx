@@ -62,21 +62,6 @@ function Navbar() {
           {item.label}
         </Button>
       ))}
-      {currentUser ? (
-        <Button
-          sx={{ textAlign: "left", padding: theme.spacing(2) }}
-          onClick={handleSignOut}
-        >
-          Log Out
-        </Button>
-      ) : (
-        <Button
-          sx={{ textAlign: "left", padding: theme.spacing(2) }}
-          onClick={() => navigate("/login")}
-        >
-          Sign In
-        </Button>
-      )}
     </Box>
   );
 
