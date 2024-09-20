@@ -13,6 +13,7 @@ import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
 import Resources from "./Components/Resources/Resources";
+import ActivityCarousel from "./Carousel/Activity/ActivityCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -61,6 +62,21 @@ const Home = () => {
           >
             <HomeCarousel />
           </Grid>
+        </Box>
+
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
+          <GridItem>
+            <Typography
+              fontSize="35px"
+              fontWeight="bold"
+              align="center"
+              variant="h5"
+              mb="32px"
+            >
+              Club Activities
+            </Typography>
+            <ActivityCarousel />
+          </GridItem>
         </Box>
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
