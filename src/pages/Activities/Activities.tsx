@@ -4,8 +4,7 @@ import { Grid, Typography, Button } from "@mui/material";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
-// import ActivityCard from "./Components/ActivityPosts/ActivityCard";
-// import ActivityFeed from "./Components/ActivityPosts/ActivitiesFeed";
+import ActivitiesFeed from "./Components/ActivityPosts/ActivitiesFeed";
 // import { Timestamp } from "firebase/firestore";
 
 const Activities = () => {
@@ -24,21 +23,27 @@ const Activities = () => {
   };
 
   return (
-    <><header style={{ fontSize: '3em', textAlign: 'center', marginTop: '20px'}}>
-      Club Activities
-    </header>
-    <p style={{ fontSize: '1em', textAlign: 'center', marginTop: '10px' }}>
-  The Computer Science Club is an active and busy club. Check out our impressive and growing record of student led<br />
-  activities to give back and support our amazing Computer Science community at Hunter College.
-</p>
+    <>
+      <header
+        style={{ fontSize: "3em", textAlign: "center", marginTop: "20px" }}
+      >
+        Club Activities
+      </header>
+      <p style={{ fontSize: "1em", textAlign: "center", marginTop: "10px" }}>
+        The Computer Science Club is an active and busy club. Check out our
+        impressive and growing record of student led
+        <br />
+        activities to give back and support our amazing Computer Science
+        community at Hunter College.
+      </p>
 
-    <Grid
-      container
-      spacing={8}
-      justifyContent="center"
-      alignItems="center"
-      style={{ marginTop: isMobile ? "60px" : "0px" }}
-    >
+      <Grid
+        container
+        spacing={8}
+        justifyContent="center"
+        alignItems="center"
+        style={{ marginTop: isMobile ? "60px" : "0px" }}
+      >
         {isMainActivitiesRoute && (
           <>
             <Grid item xs={12}>
@@ -61,11 +66,13 @@ const Activities = () => {
               <Typography variant="h3" align="center" gutterBottom>
                 Info Section
               </Typography>
+              <ActivitiesFeed />
             </Grid>
           </>
         )}
         <Outlet />
-      </Grid></>
+      </Grid>
+    </>
   );
 };
 

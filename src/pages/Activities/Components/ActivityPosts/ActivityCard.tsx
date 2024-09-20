@@ -13,7 +13,6 @@ interface ActivityCardProps {
   activityTag: string;
   description: string;
   postedTime: FirestoreTimestamp;
-  authorName: string;
 }
 
 interface FirestoreTimestamp {
@@ -27,7 +26,6 @@ function ActivityCard({
   activityTag,
   description,
   postedTime,
-  authorName,
 }: ActivityCardProps) {
   const formatFirestoreTimestamp = (timestamp: FirestoreTimestamp) => {
     if (!timestamp || typeof timestamp.seconds !== "number") return "";
@@ -85,9 +83,6 @@ function ActivityCard({
         </Typography>
         <Typography variant="subtitle2" color="text.secondary">
           Posted on {formatFirestoreTimestamp(postedTime)}
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          By {authorName}
         </Typography>
       </CardContent>
     </Card>

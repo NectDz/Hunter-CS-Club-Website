@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { collection, addDoc } from 'firebase/firestore';
-import { db, storage } from '../../../../firebase-config';
+import {
+  Button,
+  Grid,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
+import { db, storage } from "../../../../firebase-config";
+import { SelectChangeEvent } from "@mui/material";
 
 interface ActivityCreationProps {
   // Define props if needed
@@ -23,50 +32,66 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
 
   const handleBodyChange = (value: string) => setBody(value);
 
-  const handleThumbnailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleThumbnailChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (event.target.files) {
       setThumbnail(event.target.files[0]);
     }
   };
 
-  // const handleTagChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-  //   setSelectedTag(event.target.value as string);
-  // };
+  const handleTagChange = (event: SelectChangeEvent<string>) => {
+    setSelectedTag(event.target.value as string);
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+
     if (!title || !body || !selectedTag) {
       console.error("All fields are required");
       return;
     }
-    
+
     try {
+      // Step 1: Create a new activity document and get the activityId
+      const activityRef = await addDoc(collection(db, "activities"), {
+        title,
+        body,
+        tag: selectedTag,
+        createdAt: Timestamp.now(), // Use Firestore Timestamp
+      });
+
+      const activityId = activityRef.id; // Get the generated document ID
+
       let thumbnailURL: string | null = null;
-      
+
+      // Step 2: If a thumbnail is provided, upload it using the activityId
       if (thumbnail) {
-        // Upload thumbnail
-        const thumbnailRef = ref(storage, `thumbnails/${thumbnail.name}`);
+        const thumbnailRef = ref(
+          storage,
+          `thumbnails/${activityId}/${thumbnail.name}`
+        );
         await uploadBytes(thumbnailRef, thumbnail);
         thumbnailURL = await getDownloadURL(thumbnailRef);
       }
-      
-      // Add data to Firestore
-      await addDoc(collection(db, 'activities'), {
+
+      // Step 3: Update the activity document with the thumbnail URL and activityId
+      await setDoc(doc(db, "activities", activityId), {
         title,
         body,
         thumbnailURL,
         tag: selectedTag,
-        createdAt: new Date()  // Use Firestore Timestamp here if needed
+        createdAt: Timestamp.now(),
+        activityId, // Store the activityId in the Firestore document
       });
-    
+
       // Reset state after successful submission
       setTitle("");
       setBody("");
       setThumbnail(null);
       setSelectedTag("");
-    
-      console.log("Activity saved successfully");
+
+      console.log("Activity saved successfully with ID: ", activityId);
     } catch (error) {
       console.error("Error saving activity: ", error);
     }
@@ -96,11 +121,7 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
         <Grid item>
           <FormControl fullWidth>
             <InputLabel>Tag</InputLabel>
-            <Select
-              value={selectedTag}
-              // onChange={handleTagChange}
-              label="Tag"
-            >
+            <Select value={selectedTag} onChange={handleTagChange} label="Tag">
               {tags.map((tag) => (
                 <MenuItem key={tag} value={tag}>
                   {tag}
@@ -120,4 +141,3 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
 };
 
 export default ActivityCreation;
-
