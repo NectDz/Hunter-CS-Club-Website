@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
 import GridItem from "../../../../Components/common/GridItem";
+import Button from "@mui/material/Button";
+
 import {
   Typography,
   Avatar,
@@ -15,7 +17,11 @@ interface Activity {
   title: string;
   thumbnailURL: string;
   body: string;
-  author: string;
+  eventDateTime: string;
+  eventStartTime: string;
+  eventEndTime: string;
+  location: string;
+  rsvpLink: string;
   createdAt: {
     seconds: number;
   };
@@ -62,16 +68,49 @@ const ActivityDetail = () => {
     );
   }
 
+  const eventDateTimeObject = new Date(
+    `${activity.eventDateTime}T${activity.eventStartTime}`
+  );
+  const currentTime = new Date();
+
+  const isEventInFuture = currentTime <= eventDateTimeObject;
+
+  const formatEventDate = (dateString: string) => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const formatTime = (timeString: string) => {
+    if (!timeString) return "";
+
+    const [hours, minutes] = timeString.split(":").map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes);
+
+    return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+  };
+
   return (
     <Container maxWidth="md">
       <Box
         sx={{
           flexGrow: 1,
           paddingY: "80px",
-          minHeight: "100vh",
+          padding: "0",
+          margin: "0",
         }}
       >
-        <GridItem>
+        <GridItem padding={0}>
           {/* Thumbnail Section */}
           <Box
             display="flex"
@@ -79,7 +118,7 @@ const ActivityDetail = () => {
             alignItems="center"
             mb={4}
             sx={{
-              width: "100%", // Ensure container takes full width
+              width: "100%",
             }}
           >
             <Avatar
@@ -109,33 +148,27 @@ const ActivityDetail = () => {
             {activity.title}
           </Typography>
 
-          {/* Metadata Section */}
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            align="center"
-            gutterBottom
-            sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }} // Responsive font size
-          >
-            Posted on:{" "}
-            {new Date(activity.createdAt.seconds * 1000).toLocaleDateString(
-              "en-US",
-              {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              }
-            )}
-          </Typography>
+          {isEventInFuture && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(activity.rsvpLink, "_blank");
+              }}
+            >
+              {"RSVP"}
+            </Button>
+          )}
 
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            align="center"
-            mb={4}
-            sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
-          >
-            Author: {activity.author}
+          {/* Metadata Section */}
+          <Typography variant="subtitle1" color="text.secondary">
+            Event on: {formatEventDate(activity.eventDateTime)}{" "}
+            {formatTime(activity.eventStartTime)} -{" "}
+            {formatTime(activity.eventEndTime)}
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Location: {activity.location}
           </Typography>
 
           {/* Content Section */}
