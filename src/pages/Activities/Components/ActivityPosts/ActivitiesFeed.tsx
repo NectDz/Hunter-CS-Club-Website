@@ -82,6 +82,7 @@ const ActivityFeed = () => {
         {activities.map((activity) => (
           <Grid item xs={12} key={activity.id}>
             <ActivityCard
+              id={activity.id}
               thumbnailSrc={activity.thumbnailURL}
               activityName={activity.title}
               activityTag={activity.tag}

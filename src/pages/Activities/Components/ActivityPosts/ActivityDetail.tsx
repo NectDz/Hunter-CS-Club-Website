@@ -62,19 +62,6 @@ const ActivityDetail = () => {
 
   return (
     <Container maxWidth="md" sx={{ mt: 4, px: { xs: 2, md: 3 } }}>
-      {/* Title Section */}
-      <Typography
-        variant="h3"
-        component="h1"
-        align="center"
-        gutterBottom
-        sx={{
-          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, // Adjust title size for mobile
-        }}
-      >
-        {activity.title}
-      </Typography>
-
       {/* Thumbnail Section */}
       <Box
         display="flex"
@@ -98,6 +85,19 @@ const ActivityDetail = () => {
           }}
         />
       </Box>
+
+      {/* Title Section */}
+      <Typography
+        variant="h3"
+        component="h1"
+        align="center"
+        gutterBottom
+        sx={{
+          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, // Adjust title size for mobile
+        }}
+      >
+        {activity.title}
+      </Typography>
 
       {/* Metadata Section */}
       <Typography

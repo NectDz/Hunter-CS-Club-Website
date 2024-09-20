@@ -57,7 +57,7 @@ function ActivityCard({
 
   // Handle the card click to navigate to the details page
   const handleClick = () => {
-    navigate(`/activities/pkqYehARlm5E5xMeAQYy`); // Navigate to the activity detail page
+    navigate(`/activities/${id}`); // Navigate to the activity detail page
   };
 
   return (
