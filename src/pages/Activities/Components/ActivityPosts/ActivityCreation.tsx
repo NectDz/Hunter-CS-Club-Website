@@ -26,7 +26,7 @@ const ActivityCreation: React.FC = () => {
   const [thumbnailName, setThumbnailName] = useState<string>(""); // State to store file name
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [rsvpLink, setRsvpLink] = useState<string>(""); // New RSVP link state
-  const [eventDateTime, setEventDateTime] = useState<string>(""); // New event date/time state
+  const [eventDateTime, setEventDateTime] = useState<string>(""); // New event date state
   const [eventStartTime, setEventStartTime] = useState<string>(""); // Event start time
   const [eventEndTime, setEventEndTime] = useState<string>(""); // Event end time
 
@@ -54,7 +54,9 @@ const ActivityCreation: React.FC = () => {
 
   const handleEventDateTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => setEventDateTime(event.target.value); // Handle event date/time input
+  ) => {
+    setEventDateTime(event.target.value); // Set the date directly from the input
+  };
 
   const handleEventStartTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -63,19 +65,6 @@ const ActivityCreation: React.FC = () => {
   const handleEventEndTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => setEventEndTime(event.target.value); // Handle event end time input
-
-  const formatDateTime = (dateTimeString: string) => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      timeZoneName: "short",
-    };
-    return new Date(dateTimeString).toLocaleDateString("en-US", options);
-  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -100,7 +89,7 @@ const ActivityCreation: React.FC = () => {
         body,
         tag: selectedTag,
         rsvpLink, // Save RSVP link
-        eventDateTime: formatDateTime(eventDateTime), // Format and save event date/time
+        eventDateTime, // Save event date as YYYY-MM-DD
         eventStartTime, // Save event start time
         eventEndTime, // Save event end time
         createdAt: Timestamp.now(), // Use Firestore Timestamp
@@ -127,7 +116,7 @@ const ActivityCreation: React.FC = () => {
         thumbnailURL,
         tag: selectedTag,
         rsvpLink, // Save RSVP link
-        eventDateTime: formatDateTime(eventDateTime), // Save formatted event date/time
+        eventDateTime, // Save event date as YYYY-MM-DD
         eventStartTime, // Save event start time
         eventEndTime, // Save event end time
         createdAt: Timestamp.now(),
@@ -141,7 +130,7 @@ const ActivityCreation: React.FC = () => {
       setThumbnailName(""); // Reset the file name
       setSelectedTag("");
       setRsvpLink(""); // Reset RSVP link
-      setEventDateTime(""); // Reset event date/time
+      setEventDateTime(""); // Reset event date
       setEventStartTime(""); // Reset start time
       setEventEndTime(""); // Reset end time
 
@@ -186,7 +175,7 @@ const ActivityCreation: React.FC = () => {
             <TextField
               fullWidth
               label="Event Date"
-              type="datetime-local"
+              type="date"
               InputLabelProps={{ shrink: true }}
               value={eventDateTime}
               onChange={handleEventDateTimeChange}
