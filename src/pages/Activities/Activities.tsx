@@ -77,9 +77,6 @@ const Activities = () => {
               )}
               {/* <ActivityFeed/> */}
               <Grid item xs={12}>
-                <Typography variant="h3" align="center" gutterBottom>
-                  Activities
-                </Typography>
                 <GridItem>
                   <ActivitiesFeed />
                 </GridItem>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import Carousel from "react-material-ui-carousel";
 import { useTheme, useMediaQuery } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
@@ -65,6 +66,17 @@ const ActivityCarousel = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Typography
+        variant="h4"
+        align="center"
+        gutterBottom
+        sx={{ fontWeight: "bold" }}
+      >
+        CLUB ACTIVITIES
+      </Typography>
+      <Typography variant="h6" align="center" gutterBottom>
+        Checkout our more recent club Activities!
+      </Typography>
       {isMobile ? (
         <Carousel
           autoPlay={true}
@@ -137,6 +149,25 @@ const ActivityCarousel = () => {
           ))}
         </Grid>
       )}
+
+      {/* Center the button across all devices */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center", // Center the button on all screen sizes
+          marginTop: 3, // Optional: add some spacing above the button
+        }}
+      >
+        <Button
+          component={Link}
+          to="/activities"
+          variant="outlined"
+          color="primary"
+          sx={{ borderRadius: 0, padding: "15px 20px", fontSize: "1.2rem" }}
+        >
+          More Activities
+        </Button>
+      </Box>
     </Box>
   );
 };

@@ -66,17 +66,14 @@ const Home = () => {
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
           <GridItem>
-            <Typography
-              fontSize="35px"
-              fontWeight="bold"
-              align="center"
-              variant="h5"
-              mb="32px"
-            >
-              Club Activities
-            </Typography>
             <ActivityCarousel />
           </GridItem>
+        </Box>
+
+        <Box ref={aboutRef} sx={{ width: "100%" }}>
+          <Grid sx={{ padding: 0 }}>
+            <WhatWeDo />
+          </Grid>
         </Box>
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
@@ -94,10 +91,10 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box ref={aboutRef} sx={{ width: "100%" }}>
-          <Grid sx={{ padding: 0 }}>
-            <WhatWeDo />
-          </Grid>
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
+            <NewsLetter />
+          </GridItem>
         </Box>
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
@@ -105,12 +102,6 @@ const Home = () => {
             <Typography variant="h4" align="center">
               <JoinUs />
             </Typography>
-          </GridItem>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <NewsLetter />
           </GridItem>
         </Box>
 

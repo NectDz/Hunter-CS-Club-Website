@@ -32,7 +32,7 @@ function ActivityCard({
   thumbnailSrc,
   activityName,
   activityTag,
-  postedTime,
+  //postedTime,
   location,
   eventDateTime,
   eventStartTime,
@@ -42,12 +42,6 @@ function ActivityCard({
   id,
 }: ActivityCardProps) {
   const navigate = useNavigate();
-
-  const formatDate = (timestamp: FirestoreTimestamp) => {
-    if (!timestamp || typeof timestamp.seconds !== "number") return "";
-    const date = new Date(timestamp.seconds * 1000);
-    return date.toLocaleDateString("en-US");
-  };
 
   const formatEventDate = (dateString: string) => {
     if (!dateString) return "";
@@ -156,14 +150,6 @@ function ActivityCard({
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
           Location: {location}
-        </Typography>
-
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          sx={{ mt: 1, fontStyle: "italic" }}
-        >
-          Posted on {formatDate(postedTime)}
         </Typography>
       </CardContent>
     </Card>
