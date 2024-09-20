@@ -17,6 +17,8 @@ interface Activity {
   title: string;
   body: string;
   eventDateTime: FirestoreTimestamp;
+  eventStartTime: string;
+  eventEndTime: string;
   rsvpLink: string;
   thumbnailURL: string;
   tag: string;
@@ -99,16 +101,18 @@ const ActivityFeed = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, backgorundColor: "blue" }}>
       <Grid container spacing={2}>
         {currentActivities.map((activity) => (
-          <Grid item xs={12} sm={6} key={activity.id}>
+          <Grid item xs={12} sm={4} key={activity.id}>
             {" "}
             {/* 2 items per row */}
             <ActivityCard
               id={activity.id}
               eventDateTime={activity.eventDateTime}
               rsvpLink={activity.rsvpLink}
+              eventStartTime={activity.eventStartTime}
+              eventEndTime={activity.eventEndTime}
               thumbnailSrc={activity.thumbnailURL}
               activityName={activity.title}
               activityTag={activity.tag}

@@ -27,6 +27,8 @@ const ActivityCreation: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [rsvpLink, setRsvpLink] = useState<string>(""); // New RSVP link state
   const [eventDateTime, setEventDateTime] = useState<string>(""); // New event date/time state
+  const [eventStartTime, setEventStartTime] = useState<string>(""); // Event start time
+  const [eventEndTime, setEventEndTime] = useState<string>(""); // Event end time
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);
@@ -54,10 +56,39 @@ const ActivityCreation: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => setEventDateTime(event.target.value); // Handle event date/time input
 
+  const handleEventStartTimeChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => setEventStartTime(event.target.value); // Handle event start time input
+
+  const handleEventEndTimeChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => setEventEndTime(event.target.value); // Handle event end time input
+
+  const formatDateTime = (dateTimeString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      timeZoneName: "short",
+    };
+    return new Date(dateTimeString).toLocaleDateString("en-US", options);
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!title || !body || !selectedTag || !rsvpLink || !eventDateTime) {
+    if (
+      !title ||
+      !body ||
+      !selectedTag ||
+      !rsvpLink ||
+      !eventDateTime ||
+      !eventStartTime ||
+      !eventEndTime
+    ) {
       console.error("All fields are required");
       return;
     }
@@ -69,7 +100,9 @@ const ActivityCreation: React.FC = () => {
         body,
         tag: selectedTag,
         rsvpLink, // Save RSVP link
-        eventDateTime, // Save event date/time
+        eventDateTime: formatDateTime(eventDateTime), // Format and save event date/time
+        eventStartTime, // Save event start time
+        eventEndTime, // Save event end time
         createdAt: Timestamp.now(), // Use Firestore Timestamp
       });
 
@@ -94,7 +127,9 @@ const ActivityCreation: React.FC = () => {
         thumbnailURL,
         tag: selectedTag,
         rsvpLink, // Save RSVP link
-        eventDateTime, // Save event date/time
+        eventDateTime: formatDateTime(eventDateTime), // Save formatted event date/time
+        eventStartTime, // Save event start time
+        eventEndTime, // Save event end time
         createdAt: Timestamp.now(),
         activityId, // Store the activityId in the Firestore document
       });
@@ -107,6 +142,8 @@ const ActivityCreation: React.FC = () => {
       setSelectedTag("");
       setRsvpLink(""); // Reset RSVP link
       setEventDateTime(""); // Reset event date/time
+      setEventStartTime(""); // Reset start time
+      setEventEndTime(""); // Reset end time
 
       console.log("Activity saved successfully with ID: ", activityId);
     } catch (error) {
@@ -121,7 +158,7 @@ const ActivityCreation: React.FC = () => {
           container
           spacing={2}
           direction="column"
-          alignItems="center" // Center the content horizontally
+          alignItems="center"
           sx={{
             height: "100%",
             padding: 4,
@@ -148,18 +185,38 @@ const ActivityCreation: React.FC = () => {
           <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
             <TextField
               fullWidth
-              label="Event Date and Time"
+              label="Event Date"
               type="datetime-local"
               InputLabelProps={{ shrink: true }}
               value={eventDateTime}
               onChange={handleEventDateTimeChange}
             />
           </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            <TextField
+              fullWidth
+              label="Event Start Time"
+              type="time"
+              InputLabelProps={{ shrink: true }}
+              value={eventStartTime}
+              onChange={handleEventStartTimeChange}
+            />
+          </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            <TextField
+              fullWidth
+              label="Event End Time"
+              type="time"
+              InputLabelProps={{ shrink: true }}
+              value={eventEndTime}
+              onChange={handleEventEndTimeChange}
+            />
+          </Grid>
           <Grid item sx={{ width: "100%", maxWidth: 1500, flex: 1 }}>
             <ReactQuill
               value={body}
               onChange={handleBodyChange}
-              style={{ height: "100%", width: "100%" }} // Expand editor width
+              style={{ height: "100%", width: "100%" }}
             />
           </Grid>
           <Grid item>

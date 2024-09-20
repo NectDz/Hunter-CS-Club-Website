@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
+import GridItem from "../../../../Components/common/GridItem";
 import {
   Typography,
   Avatar,
@@ -45,7 +46,7 @@ const ActivityDetail = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        width="100%"
+        width="10%"
         height="100vh"
       >
         <CircularProgress />
@@ -62,97 +63,107 @@ const ActivityDetail = () => {
   }
 
   return (
-    <Container maxWidth="md" sx={{ mt: 4, px: { xs: 2, md: 3 } }}>
-      {/* Thumbnail Section */}
+    <Container maxWidth="md">
       <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        mb={4}
         sx={{
-          width: "100%", // Ensure container takes full width
+          flexGrow: 1,
+          paddingY: "80px",
+          minHeight: "100vh",
         }}
       >
-        <Avatar
-          variant="square"
-          src={activity.thumbnailURL}
-          alt={activity.title}
-          sx={{
-            width: "100%", // Make the image take full width of its container
-            maxWidth: { xs: "90%", sm: "80%", md: "60%" }, // Adjust width responsively
-            height: "auto", // Ensure the height scales with width
-            borderRadius: "16px",
-            objectFit: "cover",
-          }}
-        />
-      </Box>
+        <GridItem>
+          {/* Thumbnail Section */}
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mb={4}
+            sx={{
+              width: "100%", // Ensure container takes full width
+            }}
+          >
+            <Avatar
+              variant="square"
+              src={activity.thumbnailURL}
+              alt={activity.title}
+              sx={{
+                width: "100%", // Make the image take full width of its container
+                maxWidth: { xs: "90%", sm: "80%", md: "60%" }, // Adjust width responsively
+                height: "auto", // Ensure the height scales with width
+                borderRadius: "16px",
+                objectFit: "cover",
+              }}
+            />
+          </Box>
 
-      {/* Title Section */}
-      <Typography
-        variant="h3"
-        component="h1"
-        align="center"
-        gutterBottom
-        sx={{
-          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, // Adjust title size for mobile
-        }}
-      >
-        {activity.title}
-      </Typography>
+          {/* Title Section */}
+          <Typography
+            variant="h3"
+            component="h1"
+            align="center"
+            gutterBottom
+            sx={{
+              fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, // Adjust title size for mobile
+            }}
+          >
+            {activity.title}
+          </Typography>
 
-      {/* Metadata Section */}
-      <Typography
-        variant="body2"
-        color="textSecondary"
-        align="center"
-        gutterBottom
-        sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }} // Responsive font size
-      >
-        Posted on:{" "}
-        {new Date(activity.createdAt.seconds * 1000).toLocaleDateString(
-          "en-US",
-          {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          }
-        )}
-      </Typography>
+          {/* Metadata Section */}
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            align="center"
+            gutterBottom
+            sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }} // Responsive font size
+          >
+            Posted on:{" "}
+            {new Date(activity.createdAt.seconds * 1000).toLocaleDateString(
+              "en-US",
+              {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              }
+            )}
+          </Typography>
 
-      <Typography
-        variant="body2"
-        color="textSecondary"
-        align="center"
-        mb={4}
-        sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
-      >
-        Author: {activity.author}
-      </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            align="center"
+            mb={4}
+            sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
+          >
+            Author: {activity.author}
+          </Typography>
 
-      {/* Content Section */}
-      <Box
-        mb={6}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        sx={{
-          width: "100%",
-          maxWidth: { xs: "100%", sm: "90%", md: "80%" }, // Ensure text is not too wide
-          textAlign: "justify",
-        }}
-      >
-        <Typography
-          variant="body1"
-          component="div" // Change to div to contain HTML elements
-          paragraph
-          sx={{
-            fontSize: { xs: "0.95rem", sm: "1rem" }, // Adjust font size
-            lineHeight: { xs: 1.5, sm: 1.7 }, // Better readability on mobile
-          }}
-          dangerouslySetInnerHTML={{
-            __html: activity.body, // Sanitize and render HTML content
-          }}
-        />
+          {/* Content Section */}
+          <Box
+            mb={6}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              width: "100%",
+              maxWidth: { xs: "100%", sm: "90%", md: "80%" }, // Ensure text is not too wide
+              textAlign: "justify",
+            }}
+          >
+            <Typography
+              variant="body1"
+              component="div" // Change to div to contain HTML elements
+              paragraph
+              sx={{
+                fontSize: { xs: "0.95rem", sm: "1rem" }, // Adjust font size
+                lineHeight: { xs: 1.5, sm: 1.7 }, // Better readability on mobile
+              }}
+              dangerouslySetInnerHTML={{
+                __html: activity.body, // Sanitize and render HTML content
+              }}
+            />
+          </Box>
+        </GridItem>
       </Box>
     </Container>
   );

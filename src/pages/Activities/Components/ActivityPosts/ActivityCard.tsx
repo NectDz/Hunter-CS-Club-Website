@@ -16,10 +16,12 @@ interface ActivityCardProps {
   activityTag: string;
   description: string;
   postedTime: FirestoreTimestamp;
-  eventDateTime: FirestoreTimestamp; // New prop for event date and time
-  rsvpLink: string; // New prop for RSVP link
+  eventDateTime: FirestoreTimestamp;
+  eventStartTime: string;
+  eventEndTime: string;
+  rsvpLink: string;
   buttonText?: string;
-  id: string; // Add id for navigation
+  id: string;
 }
 
 interface FirestoreTimestamp {
@@ -33,37 +35,36 @@ function ActivityCard({
   activityTag,
   description,
   postedTime,
-  eventDateTime, // Use eventDateTime for hiding RSVP
-  rsvpLink, // RSVP link
+  eventDateTime,
+  eventStartTime,
+  eventEndTime,
+  rsvpLink,
   buttonText = "RSVP",
-  id, // Use id for routing
+  id,
 }: ActivityCardProps) {
   const navigate = useNavigate();
   const [showFullDescription, setShowFullDescription] = useState(false);
 
-  const formatFirestoreTimestamp = (timestamp: FirestoreTimestamp) => {
+  const formatDate = (timestamp: FirestoreTimestamp) => {
     if (!timestamp || typeof timestamp.seconds !== "number") return "";
     const date = new Date(timestamp.seconds * 1000);
-    return date.toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    });
+    return date.toLocaleDateString("en-US");
   };
 
-  const formatDateTime = (timestamp: FirestoreTimestamp) => {
-    if (!timestamp || typeof timestamp.seconds !== "number") return "";
-    const date = new Date(timestamp.seconds * 1000);
-    return date.toLocaleString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
+  const formatTime = (timeString: string) => {
+    if (!timeString) return "";
+
+    const [hours, minutes] = timeString.split(":").map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes);
+
+    return date.toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "numeric",
+      hour12: true,
     });
   };
 
-  // Function to handle description truncation
   const truncateDescription = (text: string, length: number) => {
     if (text.length > length && !showFullDescription) {
       return `${text.substring(0, length)}...`;
@@ -71,30 +72,29 @@ function ActivityCard({
     return text;
   };
 
-  // Handle the card click to navigate to the details page
   const handleClick = () => {
-    navigate(`/activities/${id}`); // Navigate to the activity detail page
+    navigate(`/activities/${id}`);
   };
 
-  // Get current time
   const currentTime = new Date();
   const eventTime = new Date(eventDateTime.seconds * 1000);
 
   return (
     <Card
-      elevation={2}
+      elevation={0}
       sx={{
-        maxWidth: 350,
+        maxWidth: 400,
         borderRadius: "16px",
         overflow: "hidden",
         margin: "auto",
         transition: "transform 0.2s ease-in-out",
-        cursor: "pointer", // Make the card look clickable
+        cursor: "pointer",
         "&:hover": {
           transform: "scale(1.02)",
+          elevation: 2,
         },
       }}
-      onClick={handleClick} // Attach click handler to the whole card
+      onClick={handleClick}
     >
       <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
         <Box sx={{ textAlign: "center", mb: 2 }}>
@@ -102,7 +102,7 @@ function ActivityCard({
             variant="square"
             sx={{
               width: "100%",
-              height: 200,
+              height: 350,
               marginBottom: 2,
               borderRadius: "16px",
               objectFit: "cover",
@@ -127,8 +127,8 @@ function ActivityCard({
               variant="contained"
               color="primary"
               onClick={(e) => {
-                e.stopPropagation(); // Prevent the card click from firing when button is clicked
-                window.open(rsvpLink, "_blank"); // Open RSVP link in a new tab
+                e.stopPropagation();
+                window.open(rsvpLink, "_blank");
               }}
             >
               {buttonText}
@@ -138,6 +138,10 @@ function ActivityCard({
         <Typography variant="h5" component="div" gutterBottom>
           {activityName}
         </Typography>
+        <Typography variant="subtitle2" color="text.secondary">
+          Event on: {formatDate(eventDateTime)} {formatTime(eventStartTime)} -{" "}
+          {formatTime(eventEndTime)}
+        </Typography>
         <Tooltip title={description.length > 100 ? description : ""} arrow>
           <div>
             <Typography
@@ -145,11 +149,11 @@ function ActivityCard({
               color="text.secondary"
               sx={{ cursor: description.length > 100 ? "pointer" : "default" }}
               onClick={(e) => {
-                e.stopPropagation(); // Prevent card click on text click
+                e.stopPropagation();
                 setShowFullDescription(!showFullDescription);
               }}
               dangerouslySetInnerHTML={{
-                __html: truncateDescription(description, 100), // Render HTML content
+                __html: truncateDescription(description, 100),
               }}
             />
             {description.length > 100 && (
@@ -167,14 +171,7 @@ function ActivityCard({
           color="text.secondary"
           sx={{ mt: 1, fontStyle: "italic" }}
         >
-          Posted on {formatFirestoreTimestamp(postedTime)}
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          sx={{ mt: 1, fontStyle: "italic" }}
-        >
-          Event on {formatDateTime(eventDateTime)} {/* Show event date/time */}
+          Posted on {formatDate(postedTime)}
         </Typography>
       </CardContent>
     </Card>
