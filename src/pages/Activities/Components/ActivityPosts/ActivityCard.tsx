@@ -45,7 +45,6 @@ function ActivityCard({
   id,
 }: ActivityCardProps) {
   const navigate = useNavigate();
-  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const formatDate = (timestamp: FirestoreTimestamp) => {
     if (!timestamp || typeof timestamp.seconds !== "number") return "";
@@ -79,10 +78,12 @@ function ActivityCard({
   };
 
   const truncateDescription = (text: string, length: number) => {
-    if (text.length > length && !showFullDescription) {
-      return `${text.substring(0, length)}...`;
+    // Remove line breaks
+    const cleanText = text.replace(/(\r\n|\n|\r)/gm, " ");
+    if (cleanText.length > length) {
+      return `${cleanText.substring(0, length)}...`;
     }
-    return text;
+    return cleanText;
   };
 
   const handleClick = () => {
@@ -138,23 +139,23 @@ function ActivityCard({
           <Typography variant="subtitle1" color="text.secondary">
             {activityTag}
           </Typography>
+          {isEventInFuture && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(rsvpLink, "_blank");
+              }}
+              sx={{ ml: 2 }} // Margin to separate the button from the tag
+            >
+              {buttonText}
+            </Button>
+          )}
         </Box>
         <Typography variant="h5" component="div" gutterBottom>
           {activityName}
         </Typography>
-        {isEventInFuture && (
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(rsvpLink, "_blank");
-            }}
-            sx={{ mt: 1 }}
-          >
-            {buttonText}
-          </Button>
-        )}
         <Typography variant="subtitle1" color="text.secondary">
           Event on: {formatEventDate(eventDateTime)}{" "}
           {formatTime(eventStartTime)} - {formatTime(eventEndTime)}
@@ -162,30 +163,7 @@ function ActivityCard({
         <Typography variant="subtitle1" color="text.secondary">
           Location: {location}
         </Typography>
-        <Tooltip title={description.length > 100 ? description : ""} arrow>
-          <div>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ cursor: description.length > 100 ? "pointer" : "default" }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowFullDescription(!showFullDescription);
-              }}
-              dangerouslySetInnerHTML={{
-                __html: truncateDescription(description, 100),
-              }}
-            />
-            {description.length > 100 && (
-              <Typography
-                component="span"
-                sx={{ color: "primary.main", fontSize: "0.9rem" }}
-              >
-                {showFullDescription ? "Show less" : "Read more"}
-              </Typography>
-            )}
-          </div>
-        </Tooltip>
+
         <Typography
           variant="subtitle2"
           color="text.secondary"
