@@ -162,12 +162,12 @@ const ActivityDetail = () => {
           )}
 
           {/* Metadata Section */}
-          <Typography variant="subtitle1" color="text.secondary">
+          <Typography variant="subtitle1" color="text.secondary" align="center">
             Event on: {formatEventDate(activity.eventDateTime)}{" "}
             {formatTime(activity.eventStartTime)} -{" "}
             {formatTime(activity.eventEndTime)}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary">
+          <Typography variant="subtitle1" color="text.secondary" align="center">
             Location: {activity.location}
           </Typography>
 
@@ -177,6 +177,7 @@ const ActivityDetail = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
+            mx="auto"
             sx={{
               width: "100%",
               maxWidth: { xs: "100%", sm: "90%", md: "80%" }, // Ensure text is not too wide
