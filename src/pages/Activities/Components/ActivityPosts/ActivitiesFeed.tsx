@@ -16,7 +16,7 @@ interface Activity {
   id: string;
   title: string;
   body: string;
-  eventDateTime: FirestoreTimestamp;
+  eventDateTime: string;
   eventStartTime: string;
   eventEndTime: string;
   rsvpLink: string;

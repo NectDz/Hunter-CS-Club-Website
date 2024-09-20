@@ -16,7 +16,7 @@ interface ActivityCardProps {
   activityTag: string;
   description: string;
   postedTime: FirestoreTimestamp;
-  eventDateTime: FirestoreTimestamp;
+  eventDateTime: string;
   eventStartTime: string;
   eventEndTime: string;
   rsvpLink: string;
@@ -51,6 +51,17 @@ function ActivityCard({
     return date.toLocaleDateString("en-US");
   };
 
+  const formatEventDate = (dateString: string) => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   const formatTime = (timeString: string) => {
     if (!timeString) return "";
 
@@ -77,7 +88,6 @@ function ActivityCard({
   };
 
   const currentTime = new Date();
-  const eventTime = new Date(eventDateTime.seconds * 1000);
 
   return (
     <Card
@@ -121,26 +131,13 @@ function ActivityCard({
           <Typography variant="subtitle1" color="text.secondary">
             {activityTag}
           </Typography>
-          {eventTime > currentTime && (
-            <Button
-              size="small"
-              variant="contained"
-              color="primary"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(rsvpLink, "_blank");
-              }}
-            >
-              {buttonText}
-            </Button>
-          )}
         </Box>
         <Typography variant="h5" component="div" gutterBottom>
           {activityName}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          Event on: {formatDate(eventDateTime)} {formatTime(eventStartTime)} -{" "}
-          {formatTime(eventEndTime)}
+        <Typography variant="subtitle1" color="text.secondary">
+          Event on: {formatEventDate(eventDateTime)}{" "}
+          {formatTime(eventStartTime)} - {formatTime(eventEndTime)}
         </Typography>
         <Tooltip title={description.length > 100 ? description : ""} arrow>
           <div>
