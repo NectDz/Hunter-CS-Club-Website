@@ -1,6 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Grid, Typography, Button } from "@mui/material";
+import GridItem from "../../Components/common/GridItem";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import Metrics from "./Components/Metrics/Metrics";
@@ -66,7 +67,9 @@ const Activities = () => {
               <Typography variant="h3" align="center" gutterBottom>
                 Info Section
               </Typography>
-              <ActivitiesFeed />
+              <GridItem>
+                <ActivitiesFeed />
+              </GridItem>
             </Grid>
           </>
         )}
