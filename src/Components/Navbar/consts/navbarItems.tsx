@@ -15,13 +15,13 @@ export const mainNavbarItems = [
     label: "Updates",
     route: "updates",
   },
-  
+  */
   {
     id: 2,
     label: "Activities",
     route: "activities",
   },
-  */
+
   {
     id: 3,
     label: "FAQ",

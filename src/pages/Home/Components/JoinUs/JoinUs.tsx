@@ -71,8 +71,12 @@ const JoinUs = () => {
                 to={JOIN_US_URL}
                 target="_blank"
                 variant="outlined"
-                color="inherit"
-                sx={{ borderRadius: 0, padding: "10px 20px" }}
+                color="primary"
+                sx={{
+                  borderRadius: 0,
+                  padding: "15px 20px",
+                  fontSize: "1rem",
+                }}
               >
                 Become an official member
               </Button>

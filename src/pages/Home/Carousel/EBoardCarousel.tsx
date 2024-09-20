@@ -91,7 +91,7 @@ const EBoardCarousel = () => {
     <Carousel
       autoPlay={true}
       interval={8000}
-      animation="fade"
+      animation="slide"
       indicators={true}
       navButtonsAlwaysVisible={false}
       cycleNavigation={true}

@@ -6,6 +6,7 @@ import {
   Avatar,
   Box,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface ActivityCardProps {
   thumbnailSrc: string;
@@ -13,7 +14,13 @@ interface ActivityCardProps {
   activityTag: string;
   description: string;
   postedTime: FirestoreTimestamp;
-  authorName: string;
+  eventDateTime: string;
+  eventStartTime: string;
+  eventEndTime: string;
+  location: string;
+  rsvpLink: string;
+  buttonText?: string;
+  id: string;
 }
 
 interface FirestoreTimestamp {
@@ -25,29 +32,69 @@ function ActivityCard({
   thumbnailSrc,
   activityName,
   activityTag,
-  description,
-  postedTime,
-  authorName,
+  //postedTime,
+  location,
+  eventDateTime,
+  eventStartTime,
+  eventEndTime,
+  rsvpLink,
+  buttonText = "RSVP",
+  id,
 }: ActivityCardProps) {
-  const formatFirestoreTimestamp = (timestamp: FirestoreTimestamp) => {
-    if (!timestamp || typeof timestamp.seconds !== "number") return "";
-    const date = new Date(timestamp.seconds * 1000);
+  const navigate = useNavigate();
+
+  const formatEventDate = (dateString: string) => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
+      year: "numeric",
       month: "long",
       day: "numeric",
-      year: "numeric",
     });
   };
+
+  const formatTime = (timeString: string) => {
+    if (!timeString) return "";
+
+    const [hours, minutes] = timeString.split(":").map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes);
+
+    return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+  };
+
+  const handleClick = () => {
+    navigate(`/activities/${id}`);
+  };
+
+  // Combine eventDateTime and eventStartTime into a full Date object
+  const eventDateTimeObject = new Date(`${eventDateTime}T${eventStartTime}`);
+  const currentTime = new Date();
+
+  // Check if the event has passed
+  const isEventInFuture = currentTime <= eventDateTimeObject;
 
   return (
     <Card
       elevation={0}
       sx={{
-        maxWidth: 300,
+        maxWidth: 400,
         borderRadius: "16px",
         overflow: "hidden",
         margin: "auto",
+        transition: "transform 0.2s ease-in-out",
+        cursor: "pointer",
+        "&:hover": {
+          transform: "scale(1.02)",
+          elevation: 2,
+        },
       }}
+      onClick={handleClick}
     >
       <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
         <Box sx={{ textAlign: "center", mb: 2 }}>
@@ -55,9 +102,10 @@ function ActivityCard({
             variant="square"
             sx={{
               width: "100%",
-              height: 200,
+              height: 350,
               marginBottom: 2,
               borderRadius: "16px",
+              objectFit: "cover",
             }}
             src={thumbnailSrc}
           />
@@ -73,21 +121,35 @@ function ActivityCard({
           <Typography variant="subtitle1" color="text.secondary">
             {activityTag}
           </Typography>
-          <Button size="small" variant="contained" color="primary">
-            RSVP
-          </Button>
+          {isEventInFuture && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(rsvpLink, "_blank");
+              }}
+              sx={{ ml: 2 }} // Margin to separate the button from the tag
+            >
+              {buttonText}
+            </Button>
+          )}
         </Box>
-        <Typography variant="h5" component="div">
+        <Typography
+          variant="h5"
+          component="div"
+          color="#4d2e91"
+          gutterBottom
+          sx={{ fontWeight: "bold" }}
+        >
           {activityName}
         </Typography>
-        <Typography variant="body1" color="text.secondary">
-          {description}
+        <Typography variant="subtitle1" color="text.secondary">
+          Event on: {formatEventDate(eventDateTime)}{" "}
+          {formatTime(eventStartTime)} - {formatTime(eventEndTime)}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          Posted on {formatFirestoreTimestamp(postedTime)}
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          By {authorName}
+        <Typography variant="subtitle1" color="text.secondary">
+          Location: {location}
         </Typography>
       </CardContent>
     </Card>

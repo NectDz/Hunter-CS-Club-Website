@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home.tsx";
 import FAQ from "./pages/FAQ/FAQ.tsx";
 import Activities from "./pages/Activities/Activities.tsx";
 import ActivityCreation from "./pages/Activities/Components/ActivityPosts/ActivityCreation.tsx";
+import ActivityDetail from "./pages/Activities/Components/ActivityPosts/ActivityDetail.tsx";
 import Updates from "./pages/Updates/Updates.tsx";
 import About from "./pages/about/about.tsx";
 import Contact from "./pages/Contact/Contact.tsx";
@@ -63,6 +64,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="about" element={<About />} />
               <Route path="activities" element={<Activities />}>
                 <Route path="create" element={<ActivityCreation />} />
+                <Route path="/activities/:id" element={<ActivityDetail />} />
               </Route>
               <Route path="faq" element={<FAQ />} />
               <Route path="contact" element={<Contact />} />
