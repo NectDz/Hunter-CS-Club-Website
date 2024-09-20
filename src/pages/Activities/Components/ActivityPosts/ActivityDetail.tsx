@@ -143,15 +143,16 @@ const ActivityDetail = () => {
       >
         <Typography
           variant="body1"
-          component="p"
+          component="div" // Change to div to contain HTML elements
           paragraph
           sx={{
             fontSize: { xs: "0.95rem", sm: "1rem" }, // Adjust font size
             lineHeight: { xs: 1.5, sm: 1.7 }, // Better readability on mobile
           }}
-        >
-          {activity.body}
-        </Typography>
+          dangerouslySetInnerHTML={{
+            __html: activity.body, // Sanitize and render HTML content
+          }}
+        />
       </Box>
     </Container>
   );

@@ -16,6 +16,8 @@ interface Activity {
   id: string;
   title: string;
   body: string;
+  eventDateTime: FirestoreTimestamp;
+  rsvpLink: string;
   thumbnailURL: string;
   tag: string;
   createdAt: FirestoreTimestamp;
@@ -105,6 +107,8 @@ const ActivityFeed = () => {
             {/* 2 items per row */}
             <ActivityCard
               id={activity.id}
+              eventDateTime={activity.eventDateTime}
+              rsvpLink={activity.rsvpLink}
               thumbnailSrc={activity.thumbnailURL}
               activityName={activity.title}
               activityTag={activity.tag}

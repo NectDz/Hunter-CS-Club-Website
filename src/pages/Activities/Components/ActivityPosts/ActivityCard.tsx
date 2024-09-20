@@ -16,6 +16,8 @@ interface ActivityCardProps {
   activityTag: string;
   description: string;
   postedTime: FirestoreTimestamp;
+  eventDateTime: FirestoreTimestamp; // New prop for event date and time
+  rsvpLink: string; // New prop for RSVP link
   buttonText?: string;
   id: string; // Add id for navigation
 }
@@ -31,6 +33,8 @@ function ActivityCard({
   activityTag,
   description,
   postedTime,
+  eventDateTime, // Use eventDateTime for hiding RSVP
+  rsvpLink, // RSVP link
   buttonText = "RSVP",
   id, // Use id for routing
 }: ActivityCardProps) {
@@ -47,6 +51,18 @@ function ActivityCard({
     });
   };
 
+  const formatDateTime = (timestamp: FirestoreTimestamp) => {
+    if (!timestamp || typeof timestamp.seconds !== "number") return "";
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
+  };
+
   // Function to handle description truncation
   const truncateDescription = (text: string, length: number) => {
     if (text.length > length && !showFullDescription) {
@@ -59,6 +75,10 @@ function ActivityCard({
   const handleClick = () => {
     navigate(`/activities/${id}`); // Navigate to the activity detail page
   };
+
+  // Get current time
+  const currentTime = new Date();
+  const eventTime = new Date(eventDateTime.seconds * 1000);
 
   return (
     <Card
@@ -101,32 +121,37 @@ function ActivityCard({
           <Typography variant="subtitle1" color="text.secondary">
             {activityTag}
           </Typography>
-          <Button
-            size="small"
-            variant="contained"
-            color="primary"
-            onClick={(e) => {
-              e.stopPropagation(); // Prevent the card click from firing when button is clicked
-              // Add your button click logic here
-            }}
-          >
-            {buttonText}
-          </Button>
+          {eventTime > currentTime && (
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent the card click from firing when button is clicked
+                window.open(rsvpLink, "_blank"); // Open RSVP link in a new tab
+              }}
+            >
+              {buttonText}
+            </Button>
+          )}
         </Box>
         <Typography variant="h5" component="div" gutterBottom>
           {activityName}
         </Typography>
         <Tooltip title={description.length > 100 ? description : ""} arrow>
-          <Typography
-            variant="body1"
-            color="text.secondary"
-            sx={{ cursor: description.length > 100 ? "pointer" : "default" }}
-            onClick={(e) => {
-              e.stopPropagation(); // Prevent card click on text click
-              setShowFullDescription(!showFullDescription);
-            }}
-          >
-            {truncateDescription(description, 100)}{" "}
+          <div>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ cursor: description.length > 100 ? "pointer" : "default" }}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent card click on text click
+                setShowFullDescription(!showFullDescription);
+              }}
+              dangerouslySetInnerHTML={{
+                __html: truncateDescription(description, 100), // Render HTML content
+              }}
+            />
             {description.length > 100 && (
               <Typography
                 component="span"
@@ -135,7 +160,7 @@ function ActivityCard({
                 {showFullDescription ? "Show less" : "Read more"}
               </Typography>
             )}
-          </Typography>
+          </div>
         </Tooltip>
         <Typography
           variant="subtitle2"
@@ -143,6 +168,13 @@ function ActivityCard({
           sx={{ mt: 1, fontStyle: "italic" }}
         >
           Posted on {formatFirestoreTimestamp(postedTime)}
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          color="text.secondary"
+          sx={{ mt: 1, fontStyle: "italic" }}
+        >
+          Event on {formatDateTime(eventDateTime)} {/* Show event date/time */}
         </Typography>
       </CardContent>
     </Card>

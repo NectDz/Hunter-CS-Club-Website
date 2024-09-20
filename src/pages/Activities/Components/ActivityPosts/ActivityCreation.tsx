@@ -25,6 +25,8 @@ const ActivityCreation: React.FC = () => {
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [thumbnailName, setThumbnailName] = useState<string>(""); // State to store file name
   const [selectedTag, setSelectedTag] = useState<string>("");
+  const [rsvpLink, setRsvpLink] = useState<string>(""); // New RSVP link state
+  const [eventDateTime, setEventDateTime] = useState<string>(""); // New event date/time state
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);
@@ -45,10 +47,17 @@ const ActivityCreation: React.FC = () => {
     setSelectedTag(event.target.value as string);
   };
 
+  const handleRsvpLinkChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setRsvpLink(event.target.value); // Handle RSVP link input
+
+  const handleEventDateTimeChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => setEventDateTime(event.target.value); // Handle event date/time input
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!title || !body || !selectedTag) {
+    if (!title || !body || !selectedTag || !rsvpLink || !eventDateTime) {
       console.error("All fields are required");
       return;
     }
@@ -59,6 +68,8 @@ const ActivityCreation: React.FC = () => {
         title,
         body,
         tag: selectedTag,
+        rsvpLink, // Save RSVP link
+        eventDateTime, // Save event date/time
         createdAt: Timestamp.now(), // Use Firestore Timestamp
       });
 
@@ -82,6 +93,8 @@ const ActivityCreation: React.FC = () => {
         body,
         thumbnailURL,
         tag: selectedTag,
+        rsvpLink, // Save RSVP link
+        eventDateTime, // Save event date/time
         createdAt: Timestamp.now(),
         activityId, // Store the activityId in the Firestore document
       });
@@ -92,6 +105,8 @@ const ActivityCreation: React.FC = () => {
       setThumbnail(null);
       setThumbnailName(""); // Reset the file name
       setSelectedTag("");
+      setRsvpLink(""); // Reset RSVP link
+      setEventDateTime(""); // Reset event date/time
 
       console.log("Activity saved successfully with ID: ", activityId);
     } catch (error) {
@@ -113,8 +128,6 @@ const ActivityCreation: React.FC = () => {
           }}
         >
           <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            {" "}
-            {/* Adjust width */}
             <TextField
               fullWidth
               label="Title"
@@ -123,9 +136,26 @@ const ActivityCreation: React.FC = () => {
               onChange={handleTitleChange}
             />
           </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            <TextField
+              fullWidth
+              label="RSVP Link"
+              variant="outlined"
+              value={rsvpLink}
+              onChange={handleRsvpLinkChange}
+            />
+          </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            <TextField
+              fullWidth
+              label="Event Date and Time"
+              type="datetime-local"
+              InputLabelProps={{ shrink: true }}
+              value={eventDateTime}
+              onChange={handleEventDateTimeChange}
+            />
+          </Grid>
           <Grid item sx={{ width: "100%", maxWidth: 1500, flex: 1 }}>
-            {" "}
-            {/* Wider editor */}
             <ReactQuill
               value={body}
               onChange={handleBodyChange}
@@ -137,7 +167,7 @@ const ActivityCreation: React.FC = () => {
               Upload Thumbnail
               <input type="file" hidden onChange={handleThumbnailChange} />
             </Button>
-            {thumbnailName && ( // Display file name if a thumbnail is selected
+            {thumbnailName && (
               <Typography variant="body2" sx={{ mt: 1 }}>
                 Selected file: {thumbnailName}
               </Typography>
