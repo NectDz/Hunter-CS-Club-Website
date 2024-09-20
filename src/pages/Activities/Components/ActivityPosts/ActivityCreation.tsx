@@ -11,6 +11,7 @@ import {
   InputLabel,
   Box,
   Typography,
+  Paper,
 } from "@mui/material";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
@@ -23,13 +24,13 @@ const ActivityCreation: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
-  const [thumbnailName, setThumbnailName] = useState<string>(""); // State to store file name
+  const [thumbnailName, setThumbnailName] = useState<string>("");
   const [selectedTag, setSelectedTag] = useState<string>("");
-  const [rsvpLink, setRsvpLink] = useState<string>(""); // New RSVP link state
-  const [eventDateTime, setEventDateTime] = useState<string>(""); // New event date state
-  const [eventStartTime, setEventStartTime] = useState<string>(""); // Event start time
-  const [eventEndTime, setEventEndTime] = useState<string>(""); // Event end time
-  const [location, setLocation] = useState<string>(""); // New location state
+  const [rsvpLink, setRsvpLink] = useState<string>("");
+  const [eventDateTime, setEventDateTime] = useState<string>("");
+  const [eventStartTime, setEventStartTime] = useState<string>("");
+  const [eventEndTime, setEventEndTime] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);
@@ -42,7 +43,7 @@ const ActivityCreation: React.FC = () => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       setThumbnail(file);
-      setThumbnailName(file.name); // Store the name of the file
+      setThumbnailName(file.name);
     }
   };
 
@@ -51,24 +52,24 @@ const ActivityCreation: React.FC = () => {
   };
 
   const handleRsvpLinkChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setRsvpLink(event.target.value); // Handle RSVP link input
+    setRsvpLink(event.target.value);
 
   const handleEventDateTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setEventDateTime(event.target.value); // Set the date directly from the input
+    setEventDateTime(event.target.value);
   };
 
   const handleEventStartTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => setEventStartTime(event.target.value); // Handle event start time input
+  ) => setEventStartTime(event.target.value);
 
   const handleEventEndTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => setEventEndTime(event.target.value); // Handle event end time input
+  ) => setEventEndTime(event.target.value);
 
   const handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setLocation(event.target.value); // Handle location input
+    setLocation(event.target.value);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -88,24 +89,22 @@ const ActivityCreation: React.FC = () => {
     }
 
     try {
-      // Step 1: Create a new activity document and get the activityId
       const activityRef = await addDoc(collection(db, "activities"), {
         title,
         body,
         tag: selectedTag,
-        rsvpLink, // Save RSVP link
-        eventDateTime, // Save event date as YYYY-MM-DD
-        eventStartTime, // Save event start time
-        eventEndTime, // Save event end time
-        location, // Save location
-        createdAt: Timestamp.now(), // Use Firestore Timestamp
+        rsvpLink,
+        eventDateTime,
+        eventStartTime,
+        eventEndTime,
+        location,
+        createdAt: Timestamp.now(),
       });
 
-      const activityId = activityRef.id; // Get the generated document ID
+      const activityId = activityRef.id;
 
       let thumbnailURL: string | null = null;
 
-      // Step 2: If a thumbnail is provided, upload it using the activityId
       if (thumbnail) {
         const thumbnailRef = ref(
           storage,
@@ -115,32 +114,30 @@ const ActivityCreation: React.FC = () => {
         thumbnailURL = await getDownloadURL(thumbnailRef);
       }
 
-      // Step 3: Update the activity document with the thumbnail URL and activityId
       await setDoc(doc(db, "activities", activityId), {
         title,
         body,
         thumbnailURL,
         tag: selectedTag,
-        rsvpLink, // Save RSVP link
-        eventDateTime, // Save event date as YYYY-MM-DD
-        eventStartTime, // Save event start time
-        eventEndTime, // Save event end time
-        location, // Save location
+        rsvpLink,
+        eventDateTime,
+        eventStartTime,
+        eventEndTime,
+        location,
         createdAt: Timestamp.now(),
-        activityId, // Store the activityId in the Firestore document
+        activityId,
       });
 
-      // Reset state after successful submission
       setTitle("");
       setBody("");
       setThumbnail(null);
-      setThumbnailName(""); // Reset the file name
+      setThumbnailName("");
       setSelectedTag("");
-      setRsvpLink(""); // Reset RSVP link
-      setEventDateTime(""); // Reset event date
-      setEventStartTime(""); // Reset start time
-      setEventEndTime(""); // Reset end time
-      setLocation(""); // Reset location
+      setRsvpLink("");
+      setEventDateTime("");
+      setEventStartTime("");
+      setEventEndTime("");
+      setLocation("");
 
       console.log("Activity saved successfully with ID: ", activityId);
     } catch (error) {
@@ -149,116 +146,131 @@ const ActivityCreation: React.FC = () => {
   };
 
   return (
-    <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
-      <form onSubmit={handleSubmit} style={{ flex: 1 }}>
-        <Grid
-          container
-          spacing={2}
-          direction="column"
-          alignItems="center"
-          sx={{
-            height: "100%",
-            padding: 4,
-          }}
-        >
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <TextField
-              fullWidth
-              label="Title"
-              variant="outlined"
-              value={title}
-              onChange={handleTitleChange}
-            />
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <TextField
-              fullWidth
-              label="RSVP Link"
-              variant="outlined"
-              value={rsvpLink}
-              onChange={handleRsvpLinkChange}
-            />
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <TextField
-              fullWidth
-              label="Event Date"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              value={eventDateTime}
-              onChange={handleEventDateTimeChange}
-            />
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <TextField
-              fullWidth
-              label="Event Start Time"
-              type="time"
-              InputLabelProps={{ shrink: true }}
-              value={eventStartTime}
-              onChange={handleEventStartTimeChange}
-            />
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <TextField
-              fullWidth
-              label="Event End Time"
-              type="time"
-              InputLabelProps={{ shrink: true }}
-              value={eventEndTime}
-              onChange={handleEventEndTimeChange}
-            />
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <TextField
-              fullWidth
-              label="Location"
-              variant="outlined"
-              value={location}
-              onChange={handleLocationChange}
-            />
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500, flex: 1 }}>
-            <ReactQuill
-              value={body}
-              onChange={handleBodyChange}
-              style={{ height: "100%", width: "100%" }}
-            />
-          </Grid>
-          <Grid item>
-            <Button variant="contained" component="label">
-              Upload Thumbnail
-              <input type="file" hidden onChange={handleThumbnailChange} />
-            </Button>
-            {thumbnailName && (
-              <Typography variant="body2" sx={{ mt: 1 }}>
-                Selected file: {thumbnailName}
-              </Typography>
-            )}
-          </Grid>
-          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
-            <FormControl fullWidth>
-              <InputLabel>Tag</InputLabel>
-              <Select
-                value={selectedTag}
-                onChange={handleTagChange}
-                label="Tag"
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <Paper
+        elevation={0}
+        sx={{
+          width: "100%",
+          maxWidth: 900,
+          p: 4,
+          borderRadius: 3,
+          backgroundColor: "#fff",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <Typography variant="h3" mb={2} fontWeight="bold" align="center">
+            Create New Activity
+          </Typography>
+
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Title"
+                variant="outlined"
+                value={title}
+                onChange={handleTitleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="RSVP Link"
+                variant="outlined"
+                value={rsvpLink}
+                onChange={handleRsvpLinkChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Event Date"
+                type="date"
+                InputLabelProps={{ shrink: true }}
+                value={eventDateTime}
+                onChange={handleEventDateTimeChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                fullWidth
+                label="Start Time"
+                type="time"
+                InputLabelProps={{ shrink: true }}
+                value={eventStartTime}
+                onChange={handleEventStartTimeChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                fullWidth
+                label="End Time"
+                type="time"
+                InputLabelProps={{ shrink: true }}
+                value={eventEndTime}
+                onChange={handleEventEndTimeChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Location"
+                variant="outlined"
+                value={location}
+                onChange={handleLocationChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <ReactQuill value={body} onChange={handleBodyChange} />
+            </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained" component="label" fullWidth>
+                Upload Thumbnail
+                <input type="file" hidden onChange={handleThumbnailChange} />
+              </Button>
+              {thumbnailName && (
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  Selected file: {thumbnailName}
+                </Typography>
+              )}
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel>Tag</InputLabel>
+                <Select
+                  value={selectedTag}
+                  onChange={handleTagChange}
+                  label="Tag"
+                >
+                  {tags.map((tag) => (
+                    <MenuItem key={tag} value={tag}>
+                      {tag}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ mt: 2, borderRadius: 2 }}
               >
-                {tags.map((tag) => (
-                  <MenuItem key={tag} value={tag}>
-                    {tag}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                Save Activity
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button type="submit" variant="contained" color="primary">
-              Save Activity
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
+        </form>
+      </Paper>
     </Box>
   );
 };
