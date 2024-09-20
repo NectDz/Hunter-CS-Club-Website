@@ -9,22 +9,21 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Box,
+  Typography,
 } from "@mui/material";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, Timestamp, doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../../../../firebase-config";
 import { SelectChangeEvent } from "@mui/material";
 
-interface ActivityCreationProps {
-  // Define props if needed
-}
-
 const tags = ["Speaker", "Social", "Workshop", "Project", "Hackathon"];
 
-const ActivityCreation: React.FC<ActivityCreationProps> = () => {
+const ActivityCreation: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [thumbnailName, setThumbnailName] = useState<string>(""); // State to store file name
   const [selectedTag, setSelectedTag] = useState<string>("");
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -35,8 +34,10 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
   const handleThumbnailChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    if (event.target.files) {
-      setThumbnail(event.target.files[0]);
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setThumbnail(file);
+      setThumbnailName(file.name); // Store the name of the file
     }
   };
 
@@ -89,6 +90,7 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
       setTitle("");
       setBody("");
       setThumbnail(null);
+      setThumbnailName(""); // Reset the file name
       setSelectedTag("");
 
       console.log("Activity saved successfully with ID: ", activityId);
@@ -98,45 +100,73 @@ const ActivityCreation: React.FC<ActivityCreationProps> = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container spacing={2} direction="column">
-        <Grid item>
-          <TextField
-            fullWidth
-            label="Title"
-            variant="outlined"
-            value={title}
-            onChange={handleTitleChange}
-          />
+    <Box sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+      <form onSubmit={handleSubmit} style={{ flex: 1 }}>
+        <Grid
+          container
+          spacing={2}
+          direction="column"
+          alignItems="center" // Center the content horizontally
+          sx={{
+            height: "100%",
+            padding: 4,
+          }}
+        >
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            {" "}
+            {/* Adjust width */}
+            <TextField
+              fullWidth
+              label="Title"
+              variant="outlined"
+              value={title}
+              onChange={handleTitleChange}
+            />
+          </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500, flex: 1 }}>
+            {" "}
+            {/* Wider editor */}
+            <ReactQuill
+              value={body}
+              onChange={handleBodyChange}
+              style={{ height: "100%", width: "100%" }} // Expand editor width
+            />
+          </Grid>
+          <Grid item>
+            <Button variant="contained" component="label">
+              Upload Thumbnail
+              <input type="file" hidden onChange={handleThumbnailChange} />
+            </Button>
+            {thumbnailName && ( // Display file name if a thumbnail is selected
+              <Typography variant="body2" sx={{ mt: 1 }}>
+                Selected file: {thumbnailName}
+              </Typography>
+            )}
+          </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            <FormControl fullWidth>
+              <InputLabel>Tag</InputLabel>
+              <Select
+                value={selectedTag}
+                onChange={handleTagChange}
+                label="Tag"
+              >
+                {tags.map((tag) => (
+                  <MenuItem key={tag} value={tag}>
+                    {tag}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item>
+            <Button type="submit" variant="contained" color="primary">
+              Save Activity
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <ReactQuill value={body} onChange={handleBodyChange} />
-        </Grid>
-        <Grid item>
-          <Button variant="contained" component="label">
-            Upload Thumbnail
-            <input type="file" hidden onChange={handleThumbnailChange} />
-          </Button>
-        </Grid>
-        <Grid item>
-          <FormControl fullWidth>
-            <InputLabel>Tag</InputLabel>
-            <Select value={selectedTag} onChange={handleTagChange} label="Tag">
-              {tags.map((tag) => (
-                <MenuItem key={tag} value={tag}>
-                  {tag}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item>
-          <Button type="submit" variant="contained" color="primary">
-            Save Activity
-          </Button>
-        </Grid>
-      </Grid>
-    </form>
+      </form>
+    </Box>
   );
 };
 
