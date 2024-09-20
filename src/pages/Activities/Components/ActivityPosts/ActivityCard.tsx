@@ -19,6 +19,7 @@ interface ActivityCardProps {
   eventDateTime: string;
   eventStartTime: string;
   eventEndTime: string;
+  location: string;
   rsvpLink: string;
   buttonText?: string;
   id: string;
@@ -35,6 +36,7 @@ function ActivityCard({
   activityTag,
   description,
   postedTime,
+  location,
   eventDateTime,
   eventStartTime,
   eventEndTime,
@@ -156,6 +158,9 @@ function ActivityCard({
         <Typography variant="subtitle1" color="text.secondary">
           Event on: {formatEventDate(eventDateTime)}{" "}
           {formatTime(eventStartTime)} - {formatTime(eventEndTime)}
+        </Typography>
+        <Typography variant="subtitle1" color="text.secondary">
+          Location: {location}
         </Typography>
         <Tooltip title={description.length > 100 ? description : ""} arrow>
           <div>

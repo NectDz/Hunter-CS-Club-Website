@@ -29,6 +29,7 @@ const ActivityCreation: React.FC = () => {
   const [eventDateTime, setEventDateTime] = useState<string>(""); // New event date state
   const [eventStartTime, setEventStartTime] = useState<string>(""); // Event start time
   const [eventEndTime, setEventEndTime] = useState<string>(""); // Event end time
+  const [location, setLocation] = useState<string>(""); // New location state
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);
@@ -66,6 +67,9 @@ const ActivityCreation: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => setEventEndTime(event.target.value); // Handle event end time input
 
+  const handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setLocation(event.target.value); // Handle location input
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -76,7 +80,8 @@ const ActivityCreation: React.FC = () => {
       !rsvpLink ||
       !eventDateTime ||
       !eventStartTime ||
-      !eventEndTime
+      !eventEndTime ||
+      !location
     ) {
       console.error("All fields are required");
       return;
@@ -92,6 +97,7 @@ const ActivityCreation: React.FC = () => {
         eventDateTime, // Save event date as YYYY-MM-DD
         eventStartTime, // Save event start time
         eventEndTime, // Save event end time
+        location, // Save location
         createdAt: Timestamp.now(), // Use Firestore Timestamp
       });
 
@@ -119,6 +125,7 @@ const ActivityCreation: React.FC = () => {
         eventDateTime, // Save event date as YYYY-MM-DD
         eventStartTime, // Save event start time
         eventEndTime, // Save event end time
+        location, // Save location
         createdAt: Timestamp.now(),
         activityId, // Store the activityId in the Firestore document
       });
@@ -133,6 +140,7 @@ const ActivityCreation: React.FC = () => {
       setEventDateTime(""); // Reset event date
       setEventStartTime(""); // Reset start time
       setEventEndTime(""); // Reset end time
+      setLocation(""); // Reset location
 
       console.log("Activity saved successfully with ID: ", activityId);
     } catch (error) {
@@ -199,6 +207,15 @@ const ActivityCreation: React.FC = () => {
               InputLabelProps={{ shrink: true }}
               value={eventEndTime}
               onChange={handleEventEndTimeChange}
+            />
+          </Grid>
+          <Grid item sx={{ width: "100%", maxWidth: 1500 }}>
+            <TextField
+              fullWidth
+              label="Location"
+              variant="outlined"
+              value={location}
+              onChange={handleLocationChange}
             />
           </Grid>
           <Grid item sx={{ width: "100%", maxWidth: 1500, flex: 1 }}>

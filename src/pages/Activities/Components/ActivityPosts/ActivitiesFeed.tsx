@@ -19,6 +19,7 @@ interface Activity {
   eventDateTime: string;
   eventStartTime: string;
   eventEndTime: string;
+  location: string;
   rsvpLink: string;
   thumbnailURL: string;
   tag: string;
@@ -106,8 +107,9 @@ const ActivityFeed = () => {
             {/* 2 items per row */}
             <ActivityCard
               id={activity.id}
-              eventDateTime={activity.eventDateTime}
               rsvpLink={activity.rsvpLink}
+              location={activity.location}
+              eventDateTime={activity.eventDateTime}
               eventStartTime={activity.eventStartTime}
               eventEndTime={activity.eventEndTime}
               thumbnailSrc={activity.thumbnailURL}
