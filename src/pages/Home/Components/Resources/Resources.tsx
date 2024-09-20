@@ -110,8 +110,12 @@ const Resources = () => {
                 component={Link}
                 to="/resources"
                 variant="outlined"
-                color="inherit"
-                sx={{ borderRadius: 0, padding: "10px 20px" }}
+                color="primary"
+                sx={{
+                  borderRadius: 0,
+                  padding: "15px 20px",
+                  fontSize: "1.2rem",
+                }}
               >
                 Explore Resources
               </Button>

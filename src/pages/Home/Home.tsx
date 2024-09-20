@@ -13,6 +13,7 @@ import WhatWeDo from "./Components/WhatWeDo/WhatWeDo";
 import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
 import Resources from "./Components/Resources/Resources";
+import ActivityCarousel from "./Carousel/Activity/ActivityCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -65,6 +66,18 @@ const Home = () => {
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
           <GridItem>
+            <ActivityCarousel />
+          </GridItem>
+        </Box>
+
+        <Box ref={aboutRef} sx={{ width: "100%" }}>
+          <Grid sx={{ padding: 0 }}>
+            <WhatWeDo />
+          </Grid>
+        </Box>
+
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
+          <GridItem>
             <Typography
               fontSize="35px"
               fontWeight="bold"
@@ -78,10 +91,10 @@ const Home = () => {
           </GridItem>
         </Box>
 
-        <Box ref={aboutRef} sx={{ width: "100%" }}>
-          <Grid sx={{ padding: 0 }}>
-            <WhatWeDo />
-          </Grid>
+        <Box sx={{ width: "100%" }}>
+          <GridItem>
+            <NewsLetter />
+          </GridItem>
         </Box>
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
@@ -89,12 +102,6 @@ const Home = () => {
             <Typography variant="h4" align="center">
               <JoinUs />
             </Typography>
-          </GridItem>
-        </Box>
-
-        <Box sx={{ width: "100%" }}>
-          <GridItem>
-            <NewsLetter />
           </GridItem>
         </Box>
 
