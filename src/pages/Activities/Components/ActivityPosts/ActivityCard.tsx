@@ -5,10 +5,8 @@ import {
   Button,
   Avatar,
   Box,
-  Tooltip,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 interface ActivityCardProps {
   thumbnailSrc: string;
@@ -34,7 +32,6 @@ function ActivityCard({
   thumbnailSrc,
   activityName,
   activityTag,
-  description,
   postedTime,
   location,
   eventDateTime,
@@ -75,15 +72,6 @@ function ActivityCard({
       minute: "numeric",
       hour12: true,
     });
-  };
-
-  const truncateDescription = (text: string, length: number) => {
-    // Remove line breaks
-    const cleanText = text.replace(/(\r\n|\n|\r)/gm, " ");
-    if (cleanText.length > length) {
-      return `${cleanText.substring(0, length)}...`;
-    }
-    return cleanText;
   };
 
   const handleClick = () => {
