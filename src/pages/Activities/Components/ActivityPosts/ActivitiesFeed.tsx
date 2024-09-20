@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardContent,
   Skeleton,
+  Pagination,
 } from "@mui/material";
 import ActivityCard from "./ActivityCard";
 import { collection, getDocs } from "firebase/firestore";
@@ -18,7 +19,7 @@ interface Activity {
   thumbnailURL: string;
   tag: string;
   createdAt: FirestoreTimestamp;
-  author: string; // Ensure that this is present
+  author: string;
 }
 
 interface FirestoreTimestamp {
@@ -29,6 +30,8 @@ interface FirestoreTimestamp {
 const ActivityFeed = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const activitiesPerPage = 4; // Display 4 activities per page
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -48,15 +51,32 @@ const ActivityFeed = () => {
     fetchActivities();
   }, []);
 
+  // Handle pagination
+  const indexOfLastActivity = currentPage * activitiesPerPage;
+  const indexOfFirstActivity = indexOfLastActivity - activitiesPerPage;
+  const currentActivities = activities.slice(
+    indexOfFirstActivity,
+    indexOfLastActivity
+  );
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
   if (loading) {
     return (
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {Array.from(new Array(3)).map((_, index) => (
-            <Grid item xs={12} key={index}>
+          {Array.from(new Array(4)).map((_, index) => (
+            <Grid item xs={12} sm={6} key={index}>
+              {" "}
+              {/* Adjust grid to 2x2 */}
               <Card
                 elevation={0}
-                sx={{ maxWidth: 900, width: "100%", margin: "auto" }}
+                sx={{ maxWidth: 500, width: "100%", margin: "auto" }}
               >
                 <CardHeader
                   avatar={
@@ -79,8 +99,10 @@ const ActivityFeed = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        {activities.map((activity) => (
-          <Grid item xs={12} key={activity.id}>
+        {currentActivities.map((activity) => (
+          <Grid item xs={12} sm={6} key={activity.id}>
+            {" "}
+            {/* 2 items per row */}
             <ActivityCard
               id={activity.id}
               thumbnailSrc={activity.thumbnailURL}
@@ -92,6 +114,18 @@ const ActivityFeed = () => {
           </Grid>
         ))}
       </Grid>
+
+      {/* Show Pagination only if there are more than 4 activities */}
+      {activities.length > activitiesPerPage && (
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+          <Pagination
+            count={Math.ceil(activities.length / activitiesPerPage)} // Total number of pages
+            page={currentPage}
+            onChange={handlePageChange}
+            color="primary"
+          />
+        </Box>
+      )}
     </Box>
   );
 };
