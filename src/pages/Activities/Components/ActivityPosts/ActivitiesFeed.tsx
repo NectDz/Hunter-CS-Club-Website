@@ -35,7 +35,7 @@ const ActivityFeed = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const activitiesPerPage = 4; // Display 4 activities per page
+  const activitiesPerPage = 6; // Display 4 activities per page
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -63,10 +63,7 @@ const ActivityFeed = () => {
     indexOfLastActivity
   );
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value);
   };
 

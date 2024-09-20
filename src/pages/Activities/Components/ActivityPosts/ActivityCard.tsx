@@ -87,7 +87,12 @@ function ActivityCard({
     navigate(`/activities/${id}`);
   };
 
+  // Combine eventDateTime and eventStartTime into a full Date object
+  const eventDateTimeObject = new Date(`${eventDateTime}T${eventStartTime}`);
   const currentTime = new Date();
+
+  // Check if the event has passed
+  const isEventInFuture = currentTime <= eventDateTimeObject;
 
   return (
     <Card
@@ -135,6 +140,19 @@ function ActivityCard({
         <Typography variant="h5" component="div" gutterBottom>
           {activityName}
         </Typography>
+        {isEventInFuture && (
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.open(rsvpLink, "_blank");
+            }}
+            sx={{ mt: 1 }}
+          >
+            {buttonText}
+          </Button>
+        )}
         <Typography variant="subtitle1" color="text.secondary">
           Event on: {formatEventDate(eventDateTime)}{" "}
           {formatTime(eventStartTime)} - {formatTime(eventEndTime)}
