@@ -141,7 +141,13 @@ function ActivityCard({
             </Button>
           )}
         </Box>
-        <Typography variant="h5" component="div" gutterBottom>
+        <Typography
+          variant="h5"
+          component="div"
+          color="#4d2e91"
+          gutterBottom
+          sx={{ fontWeight: "bold" }}
+        >
           {activityName}
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
