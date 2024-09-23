@@ -17,7 +17,8 @@ interface Update {
   body: string;
   avatarSrc?: string;
   author: string;
-  timePosted: FirestoreTimestamp;
+  timePosted?: FirestoreTimestamp; // Keep this optional for safety
+  thumbnailSrc?: string; // Added thumbnailSrc
 }
 
 interface FirestoreTimestamp {
@@ -38,7 +39,11 @@ const UpdateFeed = () => {
           const { id, ...data } = doc.data() as Update;
           return { id: doc.id, ...data };
         })
-        .sort((a, b) => b.timePosted.seconds - a.timePosted.seconds);
+        .sort((a, b) => {
+          const aTime = a.timePosted?.seconds || 0;
+          const bTime = b.timePosted?.seconds || 0;
+          return bTime - aTime;
+        });
 
       setUpdates(updatesList);
       setLoading(false);
@@ -85,7 +90,8 @@ const UpdateFeed = () => {
               body={update.body}
               avatarSrc={update.avatarSrc || "/path/to/avatar.jpg"}
               author={update.author}
-              time={update.timePosted}
+              time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value here
+              imageSrc={update.thumbnailSrc} 
             />
           </Grid>
         ))}
