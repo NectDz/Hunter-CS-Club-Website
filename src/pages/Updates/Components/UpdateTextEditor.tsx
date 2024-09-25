@@ -128,7 +128,7 @@ const UpdateTextEditor = () => {
           }}
           onChange={setBody}
         />
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: 7 }}>
           <Button variant="contained" component="label" fullWidth>
             Upload Thumbnail
             <input type="file" hidden onChange={handleThumbnailChange} />
