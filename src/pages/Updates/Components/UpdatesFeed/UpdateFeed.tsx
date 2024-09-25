@@ -20,11 +20,11 @@ interface FirestoreTimestamp {
 }
 
 const UpdateCarousel = () => {
-  const [latestUpdate, setLatestUpdate] = useState<Update | null>(null);
+  const [updates, setUpdates] = useState<Update[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchLatestUpdate = async () => {
+    const fetchUpdates = async () => {
       const updatesCollection = collection(db, "updates");
       const updatesSnapshot = await getDocs(updatesCollection);
       const updatesList = updatesSnapshot.docs
@@ -38,13 +38,11 @@ const UpdateCarousel = () => {
           return bTime - aTime;
         });
 
-      if (updatesList.length > 0) {
-        setLatestUpdate(updatesList[0]); // Get the latest update
-      }
+      setUpdates(updatesList); // Set all updates
       setLoading(false);
     };
 
-    fetchLatestUpdate();
+    fetchUpdates();
   }, []);
 
   if (loading) {
@@ -64,20 +62,23 @@ const UpdateCarousel = () => {
     );
   }
 
-  if (!latestUpdate) {
+  if (updates.length === 0) {
     return <div>No updates available.</div>; // Handle case with no updates
   }
 
   return (
     <Box sx={{ padding: 2 }}>
-      <UpdateCard
-        heading={latestUpdate.title}
-        body={latestUpdate.body}
-        avatarSrc={latestUpdate.avatarSrc || "/path/to/avatar.jpg"}
-        author={latestUpdate.author}
-        time={latestUpdate.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value
-        thumbnailSrc={latestUpdate.thumbnailURL}
-      />
+      {updates.map((update) => (
+        <UpdateCard
+          key={update.id}
+          heading={update.title}
+          body={update.body}
+          avatarSrc={update.avatarSrc || "/path/to/avatar.jpg"}
+          author={update.author}
+          time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value
+          thumbnailSrc={update.thumbnailURL}
+        />
+      ))}
     </Box>
   );
 };
