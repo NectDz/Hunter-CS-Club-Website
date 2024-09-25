@@ -91,7 +91,7 @@ function UpdateCard({
             <img
               src={thumbnailSrc}
               alt="Update Thumbnail"
-              style={{ width: "100%", borderRadius: "8px", maxHeight: "300px", objectFit: "cover" }} // Added maxHeight and objectFit
+              style={{ width: "100%", borderRadius: "8px", maxHeight: "800px", objectFit: "cover" }} // Added maxHeight and objectFit
             />
           </Box>
         )}
