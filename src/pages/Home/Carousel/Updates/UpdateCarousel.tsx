@@ -26,16 +26,14 @@ const UpdateCarousel = () => {
     const fetchUpdates = async () => {
       const updatesCollection = collection(db, "updates");
       const updatesSnapshot = await getDocs(updatesCollection);
-      const updatesList = updatesSnapshot.docs
-        .map((doc) => {
-          const { id, ...data } = doc.data() as Update;
-          return { id: doc.id, ...data };
-        })
-        .sort((a, b) => {
-          const aTime = a.timePosted?.seconds || 0;
-          const bTime = b.timePosted?.seconds || 0;
-          return bTime - aTime;
-        });
+      const updatesList = updatesSnapshot.docs.map((doc) => {
+        const { id, ...data } = doc.data() as Update;
+        return { id: doc.id, ...data };
+      }).sort((a, b) => {
+        const aTime = a.timePosted?.seconds || 0;
+        const bTime = b.timePosted?.seconds || 0;
+        return bTime - aTime;
+      });
 
       setUpdates(updatesList);
       setLoading(false);
@@ -74,7 +72,18 @@ const UpdateCarousel = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, padding: 2 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 4,
+        width: '100%', // Make the box full width
+        maxWidth: 1200, // Increase the max width
+        margin: 'auto',
+      }}
+    >
       <Typography
         variant="h4"
         align="center"
@@ -88,11 +97,11 @@ const UpdateCarousel = () => {
       </Typography>
       <Card 
         elevation={0} 
-        sx={{ backgroundColor: "#f5f5f5", padding: 2 }} // Light grey background
+        sx={{ backgroundColor: "#f5f5f5", padding: 3, width: '100%', maxWidth: 800 }} // Set width and maxWidth for the card
       >
         <CardHeader
           title={latestUpdate.title}
-          subheader={`By ${latestUpdate.author} - ${new Date(latestUpdate.timePosted?.seconds * 1000).toLocaleDateString()}`}
+          subheader={`By ${latestUpdate.author} - ${latestUpdate.timePosted ? new Date(latestUpdate.timePosted.seconds * 1000).toLocaleDateString() : 'Unknown'}`}
         />
         <CardContent>
           <Typography variant="body2">
@@ -100,16 +109,22 @@ const UpdateCarousel = () => {
               ? `${stripHtml(latestUpdate.body).substring(0, 100)}...` 
               : stripHtml(latestUpdate.body)}
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{ marginTop: 2 }}
-            onClick={() => window.location.href = '/updates'} // Replace with your actual route
-          >
-            MORE UPDATES
-          </Button>
         </CardContent>
       </Card>
+      <Button
+        variant="outlined"
+        sx={{
+          marginTop: 5, // Adjusted margin to move the button lower
+          color: 'purple',
+          borderColor: 'purple',
+          '&:hover': {
+            backgroundColor: '#f0f0f0', // Light grey on hover
+          },
+        }}
+        onClick={() => window.location.href = '/updates'} // Replace with your actual route
+      >
+        MORE UPDATES
+      </Button>
     </Box>
   );
 };
