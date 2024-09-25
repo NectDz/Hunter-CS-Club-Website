@@ -26,15 +26,18 @@ const UpdateTextEditor = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
-  const [thumbnailName, setThumbnailName] = useState("");
+  const [thumbnailName, setThumbnailName] = useState<string>("");
 
-  const handleThumbnailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleThumbnailChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       setThumbnail(file);
       setThumbnailName(file.name);
     }
   };
+
 
   const handleSubmit = async () => {
     if (!currentUser) {
@@ -54,7 +57,6 @@ const UpdateTextEditor = () => {
       title,
       body,
       post_type: "update",
-      thumbnailURL: null,
       timePosted: serverTimestamp(),
     };
 

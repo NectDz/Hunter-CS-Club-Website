@@ -15,7 +15,7 @@ interface UpdateCardProps {
   avatarSrc: string;
   author: string;
   time: FirestoreTimestamp;
-  imageSrc?: string; // Added imageSrc for thumbnail
+  thumbnailSrc?: string; 
 }
 
 interface FirestoreTimestamp {
@@ -29,7 +29,7 @@ function UpdateCard({
   avatarSrc,
   author,
   time,
-  imageSrc,
+  thumbnailSrc,
 }: UpdateCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [maxHeight, setMaxHeight] = useState<string | undefined>("0px");
@@ -67,7 +67,7 @@ function UpdateCard({
     });
   };
 
-  console.log("Image Source:", imageSrc); // Log to check the image source
+  console.log("Image Source:", thumbnailSrc); // Log to check the image source
 
   return (
     <Card
@@ -86,10 +86,10 @@ function UpdateCard({
         <Typography variant="h4" component="div">
           {heading}
         </Typography>
-        {imageSrc && (
+        {thumbnailSrc && (
           <Box sx={{ mb: 2 }}>
             <img
-              src={imageSrc}
+              src={thumbnailSrc}
               alt="Update Thumbnail"
               style={{ width: "100%", borderRadius: "8px", maxHeight: "300px", objectFit: "cover" }} // Added maxHeight and objectFit
             />

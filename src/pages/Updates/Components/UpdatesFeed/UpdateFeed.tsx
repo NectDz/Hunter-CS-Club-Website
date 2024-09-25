@@ -18,7 +18,7 @@ interface Update {
   avatarSrc?: string;
   author: string;
   timePosted?: FirestoreTimestamp; // Keep this optional for safety
-  thumbnailSrc?: string; // Added thumbnailSrc
+  thumbnailURL: string; 
 }
 
 interface FirestoreTimestamp {
@@ -91,7 +91,7 @@ const UpdateFeed = () => {
               avatarSrc={update.avatarSrc || "/path/to/avatar.jpg"}
               author={update.author}
               time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value here
-              imageSrc={update.thumbnailSrc} 
+              thumbnailSrc={update.thumbnailURL} 
             />
           </Grid>
         ))}
