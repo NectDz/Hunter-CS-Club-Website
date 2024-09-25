@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardHeader,
-  CardContent,
-  Skeleton,
-} from "@mui/material";
+import { Box, Card, CardHeader, CardContent, Skeleton } from "@mui/material";
 import UpdateCard from "./UpdateCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
@@ -26,12 +19,12 @@ interface FirestoreTimestamp {
   nanoseconds: number;
 }
 
-const UpdateFeed = () => {
-  const [updates, setUpdates] = useState<Update[]>([]);
+const UpdateCarousel = () => {
+  const [latestUpdate, setLatestUpdate] = useState<Update | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUpdates = async () => {
+    const fetchLatestUpdate = async () => {
       const updatesCollection = collection(db, "updates");
       const updatesSnapshot = await getDocs(updatesCollection);
       const updatesList = updatesSnapshot.docs
@@ -45,59 +38,48 @@ const UpdateFeed = () => {
           return bTime - aTime;
         });
 
-      setUpdates(updatesList);
+      if (updatesList.length > 0) {
+        setLatestUpdate(updatesList[0]); // Get the latest update
+      }
       setLoading(false);
     };
 
-    fetchUpdates();
+    fetchLatestUpdate();
   }, []);
 
   if (loading) {
     return (
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          {Array.from(new Array(3)).map((_, index) => (
-            <Grid item xs={12} key={index}>
-              <Card
-                elevation={0}
-                sx={{ maxWidth: 900, width: "100%", margin: "auto" }}
-              >
-                <CardHeader
-                  avatar={
-                    <Skeleton variant="circular" width={40} height={40} />
-                  }
-                  title={<Skeleton variant="text" width="60%" />}
-                  subheader={<Skeleton variant="text" width="40%" />}
-                />
-                <CardContent>
-                  <Skeleton variant="rectangular" height={118} />
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+      <Box sx={{ maxWidth: 900, margin: "auto", padding: 2 }}>
+        <Card elevation={0}>
+          <CardHeader
+            avatar={<Skeleton variant="circular" width={40} height={40} />}
+            title={<Skeleton variant="text" width="60%" />}
+            subheader={<Skeleton variant="text" width="40%" />}
+          />
+          <CardContent>
+            <Skeleton variant="rectangular" height={118} />
+          </CardContent>
+        </Card>
       </Box>
     );
   }
 
+  if (!latestUpdate) {
+    return <div>No updates available.</div>; // Handle case with no updates
+  }
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {updates.map((update) => (
-          <Grid item xs={12} key={update.id}>
-            <UpdateCard
-              heading={update.title}
-              body={update.body}
-              avatarSrc={update.avatarSrc || "/path/to/avatar.jpg"}
-              author={update.author}
-              time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value here
-              thumbnailSrc={update.thumbnailURL} 
-            />
-          </Grid>
-        ))}
-      </Grid>
+    <Box sx={{ padding: 2 }}>
+      <UpdateCard
+        heading={latestUpdate.title}
+        body={latestUpdate.body}
+        avatarSrc={latestUpdate.avatarSrc || "/path/to/avatar.jpg"}
+        author={latestUpdate.author}
+        time={latestUpdate.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value
+        thumbnailSrc={latestUpdate.thumbnailURL}
+      />
     </Box>
   );
 };
 
-export default UpdateFeed;
+export default UpdateCarousel;
