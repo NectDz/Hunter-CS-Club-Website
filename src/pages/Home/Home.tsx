@@ -14,6 +14,7 @@ import EBoardCarousel from "./Carousel/EBoardCarousel";
 import HomeCarousel from "./Carousel/HomeCarousel";
 import Resources from "./Components/Resources/Resources";
 import ActivityCarousel from "./Carousel/Activity/ActivityCarousel";
+import UpdateCarousel from "./Carousel/Updates/UpdateCarousel";
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -62,6 +63,12 @@ const Home = () => {
           >
             <HomeCarousel />
           </Grid>
+        </Box>
+
+        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
+          <GridItem>
+            <UpdateCarousel/>
+          </GridItem>
         </Box>
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>

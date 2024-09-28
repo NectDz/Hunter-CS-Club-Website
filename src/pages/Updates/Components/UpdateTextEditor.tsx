@@ -10,13 +10,14 @@ import {
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { db } from "../../../firebase-config";
+import { db, storage } from "../../../firebase-config";
 import {
   collection,
   addDoc,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../../Context/AuthContext";
 
 const UpdateTextEditor = () => {
@@ -24,6 +25,19 @@ const UpdateTextEditor = () => {
   const { currentUser } = useAuth();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [thumbnailName, setThumbnailName] = useState<string>("");
+
+  const handleThumbnailChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setThumbnail(file);
+      setThumbnailName(file.name);
+    }
+  };
+
 
   const handleSubmit = async () => {
     if (!currentUser) {
@@ -32,7 +46,7 @@ const UpdateTextEditor = () => {
     }
 
     if (!title.trim() || !body.trim()) {
-      alert("Please enter a title and body for the post."); // or use a more user-friendly notification method
+      alert("Please enter a title and body for the update.");
       return;
     }
 
@@ -48,9 +62,17 @@ const UpdateTextEditor = () => {
 
     try {
       const docRef = await addDoc(collection(db, "updates"), update);
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Update document written with ID: ", docRef.id);
 
-      await updateDoc(docRef, { postId: docRef.id });
+      // Handle thumbnail upload
+      if (thumbnail) {
+        const thumbnailRef = ref(storage, `thumbnails/updates/${docRef.id}/${thumbnail.name}`);
+        await uploadBytes(thumbnailRef, thumbnail);
+        const thumbnailURL = await getDownloadURL(thumbnailRef);
+
+        // Update the document with the thumbnail URL
+        await updateDoc(docRef, { thumbnailURL }); // Update existing document
+      }
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -59,6 +81,8 @@ const UpdateTextEditor = () => {
   const handleClear = () => {
     setTitle("");
     setBody("");
+    setThumbnail(null);
+    setThumbnailName("");
   };
 
   return (
@@ -88,7 +112,7 @@ const UpdateTextEditor = () => {
       >
         <Typography variant="h5">Updates Post Editor</Typography>
         <TextField
-          label="New Update Post Title"
+          label="Update Post Title"
           variant="outlined"
           fullWidth
           margin="normal"
@@ -101,20 +125,27 @@ const UpdateTextEditor = () => {
           style={{
             height: "100px",
             width: "100%",
-            [theme.breakpoints.down("sm")]: {
-              width: "auto", // or '100%' if you want it to be full width on mobile
-              maxWidth: "150px",
-            },
           }}
           onChange={setBody}
         />
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 9 }}>
+        <Box sx={{ mt: 7 }}>
+          <Button variant="contained" component="label" fullWidth>
+            Upload Thumbnail
+            <input type="file" hidden onChange={handleThumbnailChange} />
+          </Button>
+          {thumbnailName && (
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              Selected file: {thumbnailName}
+            </Typography>
+          )}
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
           <Button
             variant="contained"
             color="primary"
             disableElevation
             onClick={handleSubmit}
-            style={{
+            sx={{
               color: "black",
               backgroundColor: "#D9D9D9",
               borderRadius: "20px",

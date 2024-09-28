@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { useAuth } from "../../Context/AuthContext";
 import UpdateTextEditor from "./Components/UpdateTextEditor";
 import UpdateFeed from "./Components/UpdatesFeed/UpdateFeed";
+
 const Updates = () => {
   const { currentUser } = useAuth();
 
@@ -19,12 +20,24 @@ const Updates = () => {
         direction={"column"}
         sx={{ width: "100%" }}
       >
-        <Box>
+        <Box sx={{ marginTop: 8 }}> {/* Increased marginTop here */}
           <GridItem>
-            <Typography variant="h3">Whats New Section</Typography>
-            <Typography variant="subtitle1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut.
+            <Typography
+              fontWeight="bold"
+              align="center"
+              variant="h3"
+              mb="32px"
+            >
+              Updates
+            </Typography>
+            <Typography
+            fontWeight="bold"
+            align="center"
+            variant="h6"
+            mb="32px"
+            >
+              Check out the latest news and updates from the Hunter Computer Science club
+              and the team behind it all here!
             </Typography>
           </GridItem>
         </Box>

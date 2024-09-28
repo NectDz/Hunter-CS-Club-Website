@@ -9,31 +9,29 @@ export const mainNavbarItems = [
     label: "About",
     route: "about",
   },
-  /* 
   {
     id: 2,
     label: "Updates",
-    route: "updates",
+    route: "Updates",
   },
-  */
   {
-    id: 2,
+    id: 3,
     label: "Activities",
     route: "activities",
   },
 
   {
-    id: 3,
+    id: 4,
     label: "FAQ",
     route: "faq",
   },
   {
-    id: 4,
+    id: 5,
     label: "Contact",
     route: "contact",
   },
   {
-    id: 5,
+    id: 6,
     label: "Resources",
     route: "Resources",
   },
