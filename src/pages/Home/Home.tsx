@@ -65,10 +65,10 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
-          <GridItem>
-            <UpdateCarousel/>
-          </GridItem>
+        <Box sx={{ width: "100%", paddingBottom: "20px" }}>
+          <Grid sx={{ padding: 0 }}>
+            <UpdateCarousel />
+          </Grid>
         </Box>
 
         <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
