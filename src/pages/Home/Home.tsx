@@ -71,7 +71,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ width: "100%", paddingTop: "20px", paddingBottom: "20px" }}>
+        <Box sx={{ width: "100%", paddingBottom: "20px" }}>
           <GridItem>
             <ActivityCarousel />
           </GridItem>
