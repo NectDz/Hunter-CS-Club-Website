@@ -105,9 +105,14 @@ const ActivityDetail = () => {
       <Box
         sx={{
           flexGrow: 1,
-          paddingY: "80px",
-          padding: "0",
+          paddingY: { xs: "0px", sm: "80px" },
           margin: "0",
+          borderRadius: "16px",
+          outline: { xs: "none", sm: "2px solid #4d2e91" },
+          boxShadow: {
+            xs: "none",
+            sm: "0px 0px 10px 2px rgba(0,0,0,0.3)",
+          },
         }}
       >
         <GridItem padding={0}>
@@ -131,6 +136,7 @@ const ActivityDetail = () => {
                 height: "auto", // Ensure the height scales with width
                 borderRadius: "16px",
                 objectFit: "cover",
+                boxShadow: "0px 0px 10px 2px rgba(0,0,0,0.3)",
               }}
             />
           </Box>
@@ -148,19 +154,6 @@ const ActivityDetail = () => {
             {activity.title}
           </Typography>
 
-          {isEventInFuture && (
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(activity.rsvpLink, "_blank");
-              }}
-            >
-              {"RSVP"}
-            </Button>
-          )}
-
           {/* Metadata Section */}
           <Typography variant="subtitle1" color="text.secondary" align="center">
             Event on: {formatEventDate(activity.eventDateTime)}{" "}
@@ -171,6 +164,25 @@ const ActivityDetail = () => {
             Location: {activity.location}
           </Typography>
 
+          {isEventInFuture && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(activity.rsvpLink, "_blank");
+              }}
+              sx={{
+                width: { xs: "50%", sm: "30%" }, // Full width on mobile, auto on larger screens
+                display: "block", // Ensure block display for centering
+                mx: { xs: "auto" }, // Center horizontally on mobile
+                fontSize: { xs: "1.2rem", sm: "inherit" }, // Larger font size on mobile
+                py: { xs: 1 }, // Larger padding on mobile
+              }}
+            >
+              {"RSVP"}
+            </Button>
+          )}
           {/* Content Section */}
           <Box
             mb={6}
