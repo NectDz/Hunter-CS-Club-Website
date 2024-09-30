@@ -11,6 +11,7 @@ import {
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
 import update from "../consts/update.jpg";
+import { Link as RouterLink } from 'react-router-dom'; 
 
 interface Update {
   id: string;
@@ -148,23 +149,25 @@ const UpdateCarousel = () => {
         </CardContent>
       </Card>
       <Button
-        variant="outlined"
-        sx={{
-          marginTop: 5, // Adjusted margin to move the button lower
-          color: "#EAC566",
-          border: "2px solid #EAC566",
-          "&:hover": {
-            color: "#f4e2b2",
-            border: "2px solid #f4e2b2",
-          },
-          borderRadius: 0,
-          padding: "15px 20px",
-          fontSize: "1.2rem",
-        }}
-        onClick={() => (window.location.href = "/Updates")} // Replace with your actual route
-      >
-        MORE UPDATES
-      </Button>
+          component={RouterLink} 
+          to="/Updates"
+          variant="outlined"
+          color="primary"
+          sx={{
+            marginTop: 5, // Adjusted margin to move the button lower
+            color: "#EAC566",
+            border: "2px solid #EAC566",
+            "&:hover": {
+              color: "#f4e2b2",
+              border: "2px solid #f4e2b2",
+            },
+            borderRadius: 0,
+            padding: "15px 20px",
+            fontSize: "1.2rem",
+          }}
+        >
+          More Updates
+        </Button>
     </Box>
   );
 };
