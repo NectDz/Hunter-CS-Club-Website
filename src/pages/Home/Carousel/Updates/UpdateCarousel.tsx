@@ -161,7 +161,7 @@ const UpdateCarousel = () => {
           padding: "15px 20px",
           fontSize: "1.2rem",
         }}
-        onClick={() => (window.location.href = "/updates")} // Replace with your actual route
+        onClick={() => (window.location.href = "/Updates")} // Replace with your actual route
       >
         MORE UPDATES
       </Button>
