@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import {
   Card,
   CardContent,
@@ -15,7 +15,7 @@ interface UpdateCardProps {
   avatarSrc: string;
   author: string;
   time: FirestoreTimestamp;
-  thumbnailSrc?: string; 
+  thumbnailSrc?: string;
 }
 
 interface FirestoreTimestamp {
@@ -32,27 +32,29 @@ function UpdateCard({
   thumbnailSrc,
 }: UpdateCardProps) {
   const [expanded, setExpanded] = useState(false);
-  const [maxHeight, setMaxHeight] = useState<string | undefined>("0px");
+  const [maxHeight, setMaxHeight] = useState<string>("0px");
   const [showButton, setShowButton] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const contentHeight = contentRef.current?.scrollHeight ?? 0;
-    if (contentHeight > 160) {
+    console.log("Content Height:", contentHeight);
+    if (contentHeight > 300) {
       setShowButton(true);
-      setMaxHeight("10em");
+      setMaxHeight("15em");
     } else {
       setShowButton(false);
     }
-  }, []);
+  }, [body, thumbnailSrc, imageLoaded]);
 
   const handleExpandClick = () => {
-    setMaxHeight(expanded ? "10em" : `${contentRef.current?.scrollHeight}px`);
+    setMaxHeight(expanded ? "15em" : `${contentRef.current?.scrollHeight}px`);
     setExpanded(!expanded);
   };
 
   const collapsedStyle = {
-    maxHeight: expanded ? maxHeight : "9em",
+    maxHeight: expanded ? maxHeight : "15em",
     overflow: "hidden",
     transition: "max-height 0.3s ease-in-out",
   };
@@ -67,7 +69,7 @@ function UpdateCard({
     });
   };
 
-  console.log("Image Source:", thumbnailSrc); // Log to check the image source
+  console.log("Image Source:", thumbnailSrc);
 
   return (
     <Card
@@ -78,23 +80,42 @@ function UpdateCard({
         overflow: "hidden",
         margin: "auto",
         border: ".5px solid black",
-        // Increase card height for better display
         height: "auto",
       }}
     >
       <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
-        <Typography variant="h4" component="div">
+        <Typography
+          variant="h4"
+          component="div"
+          sx={{ textAlign: "center", color: "#4d2e91", fontWeight: "bold" }}
+        >
           {heading}
         </Typography>
-        {thumbnailSrc && (
-          <Box sx={{ mb: 2 }}>
-            <img
-              src={thumbnailSrc}
-              alt="Update Thumbnail"
-              style={{ width: "100%", borderRadius: "8px", maxHeight: "800px", objectFit: "cover" }} // Added maxHeight and objectFit
-            />
+        <Box
+          sx={{
+            ...collapsedStyle,
+          }}
+          ref={contentRef}
+        >
+          {thumbnailSrc && (
+            <Box sx={{ mb: 2 }}>
+              <img
+                src={thumbnailSrc}
+                alt="Update Thumbnail"
+                onLoad={() => setImageLoaded(true)}
+                style={{
+                  width: "100%",
+                  maxHeight: "500px", // Adjust the maxHeight as needed
+                  objectFit: "cover", // or 'contain' depending on preference
+                  borderRadius: "8px",
+                }}
+              />
+            </Box>
+          )}
+          <Box sx={{ typography: "body2" }}>
+            <div dangerouslySetInnerHTML={{ __html: body }} />
           </Box>
-        )}
+        </Box>
         <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
           <Avatar sx={{ marginRight: 2 }} src={avatarSrc} />
           <Box>
@@ -106,21 +127,14 @@ function UpdateCard({
             </Typography>
           </Box>
         </Box>
-        <Box
-          sx={{
-            ...collapsedStyle,
-            typography: "body2",
-          }}
-          ref={contentRef}
-        >
-          <div dangerouslySetInnerHTML={{ __html: body }} />
-        </Box>
         {showButton && (
-          <CardActions>
-            <Button size="small" onClick={handleExpandClick}>
-              {expanded ? "Read Less" : "Read More"}
-            </Button>
-          </CardActions>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CardActions>
+              <Button size="small" onClick={handleExpandClick}>
+                {expanded ? "Read Less" : "Read More"}
+              </Button>
+            </CardActions>
+          </Box>
         )}
       </CardContent>
     </Card>
