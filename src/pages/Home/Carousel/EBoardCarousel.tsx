@@ -144,3 +144,4 @@ const EBoardCarousel = () => {
 };
 
 export default EBoardCarousel;
+export { boardMembers };
