@@ -3,6 +3,14 @@ import { Box, Card, CardHeader, CardContent, Skeleton } from "@mui/material";
 import UpdateCard from "./UpdateCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
+import { boardMembers } from "../../../Home/Carousel/EBoardCarousel"; // Ensure this is the correct path
+
+const getAvatarByAuthor = (authorName: string): string => {
+  const member = boardMembers.find(
+    (member) => member.name.toLowerCase() === authorName.toLowerCase()
+  );
+  return member ? member.imageUrl : "/path/to/avatar.jpg";
+};
 
 interface Update {
   id: string;
@@ -11,7 +19,7 @@ interface Update {
   avatarSrc?: string;
   author: string;
   timePosted?: FirestoreTimestamp; // Keep this optional for safety
-  thumbnailURL: string; 
+  thumbnailURL: string;
 }
 
 interface FirestoreTimestamp {
@@ -73,7 +81,7 @@ const UpdateCarousel = () => {
           key={update.id}
           heading={update.title}
           body={update.body}
-          avatarSrc={update.avatarSrc || "/path/to/avatar.jpg"}
+          avatarSrc={getAvatarByAuthor(update.author)}
           author={update.author}
           time={update.timePosted || { seconds: 0, nanoseconds: 0 }} // Provide default value
           thumbnailSrc={update.thumbnailURL}
