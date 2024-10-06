@@ -111,9 +111,13 @@ const UpdateCarousel = () => {
         ))}
       </Box>
       <Box sx={{ textAlign: "center", marginTop: 5 }}>
-        <Button
+      <Button
+          component={RouterLink} 
+          to="/Updates"
           variant="outlined"
+          color="primary"
           sx={{
+            marginTop: 5, // Adjusted margin to move the button lower
             color: "#EAC566",
             border: "2px solid #EAC566",
             "&:hover": {
@@ -124,9 +128,8 @@ const UpdateCarousel = () => {
             padding: "15px 20px",
             fontSize: "1.2rem",
           }}
-          onClick={() => (window.location.href = "/Updates")} // Replace with your actual route
         >
-          MORE UPDATES
+          More Updates
         </Button>
       </Box>
     </Box>
