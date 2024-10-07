@@ -72,7 +72,12 @@ const Leaderboard: React.FC = () => {
         minHeight: "100vh",
       }}
     >
-      <Typography variant="h4" gutterBottom align="center">
+      <Typography
+        variant="h4"
+        gutterBottom
+        align="center"
+        sx={{ fontWeight: "bold" }}
+      >
         FAANG Office Tour Point Leaderboard
       </Typography>
       <Box mb={2}>
@@ -102,21 +107,37 @@ const Leaderboard: React.FC = () => {
           </Box>
           <Paper>
             <Table>
-              <TableHead>
+              <TableHead
+                sx={{
+                  backgroundColor: "#4d2e91", // Purple background
+                  "& th": {
+                    color: "#ffffff", // White text
+                  },
+                }}
+              >
                 <TableRow>
-                  <TableCell>Rank</TableCell>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell align="right">Points</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Rank</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>First Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Last Name</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>Points</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {filteredData.map((row, index) => (
                   <TableRow key={`${row.firstName}-${row.lastName}-${index}`}>
-                    <TableCell>{index + 1}</TableCell>
+                    <TableCell sx={{ fontWeight: "bold" }}>
+                      {index + 1}
+                    </TableCell>
                     <TableCell>{row.firstName}</TableCell>
                     <TableCell>{row.lastName}</TableCell>
-                    <TableCell align="right">{row.points}</TableCell>
+                    <TableCell
+                      sx={{
+                        color: "#4d2e91", // Gold text for points
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {row.points}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
