@@ -19,7 +19,6 @@ export const mainNavbarItems = [
     label: "Activities",
     route: "activities",
   },
-
   {
     id: 4,
     label: "FAQ",
@@ -34,5 +33,10 @@ export const mainNavbarItems = [
     id: 6,
     label: "Resources",
     route: "Resources",
+  },
+  {
+    id: 7,
+    label: "Leaderboard",
+    route: "leaderboard",
   },
 ];
