@@ -20,10 +20,14 @@ interface RawLeaderboardEntry {
   points: string;
 }
 
-interface LeaderboardEntry {
+interface UnrankedLeaderboardEntry {
   firstName: string;
   lastName: string;
   points: number;
+}
+
+interface LeaderboardEntry extends UnrankedLeaderboardEntry {
+  rank: number;
 }
 
 const Leaderboard: React.FC = () => {
@@ -38,8 +42,8 @@ const Leaderboard: React.FC = () => {
       header: true,
       skipEmptyLines: true,
       complete: function (results) {
-        // Convert points to number and map to LeaderboardEntry
-        const parsedData: LeaderboardEntry[] = results.data
+        // Convert points to number and map to UnrankedLeaderboardEntry
+        const parsedData: UnrankedLeaderboardEntry[] = results.data
           .map((row) => ({
             firstName: row.firstName,
             lastName: row.lastName,
@@ -49,7 +53,16 @@ const Leaderboard: React.FC = () => {
 
         // Sort data by points descending
         parsedData.sort((a, b) => b.points - a.points);
-        setData(parsedData);
+
+        // Assign ranks
+        const rankedData: LeaderboardEntry[] = parsedData.map(
+          (entry, index) => ({
+            ...entry,
+            rank: index + 1,
+          })
+        );
+
+        setData(rankedData);
       },
       error: function (error) {
         console.error("Error parsing CSV:", error);
@@ -123,10 +136,12 @@ const Leaderboard: React.FC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredData.map((row, index) => (
-                  <TableRow key={`${row.firstName}-${row.lastName}-${index}`}>
+                {filteredData.map((row) => (
+                  <TableRow
+                    key={`${row.firstName}-${row.lastName}-${row.rank}`}
+                  >
                     <TableCell sx={{ fontWeight: "bold" }}>
-                      {index + 1}
+                      {row.rank}
                     </TableCell>
                     <TableCell>{row.firstName}</TableCell>
                     <TableCell>{row.lastName}</TableCell>
