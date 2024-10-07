@@ -136,18 +136,25 @@ const Leaderboard: React.FC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredData.map((row) => (
+                {filteredData.map((row, index) => (
                   <TableRow
                     key={`${row.firstName}-${row.lastName}-${row.rank}`}
+                    sx={{
+                      backgroundColor: index % 2 === 0 ? "#c9bce6" : "white", // Light purple zebra pattern
+                    }}
                   >
                     <TableCell sx={{ fontWeight: "bold" }}>
                       {row.rank}
                     </TableCell>
-                    <TableCell>{row.firstName}</TableCell>
-                    <TableCell>{row.lastName}</TableCell>
+                    <TableCell sx={{ fontWeight: "bold" }}>
+                      {row.firstName}
+                    </TableCell>
+                    <TableCell sx={{ fontWeight: "bold" }}>
+                      {row.lastName}
+                    </TableCell>
                     <TableCell
                       sx={{
-                        color: "#4d2e91", // Gold text for points
+                        color: "#822af5",
                         fontWeight: "bold",
                       }}
                     >
