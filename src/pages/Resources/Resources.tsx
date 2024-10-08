@@ -26,17 +26,17 @@ const sections = [
       },
       {
         id: 2,
-        question: "Lockheed Martin Software Engineer Internship",
+        question: "Freshman/Sophomores Internships",
         answer: (
           <>
             <p></p>
             <a
-              href="https://www.lockheedmartinjobs.com/job/annapolis-junction/software-developer-cyber-intern/694/69572556224"
+              href="Freshman/Sophomore Internships: https://github.com/codicate/underclassmen-internships"
               target="_blank"
               rel="noopener noreferrer"
               style={{ wordWrap: "break-word", overflowWrap: "break-word" }} // Ensure long URLs wrap
             >
-              https://www.lockheedmartinjobs.com/job/annapolis-junction/software-developer-cyber-intern/694/69572556224
+              Freshman/Sophomore Internships: https://github.com/codicate/underclassmen-internships
             </a>
           </>
         ),

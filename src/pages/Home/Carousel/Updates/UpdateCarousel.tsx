@@ -5,6 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
 import { boardMembers } from "../../../Home/Carousel/EBoardCarousel"; // Ensure this is the correct path
 import update from "../consts/update.jpg";
+import { Link as RouterLink } from 'react-router-dom'; 
 
 interface Update {
   id: string;
@@ -110,9 +111,13 @@ const UpdateCarousel = () => {
         ))}
       </Box>
       <Box sx={{ textAlign: "center", marginTop: 5 }}>
-        <Button
+      <Button
+          component={RouterLink} 
+          to="/Updates"
           variant="outlined"
+          color="primary"
           sx={{
+            marginTop: 5, // Adjusted margin to move the button lower
             color: "#EAC566",
             border: "2px solid #EAC566",
             "&:hover": {
@@ -123,9 +128,8 @@ const UpdateCarousel = () => {
             padding: "15px 20px",
             fontSize: "1.2rem",
           }}
-          onClick={() => (window.location.href = "/Updates")} // Replace with your actual route
         >
-          MORE UPDATES
+          More Updates
         </Button>
       </Box>
     </Box>
