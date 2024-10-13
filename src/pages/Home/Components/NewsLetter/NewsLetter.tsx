@@ -1,38 +1,73 @@
 import React, { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import { db } from "../../../../firebase-config"; // Ensure your Firebase config is properly set
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  getDocs,
+  where,
+  query,
+} from "firebase/firestore";
 import hunter from "./consts/hunter.png";
 
 const NewsLetter = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false); // To show a loading spinner
 
   const handleSubmit = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
     evt.preventDefault();
-  
+    setLoading(true); // Set loading to true while processing
+
     try {
       // Check if email is not empty and valid (basic email format check)
       if (!email || !/\S+@\S+\.\S+/.test(email)) {
         setMessage("Please enter a valid email.");
+        setLoading(false);
         return;
       }
-  
+
+      // Check if email already exists in Firestore
+      const emailExistsQuery = query(
+        collection(db, "emails"),
+        where("student_email", "==", email)
+      );
+      const querySnapshot = await getDocs(emailExistsQuery);
+
+      if (!querySnapshot.empty) {
+        setMessage("This email is already subscribed.");
+        setLoading(false);
+        return;
+      }
+
       // Add email to Firestore with timestamp
       await addDoc(collection(db, "emails"), {
         student_email: email,
         timestamp: serverTimestamp(),
       });
-  
+
       // Update the message to show success
       setMessage("Successfully subscribed!");
     } catch (error) {
       console.error("Error subscribing:", error);
       setMessage("Failed to subscribe. Please try again.");
     }
-  
-    // Clear the input field
+
+    // Clear the input field and stop loading
     setEmail("");
+    setLoading(false);
+
+    // Clear the message after 3 seconds
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
   };
 
   return (
@@ -101,6 +136,13 @@ const NewsLetter = () => {
           Subscribe
         </Button>
       </form>
+      {loading && (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", marginTop: "12px" }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
       {message && (
         <Typography
           variant="body2"
