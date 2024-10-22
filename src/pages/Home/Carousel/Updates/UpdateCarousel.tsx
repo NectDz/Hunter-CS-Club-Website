@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebase-config";
 import { boardMembers } from "../../../Home/Carousel/EBoardCarousel"; // Ensure this is the correct path
 import update from "../consts/update.jpg";
-import { Link as RouterLink } from 'react-router-dom'; 
+import { Link as RouterLink } from "react-router-dom";
 
 interface Update {
   id: string;
@@ -48,7 +48,8 @@ const UpdateCarousel = () => {
           return bTime - aTime;
         });
 
-      setUpdates(updatesList);
+      // Set only the most recent update
+      setUpdates(updatesList.slice(0, 1));
       setLoading(false);
     };
 
@@ -95,7 +96,7 @@ const UpdateCarousel = () => {
         CLUB UPDATES
       </Typography>
       <Typography variant="h6" align="center" gutterBottom>
-        Check out our latest updates and news here!
+        Check out our latest update!
       </Typography>
       <Box sx={{ maxWidth: 800, margin: "auto" }}>
         {updates.map((update) => (
@@ -111,8 +112,8 @@ const UpdateCarousel = () => {
         ))}
       </Box>
       <Box sx={{ textAlign: "center", marginTop: 5 }}>
-      <Button
-          component={RouterLink} 
+        <Button
+          component={RouterLink}
           to="/Updates"
           variant="outlined"
           color="primary"
